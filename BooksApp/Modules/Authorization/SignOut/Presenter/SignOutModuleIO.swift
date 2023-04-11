@@ -7,8 +7,6 @@
 
 import Foundation
 
-protocol SignOutModuleOutput: AnyObject {
-}
+protocol SignOutModuleOutput: AnyObject {}
 
-protocol SignOutModuleInput: AnyObject {
-}
+protocol SignOutModuleInput: AnyObject {}

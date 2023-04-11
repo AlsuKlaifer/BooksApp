@@ -11,5 +11,4 @@ protocol SignUpModuleOutput: AnyObject {
     func moduleWantsToEndAuth(_ module: SignUpModuleInput)
 }
 
-protocol SignUpModuleInput: AnyObject {
-}
+protocol SignUpModuleInput: AnyObject {}

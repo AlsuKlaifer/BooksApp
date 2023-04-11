@@ -10,5 +10,5 @@ import Foundation
 protocol AuthorizationServiceProtocol {
     func login(login: String, password: String, completion: @escaping ((Result<Void, Error>) -> Void))
     func signUp(login: String, password: String, completion: @escaping ((Result<Void, Error>) -> Void))
-    func signOut(completion: @escaping (Error?) -> Void)
+    func signOut(completion: @escaping ((Result<Void, Error>) -> Void))
 }

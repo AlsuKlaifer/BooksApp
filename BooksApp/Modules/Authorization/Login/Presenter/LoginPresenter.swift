@@ -9,6 +9,7 @@ import Foundation
 import FirebaseAuth
 
 class LoginPresenter {
+    
     weak var view: LoginViewInput?
     
     private let output: LoginModuleOutput
@@ -21,6 +22,7 @@ class LoginPresenter {
 }
 
 extension LoginPresenter: LoginViewOutput {
+    
     func login(_ email: String, _ password: String) {
         loginService.login(login: email, password: password) { [weak self] result in
             guard let self else { return }

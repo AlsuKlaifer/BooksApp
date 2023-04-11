@@ -8,6 +8,7 @@
 import UIKit
 
 class SignOutViewController: UIViewController {
+    
     private let output: SignOutViewOutput
     
     init(output: SignOutPresenter) {

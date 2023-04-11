@@ -8,6 +8,7 @@
 import Foundation
 
 class SignOutPresenter {
+    
     weak var view: SignOutViewInput?
 
     private let output: SignOutModuleOutput
@@ -20,11 +21,15 @@ class SignOutPresenter {
 }
 
 extension SignOutPresenter: SignOutViewOutput {
+    
     func signOut() {
-        loginService.signOut { [weak self] error in
+        loginService.signOut { [weak self] result in
             guard let self else { return }
             
-            if let error = error {
+            switch result {
+            case .success:
+                return
+            case .failure(let error):
                 self.view?.showAlert(error.localizedDescription)
             }
         }

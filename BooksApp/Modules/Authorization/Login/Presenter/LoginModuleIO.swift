@@ -12,6 +12,4 @@ protocol LoginModuleOutput: AnyObject {
     func moduleWantsToSignUp(_ module: LoginModuleInput)
 }
 
-protocol LoginModuleInput: AnyObject {
-}
-
+protocol LoginModuleInput: AnyObject {}

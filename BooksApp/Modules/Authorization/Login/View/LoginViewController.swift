@@ -8,6 +8,7 @@
 import UIKit
 
 class LoginViewController: UIViewController {
+    
     private let output: LoginViewOutput
     
     init(output: LoginViewOutput) {
@@ -74,6 +75,7 @@ class LoginViewController: UIViewController {
 }
 
 extension LoginViewController: LoginViewInput {
+    
     func showAlert(_ message: String) {
         let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default)

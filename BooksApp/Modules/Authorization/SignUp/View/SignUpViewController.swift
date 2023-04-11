@@ -8,6 +8,7 @@
 import UIKit
 
 class SignUpViewController: UIViewController {
+    
     private let output: SignUpViewOutput
     
     init(output: SignUpPresenter) {

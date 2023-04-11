@@ -8,6 +8,7 @@
 import Foundation
 
 class SignUpPresenter {
+    
     weak var view: SignUpViewInput?
     
     private let output: SignUpModuleOutput
@@ -20,6 +21,7 @@ class SignUpPresenter {
 }
 
 extension SignUpPresenter: SignUpViewOutput {
+    
     func signUp(_ email: String, _ password: String) {
         loginService.signUp(login: email, password: email) { [weak self] result in
             guard let self else { return }

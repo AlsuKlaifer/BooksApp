@@ -8,6 +8,7 @@
 import UIKit
 
 final class SignUpModuleBuilder {
+    
     private let output: SignUpModuleOutput
     
     init(output: SignUpModuleOutput) {

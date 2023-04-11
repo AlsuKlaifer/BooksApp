@@ -9,6 +9,7 @@ import Foundation
 import FirebaseAuth
 
 class AuthorizationService: AuthorizationServiceProtocol {
+    
     func login(login: String, password: String, completion: @escaping ((Result<Void, Error>) -> Void)) {
         Auth.auth().signIn(withEmail: login, password: password) { _, error in
             if let error = error {
@@ -28,16 +29,12 @@ class AuthorizationService: AuthorizationServiceProtocol {
             }
         }
     }
-    
-//    func signOut(completion: @escaping ((Result<Void, Error>) -> Void)) {
-//        try? Auth.auth().signOut()
-//    }
 
-    func signOut(completion: @escaping (Error?) -> Void) {
+    func signOut(completion: @escaping ((Result<Void, Error>) -> Void)) {
         do {
             try Auth.auth().signOut()
         } catch let error {
-            completion(error)
+            completion(.failure(error))
         }
     }
 }

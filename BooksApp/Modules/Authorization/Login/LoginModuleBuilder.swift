@@ -8,6 +8,7 @@
 import UIKit
 
 final class LoginModuleBuilder {
+    
     private let output: LoginModuleOutput
     
     init(output: LoginModuleOutput) {

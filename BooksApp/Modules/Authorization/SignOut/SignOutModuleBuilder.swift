@@ -8,6 +8,7 @@
 import UIKit
 
 final class SignOutModuleBuilder {
+    
     private let output: SignOutModuleOutput
     
     init(output: SignOutModuleOutput) {
