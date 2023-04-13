@@ -9,52 +9,34 @@ import UIKit
 import FirebaseAuth
 
 class AppCoordinator {
-    var window: UIWindow?
-    private var navigationController: UINavigationController?
     
+    var window: UIWindow?
+        
     func start(_ scene: UIWindowScene) {
         let window = UIWindow(windowScene: scene)
         self.window = window
         
         Auth.auth().addStateDidChangeListener { _, user in
             if user == nil {
-                let loginViewController = LoginModuleBuilder(output: self).build()
-                self.navigationController = UINavigationController(rootViewController: loginViewController)
-                self.navigationController?.navigationBar.prefersLargeTitles = true
-                window.rootViewController = self.navigationController
+                self.showAuthFlow()
             } else {
-                let signOutViewController = SignOutModuleBuilder(output: self).build()
-                window.rootViewController = signOutViewController
+                self.showMainFlow()
             }
         }
-        window.makeKeyAndVisible()
-    }
-}
-
-extension AppCoordinator: SignOutModuleOutput {
-}
-
-extension AppCoordinator: LoginModuleOutput {
-    func moduleWantsToSignUp(_ module: LoginModuleInput) {
-        let signUpViewController = SignUpModuleBuilder(output: self).build()
-        self.navigationController?.pushViewController(signUpViewController, animated: true)
     }
     
-    func moduleWantsToEndAuth(_ module: LoginModuleInput) {
-        let presenter = SignOutPresenter(loginService: AuthorizationService(), output: self)
-        let signOutViewController = SignOutViewController(output: presenter)
-        presenter.view = signOutViewController
+    func showAuthFlow() {
+        let authCoordinator = CoordinatorFactory().createAuthCoordinator(navigationController: UINavigationController())
+        authCoordinator.start()
+        window?.rootViewController = authCoordinator.navigationController
+        window?.makeKeyAndVisible()
+    }
+    
+    func showMainFlow() {
+        let signOutViewController = SignOutModuleBuilder(output: self).build()
         window?.rootViewController = signOutViewController
         window?.makeKeyAndVisible()
     }
 }
 
-extension AppCoordinator: SignUpModuleOutput {
-    func moduleWantsToEndAuth(_ module: SignUpModuleInput) {
-        let presenter = SignOutPresenter(loginService: AuthorizationService(), output: self)
-        let signOutViewController = SignOutViewController(output: presenter)
-        presenter.view = signOutViewController
-        window?.rootViewController = signOutViewController
-        window?.makeKeyAndVisible()
-    }
-}
+extension AppCoordinator: SignOutModuleOutput {}
