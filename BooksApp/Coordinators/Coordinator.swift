@@ -7,12 +7,9 @@
 
 import UIKit
 
-typealias CoordinatorHandler = () -> ()
-
 protocol Coordinator: AnyObject {
     
-    var navigationController: UINavigationController { get set }
-//    var flowCompletionHander: CoordinatorHandler? { get set }
-                                                        
+    var navigationController: UINavigationController { get }
+    
     func start()
 }

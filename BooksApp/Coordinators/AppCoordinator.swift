@@ -26,17 +26,14 @@ class AppCoordinator {
     }
     
     func showAuthFlow() {
-        let authCoordinator = CoordinatorFactory().createAuthCoordinator(navigationController: UINavigationController())
+        let authCoordinator = AuthCoordinator.init(navigationController: UINavigationController())
         authCoordinator.start()
         window?.rootViewController = authCoordinator.navigationController
         window?.makeKeyAndVisible()
     }
     
     func showMainFlow() {
-        let signOutViewController = SignOutModuleBuilder(output: self).build()
-        window?.rootViewController = signOutViewController
+        window?.rootViewController = MainTabBarController()
         window?.makeKeyAndVisible()
     }
 }
-
-extension AppCoordinator: SignOutModuleOutput {}

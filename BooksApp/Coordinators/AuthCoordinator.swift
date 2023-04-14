@@ -7,10 +7,9 @@
 
 import UIKit
 
-class AuthCoordinator: Coordinator {
+final class AuthCoordinator: Coordinator {
     
     var navigationController: UINavigationController
-//    var flowCompletionHander: CoordinatorHandler?
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -21,8 +20,6 @@ class AuthCoordinator: Coordinator {
         self.navigationController = UINavigationController(rootViewController: loginViewController)
         self.navigationController.navigationBar.prefersLargeTitles = true
     }
-    
-    func showMain() {}
 }
 
 extension AuthCoordinator: LoginModuleOutput {
@@ -31,7 +28,6 @@ extension AuthCoordinator: LoginModuleOutput {
         let presenter = SignOutPresenter(loginService: AuthorizationService(), output: self)
         let signOutViewController = SignOutViewController(output: presenter)
         presenter.view = signOutViewController
-        // открываем новый вью
     }
     
     func moduleWantsToSignUp(_ module: LoginModuleInput) {
@@ -46,7 +42,6 @@ extension AuthCoordinator: SignUpModuleOutput {
         let presenter = SignOutPresenter(loginService: AuthorizationService(), output: self)
         let signOutViewController = SignOutViewController(output: presenter)
         presenter.view = signOutViewController
-        // открываем новый вью
     }
 }
 
