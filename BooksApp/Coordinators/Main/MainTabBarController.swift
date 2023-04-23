@@ -15,11 +15,16 @@ final class MainTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.tabBar.tintColor = .black
+    
         booksCoordinator.start()
         favoriteCoordinator.start()
         profileCoordinator.start()
         
-        viewControllers = [booksCoordinator.navigationController, favoriteCoordinator.navigationController, profileCoordinator.navigationController]
+        viewControllers = [
+            booksCoordinator.navigationController,
+            favoriteCoordinator.navigationController,
+            profileCoordinator.navigationController
+        ]
     }
 }

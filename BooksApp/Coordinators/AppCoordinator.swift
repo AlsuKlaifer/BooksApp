@@ -37,3 +37,5 @@ class AppCoordinator {
         window?.makeKeyAndVisible()
     }
 }
+
+extension AppCoordinator: AuthFlowOutput {}

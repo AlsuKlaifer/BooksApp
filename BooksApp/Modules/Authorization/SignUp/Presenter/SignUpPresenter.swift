@@ -28,7 +28,7 @@ extension SignUpPresenter: SignUpViewOutput {
             
             switch result {
             case .success:
-                self.output.moduleWantsToEndAuth(self)
+                break
             case .failure(let error):
                 self.view?.showAlert(error.localizedDescription)
             }

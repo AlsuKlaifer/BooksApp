@@ -24,25 +24,14 @@ final class AuthCoordinator: Coordinator {
 
 extension AuthCoordinator: LoginModuleOutput {
     
-    func moduleWantsToEndAuth(_ module: LoginModuleInput) {
-        let presenter = SignOutPresenter(loginService: AuthorizationService(), output: self)
-        let signOutViewController = SignOutViewController(output: presenter)
-        presenter.view = signOutViewController
-    }
-    
     func moduleWantsToSignUp(_ module: LoginModuleInput) {
         let signUpViewController = SignUpModuleBuilder(output: self).build()
         self.navigationController.pushViewController(signUpViewController, animated: true)
     }
 }
 
-extension AuthCoordinator: SignUpModuleOutput {
-    
-    func moduleWantsToEndAuth(_ module: SignUpModuleInput) {
-        let presenter = SignOutPresenter(loginService: AuthorizationService(), output: self)
-        let signOutViewController = SignOutViewController(output: presenter)
-        presenter.view = signOutViewController
-    }
-}
+extension AuthCoordinator: SignUpModuleOutput {}
 
 extension AuthCoordinator: SignOutModuleOutput {}
+
+extension AuthCoordinator: AuthFlowInput {}
