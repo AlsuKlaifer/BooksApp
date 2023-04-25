@@ -7,8 +7,6 @@
 
 import Foundation
 
-protocol SignUpModuleOutput: AnyObject {
-    func moduleWantsToEndAuth(_ module: SignUpModuleInput)
-}
+protocol SignUpModuleOutput: AnyObject {}
 
 protocol SignUpModuleInput: AnyObject {}
