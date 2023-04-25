@@ -15,4 +15,5 @@ protocol SignOutViewInput: AnyObject {
 // presenter
 protocol SignOutViewOutput: AnyObject {
     func signOut()
+    func changePassword()
 }

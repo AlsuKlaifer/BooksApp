@@ -23,4 +23,15 @@ final class ProfileCoordinator: Coordinator {
     }
 }
 
-extension ProfileCoordinator: SignOutModuleOutput {}
+extension ProfileCoordinator: SignOutModuleOutput {
+    func moduleWantsToChangePassword(_ module: SignOutModuleInput) {
+        let changePasswordViewController = ChangePaswordModuleBuilder(output: self).build()
+        self.navigationController.pushViewController(changePasswordViewController, animated: true)
+    }
+}
+
+extension ProfileCoordinator: ChangePasswordModuleOutput {
+    func moduleWantsToEnd(_ module: ChangePasswordModuleInput) {
+        self.navigationController.popViewController(animated: true)
+    }
+}

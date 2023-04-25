@@ -32,6 +32,4 @@ extension AuthCoordinator: LoginModuleOutput {
 
 extension AuthCoordinator: SignUpModuleOutput {}
 
-extension AuthCoordinator: SignOutModuleOutput {}
-
 extension AuthCoordinator: AuthFlowInput {}
