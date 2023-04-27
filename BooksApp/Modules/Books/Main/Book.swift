@@ -1,0 +1,14 @@
+//
+//  ListItem.swift
+//  BooksApp
+//
+//  Created by Alsu Faizova on 27.04.2023.
+//
+
+import Foundation
+
+struct Book {
+    let title: String
+    let author: String
+    let image: String
+}
