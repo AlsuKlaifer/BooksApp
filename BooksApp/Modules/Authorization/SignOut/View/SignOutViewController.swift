@@ -85,25 +85,38 @@ extension SignOutViewController: SignOutViewInput {
     func showAlert(_ message: String) {}
     
     func setConstraint() {
-        view.addSubview(signOutButton)
         view.addSubview(imageView)
         view.addSubview(nameLabel)
         view.addSubview(emailLabel)
         view.addSubview(changePasswordButton)
+        view.addSubview(signOutButton)
 
         NSLayoutConstraint.activate([
             imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
             imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 130),
             imageView.heightAnchor.constraint(equalToConstant: 120),
-            imageView.widthAnchor.constraint(equalToConstant: 120),
+            imageView.widthAnchor.constraint(equalToConstant: 120)
+        ])
+        
+        NSLayoutConstraint.activate([
             nameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
-            nameLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 30),
+            nameLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 30)
+        ])
+        
+        NSLayoutConstraint.activate([
             emailLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
-            emailLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 5),
+            emailLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 5)
+        ])
+        
+        NSLayoutConstraint.activate([
             changePasswordButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-            changePasswordButton.topAnchor.constraint(equalTo: emailLabel.bottomAnchor, constant: 100),
+            changePasswordButton.topAnchor.constraint(equalTo: emailLabel.bottomAnchor, constant: 100)
+        ])
+        
+        NSLayoutConstraint.activate([
             signOutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
             signOutButton.topAnchor.constraint(equalTo: changePasswordButton.bottomAnchor, constant: 100)
         ])
+        
     }
 }
