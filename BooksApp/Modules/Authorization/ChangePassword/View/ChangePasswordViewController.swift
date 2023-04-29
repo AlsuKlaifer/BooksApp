@@ -29,28 +29,22 @@ class ChangePasswordViewController: UIViewController {
     }
     
     private lazy var passwordTextField1: UITextField = {
-        let textField = UITextField()
-        textField.borderStyle = .roundedRect
-        textField.placeholder = "Password"
-        textField.translatesAutoresizingMaskIntoConstraints = false
+        let textField = TextField()
+        textField.placeholder = "Current password"
         textField.isSecureTextEntry = true
         return textField
     }()
     
     private lazy var passwordTextField2: UITextField = {
-        let textField = UITextField()
-        textField.borderStyle = .roundedRect
-        textField.placeholder = "Password"
-        textField.translatesAutoresizingMaskIntoConstraints = false
+        let textField = TextField()
+        textField.placeholder = "New password"
         textField.isSecureTextEntry = true
         return textField
     }()
     
     private lazy var passwordTextField3: UITextField = {
-        let textField = UITextField()
-        textField.borderStyle = .roundedRect
-        textField.placeholder = "Password"
-        textField.translatesAutoresizingMaskIntoConstraints = false
+        let textField = TextField()
+        textField.placeholder = "New password"
         textField.isSecureTextEntry = true
         return textField
     }()
@@ -88,11 +82,11 @@ class ChangePasswordViewController: UIViewController {
         let stackview = UIStackView()
         stackview.axis = .vertical
         stackview.spacing = 20
+        stackview.translatesAutoresizingMaskIntoConstraints = false
         
         stackview.addArrangedSubview(passwordTextField1)
         stackview.addArrangedSubview(passwordTextField2)
         stackview.addArrangedSubview(passwordTextField3)
-        stackview.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(stackview)
         view.addSubview(chagePasswordButton)
@@ -101,7 +95,10 @@ class ChangePasswordViewController: UIViewController {
             stackview.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
             stackview.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -100),
             stackview.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
-            stackview.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
+            stackview.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50)
+        ])
+        
+        NSLayoutConstraint.activate([
             chagePasswordButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
             chagePasswordButton.topAnchor.constraint(equalTo: stackview.bottomAnchor, constant: 50)
         ])

@@ -43,6 +43,7 @@
 		15B764EC29FA76AF00E8EA44 /* NewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B764EB29FA76AF00E8EA44 /* NewCollectionViewCell.swift */; };
 		15B764EE29FA76BE00E8EA44 /* PopularCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B764ED29FA76BE00E8EA44 /* PopularCollectionViewCell.swift */; };
 		15B764F029FA76CF00E8EA44 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B764EF29FA76CF00E8EA44 /* CategoryCollectionViewCell.swift */; };
+		15CB0BF129FD111B00E39E0D /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CB0BF029FD111B00E39E0D /* TextField.swift */; };
 		15D5524929E310310073888B /* SignUpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D5524829E310310073888B /* SignUpPresenter.swift */; };
 		15D5524B29E310440073888B /* SignOutPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D5524A29E310440073888B /* SignOutPresenter.swift */; };
 		15D5524D29E3107D0073888B /* SignUpViewIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D5524C29E3107D0073888B /* SignUpViewIO.swift */; };
@@ -93,6 +94,7 @@
 		15B764EB29FA76AF00E8EA44 /* NewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCollectionViewCell.swift; sourceTree = "<group>"; };
 		15B764ED29FA76BE00E8EA44 /* PopularCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularCollectionViewCell.swift; sourceTree = "<group>"; };
 		15B764EF29FA76CF00E8EA44 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		15CB0BF029FD111B00E39E0D /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		15D5524829E310310073888B /* SignUpPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPresenter.swift; sourceTree = "<group>"; };
 		15D5524A29E310440073888B /* SignOutPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutPresenter.swift; sourceTree = "<group>"; };
 		15D5524C29E3107D0073888B /* SignUpViewIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewIO.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				15300DBA29F59F2C0060D765 /* Button.swift */,
+				15CB0BF029FD111B00E39E0D /* TextField.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -551,6 +554,7 @@
 				15B764E729FA604900E8EA44 /* Book.swift in Sources */,
 				15046D7829E9CE1500564385 /* AuthFlowIO.swift in Sources */,
 				15D5524D29E3107D0073888B /* SignUpViewIO.swift in Sources */,
+				15CB0BF129FD111B00E39E0D /* TextField.swift in Sources */,
 				15300DBD29F5ACB10060D765 /* ChangePasswordViewController.swift in Sources */,
 				151A8C1D29DA0D8C000F2830 /* LoginViewController.swift in Sources */,
 				154B606029E82B32000FD3EC /* ProfileCoordinator.swift in Sources */,
