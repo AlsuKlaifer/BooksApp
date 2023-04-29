@@ -20,14 +20,14 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     }()
     
     override init(frame: CGRect) {
-        super.init (frame: frame)
+        super.init(frame: frame)
         
         setupView()
-        setConstraints ()
+        setConstraints()
     }
     
     required init?(coder: NSCoder) {
-        fatalError ("init (coder:) has not been implemented")
+        fatalError("init (coder:) has not been implemented")
     }
     
     func setupView() {
@@ -42,7 +42,7 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     func setConstraints () {
         NSLayoutConstraint.activate([
             categoryLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 5),
-            categoryLabel.trailingAnchor.constraint (equalTo: trailingAnchor, constant: -5),
+            categoryLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -5),
             categoryLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5),
             categoryLabel.topAnchor.constraint(equalTo: bottomAnchor, constant: 5),
             categoryLabel.heightAnchor.constraint(equalToConstant: 15)

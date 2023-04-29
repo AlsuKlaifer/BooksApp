@@ -39,11 +39,11 @@ final class BooksViewController: UIViewController {
             NewCollectionViewCell.self,
             forCellWithReuseIdentifier: "NewCollectionViewCell")
         collectionView.register(
-            PopularCollectionViewCell.self,
-            forCellWithReuseIdentifier: "PopularCollectionViewCell")
-        collectionView.register(
             CategoryCollectionViewCell.self,
             forCellWithReuseIdentifier: "CategoryCollectionViewCell")
+        collectionView.register(
+            PopularCollectionViewCell.self,
+            forCellWithReuseIdentifier: "PopularCollectionViewCell")
     }
 }
 
@@ -77,7 +77,7 @@ extension BooksViewController {
         let group = NSCollectionLayoutGroup.horizontal(
             layoutSize: .init(
                 widthDimension: .fractionalWidth(0.9),
-                heightDimension: .fractionalHeight(0.3)),
+                heightDimension: .fractionalHeight(0.2)),
             subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .groupPagingCentered
@@ -103,7 +103,7 @@ extension BooksViewController {
     private func createPopularSection() -> NSCollectionLayoutSection {
         let item = NSCollectionLayoutItem(layoutSize: .init(
             widthDimension: .fractionalWidth(1),
-            heightDimension: .fractionalHeight(0.2)))
+            heightDimension: .fractionalHeight(0.3)))
         let group = NSCollectionLayoutGroup.vertical(
             layoutSize: .init(
                 widthDimension: .fractionalWidth(1),
@@ -145,7 +145,18 @@ extension BooksViewController: UICollectionViewDataSource {
                 return UICollectionViewCell()
             }
             let newBook = new[indexPath.row]
-            cell.configureCell(popularName: newBook.title, imageName: newBook.image)
+            cell.configureCell(newName: newBook.title, imageName: newBook.image)
+            return cell
+           
+        case .category(let category):
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: "CategoryCollectionViewCell",
+                for: indexPath) as? CategoryCollectionViewCell
+            else {
+                return UICollectionViewCell()
+            }
+            let categoty = category[indexPath.row]
+            cell.configureCell(categoryName: categoty.title)
             return cell
             
         case .popular(let popular):
@@ -157,17 +168,6 @@ extension BooksViewController: UICollectionViewDataSource {
             }
             let popularBook = popular[indexPath.row]
             cell.configureCell(popularName: popularBook.title, imageName: popularBook.image)
-            return cell
-            
-        case .category(let category):
-            guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: "CategoryCollectionViewCell",
-                for: indexPath) as? CategoryCollectionViewCell
-            else {
-                return UICollectionViewCell()
-            }
-            let categoty = category[indexPath.row]
-            cell.configureCell(categoryName: categoty.title)
             return cell
         }
     }

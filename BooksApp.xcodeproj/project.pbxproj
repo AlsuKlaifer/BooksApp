@@ -30,7 +30,6 @@
 		154B604D29E70C60000FD3EC /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154B604C29E70C60000FD3EC /* Coordinator.swift */; };
 		154B604F29E70E49000FD3EC /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154B604E29E70E49000FD3EC /* AuthCoordinator.swift */; };
 		154B605429E7E336000FD3EC /* BooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154B605329E7E336000FD3EC /* BooksViewController.swift */; };
-		154B605629E7E35D000FD3EC /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154B605529E7E35D000FD3EC /* FavoriteViewController.swift */; };
 		154B605A29E827AF000FD3EC /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154B605929E827AF000FD3EC /* MainTabBarController.swift */; };
 		154B605C29E82A91000FD3EC /* BooksCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154B605B29E82A91000FD3EC /* BooksCoordinator.swift */; };
 		154B605E29E82B08000FD3EC /* FavoriteCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154B605D29E82B08000FD3EC /* FavoriteCoordinator.swift */; };
@@ -50,6 +49,7 @@
 		15D5524F29E311A00073888B /* SignUpModuleIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D5524E29E311A00073888B /* SignUpModuleIO.swift */; };
 		15D5525129E333D30073888B /* ChangePasswordModuleIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D5525029E333D30073888B /* ChangePasswordModuleIO.swift */; };
 		15D5525329E3344B0073888B /* SignOutViewIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D5525229E3344B0073888B /* SignOutViewIO.swift */; };
+		15D621F429FC4FBA00D935FE /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D621F329FC4FBA00D935FE /* FavoriteViewController.swift */; };
 		15D871B929D9D7D100B74A81 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 15D871B829D9D7D100B74A81 /* GoogleService-Info.plist */; };
 		67481667ADFE33E382F4DDD4 /* Pods_BooksApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE858412584FDC7CFA83286B /* Pods_BooksApp.framework */; };
 /* End PBXBuildFile section */
@@ -80,7 +80,6 @@
 		154B604C29E70C60000FD3EC /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		154B604E29E70E49000FD3EC /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
 		154B605329E7E336000FD3EC /* BooksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksViewController.swift; sourceTree = "<group>"; };
-		154B605529E7E35D000FD3EC /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		154B605929E827AF000FD3EC /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		154B605B29E82A91000FD3EC /* BooksCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksCoordinator.swift; sourceTree = "<group>"; };
 		154B605D29E82B08000FD3EC /* FavoriteCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCoordinator.swift; sourceTree = "<group>"; };
@@ -100,6 +99,7 @@
 		15D5524E29E311A00073888B /* SignUpModuleIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModuleIO.swift; sourceTree = "<group>"; };
 		15D5525029E333D30073888B /* ChangePasswordModuleIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordModuleIO.swift; sourceTree = "<group>"; };
 		15D5525229E3344B0073888B /* SignOutViewIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutViewIO.swift; sourceTree = "<group>"; };
+		15D621F329FC4FBA00D935FE /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		15D871B829D9D7D100B74A81 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		55D74E3D5CFE846510040B84 /* Pods-BooksApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BooksApp.debug.xcconfig"; path = "Target Support Files/Pods-BooksApp/Pods-BooksApp.debug.xcconfig"; sourceTree = "<group>"; };
 		770BE6F8A31929EB75550F40 /* Pods-BooksApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BooksApp.release.xcconfig"; path = "Target Support Files/Pods-BooksApp/Pods-BooksApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -365,7 +365,7 @@
 		15B764E129FA5B5200E8EA44 /* FavoriteBooks */ = {
 			isa = PBXGroup;
 			children = (
-				154B605529E7E35D000FD3EC /* FavoriteViewController.swift */,
+				15D621F329FC4FBA00D935FE /* FavoriteViewController.swift */,
 			);
 			path = FavoriteBooks;
 			sourceTree = "<group>";
@@ -572,7 +572,7 @@
 				15D5524B29E310440073888B /* SignOutPresenter.swift in Sources */,
 				15D5524929E310310073888B /* SignUpPresenter.swift in Sources */,
 				154B605C29E82A91000FD3EC /* BooksCoordinator.swift in Sources */,
-				154B605629E7E35D000FD3EC /* FavoriteViewController.swift in Sources */,
+				15D621F429FC4FBA00D935FE /* FavoriteViewController.swift in Sources */,
 				151A8C1B29DA0D63000F2830 /* LoginPresenter.swift in Sources */,
 				153D987E29D5F5FF00141BCB /* AppDelegate.swift in Sources */,
 				15B764E929FA63E600E8EA44 /* ListSection.swift in Sources */,
