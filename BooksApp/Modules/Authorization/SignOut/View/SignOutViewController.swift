@@ -117,6 +117,5 @@ extension SignOutViewController: SignOutViewInput {
             signOutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
             signOutButton.topAnchor.constraint(equalTo: changePasswordButton.bottomAnchor, constant: 100)
         ])
-        
     }
 }

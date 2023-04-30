@@ -38,6 +38,7 @@
 		159C10A029E34BB800ABA0C9 /* LoginModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159C109F29E34BB800ABA0C9 /* LoginModuleBuilder.swift */; };
 		159C10AD29E459BD00ABA0C9 /* SignOutModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159C10AC29E453DC00ABA0C9 /* SignOutModuleBuilder.swift */; };
 		159C10AE29E459C500ABA0C9 /* SignUpModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159C10AB29E453AA00ABA0C9 /* SignUpModuleBuilder.swift */; };
+		15B75C7229FE9D5000B886DB /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B75C7129FE9D5000B886DB /* TextField.swift */; };
 		15D5524929E310310073888B /* SignUpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D5524829E310310073888B /* SignUpPresenter.swift */; };
 		15D5524B29E310440073888B /* SignOutPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D5524A29E310440073888B /* SignOutPresenter.swift */; };
 		15D5524D29E3107D0073888B /* SignUpViewIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D5524C29E3107D0073888B /* SignUpViewIO.swift */; };
@@ -82,6 +83,7 @@
 		159C109F29E34BB800ABA0C9 /* LoginModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModuleBuilder.swift; sourceTree = "<group>"; };
 		159C10AB29E453AA00ABA0C9 /* SignUpModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModuleBuilder.swift; sourceTree = "<group>"; };
 		159C10AC29E453DC00ABA0C9 /* SignOutModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutModuleBuilder.swift; sourceTree = "<group>"; };
+		15B75C7129FE9D5000B886DB /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		15D5524829E310310073888B /* SignUpPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPresenter.swift; sourceTree = "<group>"; };
 		15D5524A29E310440073888B /* SignOutPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutPresenter.swift; sourceTree = "<group>"; };
 		15D5524C29E3107D0073888B /* SignUpViewIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewIO.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				15300DBA29F59F2C0060D765 /* Button.swift */,
+				15B75C7129FE9D5000B886DB /* TextField.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -505,6 +508,7 @@
 				151A8C2C29DB1994000F2830 /* LoginModuleIO.swift in Sources */,
 				151A8C2829DA2633000F2830 /* SignOutViewController.swift in Sources */,
 				15300DC829F665680060D765 /* ChangePasswordPresenter.swift in Sources */,
+				15B75C7229FE9D5000B886DB /* TextField.swift in Sources */,
 				159C10A029E34BB800ABA0C9 /* LoginModuleBuilder.swift in Sources */,
 				151A8C2029DA1141000F2830 /* AuthorizationServiceProtocol.swift in Sources */,
 				15D5524B29E310440073888B /* SignOutPresenter.swift in Sources */,
