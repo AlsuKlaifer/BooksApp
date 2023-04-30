@@ -29,18 +29,14 @@ class LoginViewController: UIViewController {
     }
     
     private lazy var emailTextField: UITextField = {
-        let textField = UITextField()
-        textField.borderStyle = .roundedRect
+        let textField = TextField()
         textField.placeholder = "Email"
-        textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
     
     private lazy var passwordTextField: UITextField = {
-        let textField = UITextField()
-        textField.borderStyle = .roundedRect
+        let textField = TextField()
         textField.placeholder = "Password"
-        textField.translatesAutoresizingMaskIntoConstraints = false
         textField.isSecureTextEntry = true
         return textField
     }()
@@ -86,20 +82,23 @@ extension LoginViewController: LoginViewInput {
         let stackview = UIStackView()
         stackview.axis = .vertical
         stackview.spacing = 20
-        
+        stackview.translatesAutoresizingMaskIntoConstraints = false
+
         stackview.addArrangedSubview(emailTextField)
         stackview.addArrangedSubview(passwordTextField)
         
         view.addSubview(stackview)
         view.addSubview(loginButton)
         view.addSubview(signUpButton)
-        stackview.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
             stackview.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
             stackview.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -100),
             stackview.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
-            stackview.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
+            stackview.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50)
+        ])
+        
+        NSLayoutConstraint.activate([
             loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
             loginButton.topAnchor.constraint(equalTo: stackview.bottomAnchor, constant: 50),
             signUpButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 20),

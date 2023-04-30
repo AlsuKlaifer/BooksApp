@@ -23,7 +23,7 @@ class SignUpPresenter {
 extension SignUpPresenter: SignUpViewOutput {
     
     func signUp(_ email: String, _ password: String) {
-        loginService.signUp(login: email, password: email) { [weak self] result in
+        loginService.signUp(login: email, password: password) { [weak self] result in
             guard let self else { return }
             
             switch result {

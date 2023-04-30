@@ -29,35 +29,27 @@ class SignUpViewController: UIViewController {
     }
     
     private lazy var nameTextField: UITextField = {
-        let textField = UITextField()
-        textField.borderStyle = .roundedRect
+        let textField = TextField()
         textField.placeholder = "Name"
-        textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
     
     private lazy var emailTextField: UITextField = {
-        let textField = UITextField()
-        textField.borderStyle = .roundedRect
+        let textField = TextField()
         textField.placeholder = "Email"
-        textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
     
     private lazy var passwordTextField1: UITextField = {
-        let textField = UITextField()
-        textField.borderStyle = .roundedRect
+        let textField = TextField()
         textField.placeholder = "Password"
-        textField.translatesAutoresizingMaskIntoConstraints = false
         textField.isSecureTextEntry = true
         return textField
     }()
     
     private lazy var passwordTextField2: UITextField = {
-        let textField = UITextField()
-        textField.borderStyle = .roundedRect
+        let textField = TextField()
         textField.placeholder = "Password"
-        textField.translatesAutoresizingMaskIntoConstraints = false
         textField.isSecureTextEntry = true
         return textField
     }()
@@ -97,7 +89,8 @@ extension SignUpViewController: SignUpViewInput {
         let stackview = UIStackView()
         stackview.axis = .vertical
         stackview.spacing = 20
-        
+        stackview.translatesAutoresizingMaskIntoConstraints = false
+
         stackview.addArrangedSubview(nameTextField)
         stackview.addArrangedSubview(emailTextField)
         stackview.addArrangedSubview(passwordTextField1)
@@ -105,13 +98,15 @@ extension SignUpViewController: SignUpViewInput {
         
         view.addSubview(stackview)
         view.addSubview(signUpButton)
-        stackview.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
             stackview.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
             stackview.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -100),
             stackview.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
-            stackview.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
+            stackview.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50)
+        ])
+        
+        NSLayoutConstraint.activate([
             signUpButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
             signUpButton.topAnchor.constraint(equalTo: stackview.bottomAnchor, constant: 50)
         ])
