@@ -23,7 +23,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         setConstraints()
         title = "login"
     }
@@ -46,9 +46,8 @@ class LoginViewController: UIViewController {
     }()
     
     lazy var loginButton: UIButton = {
-        let button = UIButton(type: .system)
+        let button = Button()
         button.setTitle("Login", for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         return button
     }()

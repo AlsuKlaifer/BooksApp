@@ -18,6 +18,11 @@
 		151A8C2A29DB0C80000F2830 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151A8C2929DB0C80000F2830 /* AppCoordinator.swift */; };
 		151A8C2C29DB1994000F2830 /* LoginModuleIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151A8C2B29DB1994000F2830 /* LoginModuleIO.swift */; };
 		15300DBB29F59F2C0060D765 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15300DBA29F59F2C0060D765 /* Button.swift */; };
+		15300DBD29F5ACB10060D765 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15300DBC29F5ACB10060D765 /* ChangePasswordViewController.swift */; };
+		15300DC229F64FD00060D765 /* ChangePasswordViewIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15300DC129F64FD00060D765 /* ChangePasswordViewIO.swift */; };
+		15300DC629F65EB60060D765 /* SignOutModuleIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15300DC529F65EB60060D765 /* SignOutModuleIO.swift */; };
+		15300DC729F665650060D765 /* ChangePasswordModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15300DC429F65DB00060D765 /* ChangePasswordModuleBuilder.swift */; };
+		15300DC829F665680060D765 /* ChangePasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15300DC329F650AB0060D765 /* ChangePasswordPresenter.swift */; };
 		153D987E29D5F5FF00141BCB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153D987D29D5F5FF00141BCB /* AppDelegate.swift */; };
 		153D988029D5F5FF00141BCB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153D987F29D5F5FF00141BCB /* SceneDelegate.swift */; };
 		153D988729D5F60000141BCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 153D988629D5F60000141BCB /* Assets.xcassets */; };
@@ -37,7 +42,7 @@
 		15D5524B29E310440073888B /* SignOutPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D5524A29E310440073888B /* SignOutPresenter.swift */; };
 		15D5524D29E3107D0073888B /* SignUpViewIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D5524C29E3107D0073888B /* SignUpViewIO.swift */; };
 		15D5524F29E311A00073888B /* SignUpModuleIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D5524E29E311A00073888B /* SignUpModuleIO.swift */; };
-		15D5525129E333D30073888B /* SignOutModuleIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D5525029E333D30073888B /* SignOutModuleIO.swift */; };
+		15D5525129E333D30073888B /* ChangePasswordModuleIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D5525029E333D30073888B /* ChangePasswordModuleIO.swift */; };
 		15D5525329E3344B0073888B /* SignOutViewIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D5525229E3344B0073888B /* SignOutViewIO.swift */; };
 		15D871B929D9D7D100B74A81 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 15D871B829D9D7D100B74A81 /* GoogleService-Info.plist */; };
 		67481667ADFE33E382F4DDD4 /* Pods_BooksApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE858412584FDC7CFA83286B /* Pods_BooksApp.framework */; };
@@ -55,6 +60,11 @@
 		151A8C2929DB0C80000F2830 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		151A8C2B29DB1994000F2830 /* LoginModuleIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModuleIO.swift; sourceTree = "<group>"; };
 		15300DBA29F59F2C0060D765 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		15300DBC29F5ACB10060D765 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
+		15300DC129F64FD00060D765 /* ChangePasswordViewIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewIO.swift; sourceTree = "<group>"; };
+		15300DC329F650AB0060D765 /* ChangePasswordPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordPresenter.swift; sourceTree = "<group>"; };
+		15300DC429F65DB00060D765 /* ChangePasswordModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordModuleBuilder.swift; sourceTree = "<group>"; };
+		15300DC529F65EB60060D765 /* SignOutModuleIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutModuleIO.swift; sourceTree = "<group>"; };
 		153D987A29D5F5FF00141BCB /* BooksApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BooksApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		153D987D29D5F5FF00141BCB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		153D987F29D5F5FF00141BCB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,7 +86,7 @@
 		15D5524A29E310440073888B /* SignOutPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutPresenter.swift; sourceTree = "<group>"; };
 		15D5524C29E3107D0073888B /* SignUpViewIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewIO.swift; sourceTree = "<group>"; };
 		15D5524E29E311A00073888B /* SignUpModuleIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModuleIO.swift; sourceTree = "<group>"; };
-		15D5525029E333D30073888B /* SignOutModuleIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutModuleIO.swift; sourceTree = "<group>"; };
+		15D5525029E333D30073888B /* ChangePasswordModuleIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordModuleIO.swift; sourceTree = "<group>"; };
 		15D5525229E3344B0073888B /* SignOutViewIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutViewIO.swift; sourceTree = "<group>"; };
 		15D871B829D9D7D100B74A81 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		55D74E3D5CFE846510040B84 /* Pods-BooksApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BooksApp.debug.xcconfig"; path = "Target Support Files/Pods-BooksApp/Pods-BooksApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -128,6 +138,7 @@
 		151A8C1529DA048A000F2830 /* Authorization */ = {
 			isa = PBXGroup;
 			children = (
+				15300DBE29F64F870060D765 /* ChangePassword */,
 				159C10A429E4513100ABA0C9 /* SignOut */,
 				159C10A329E4512500ABA0C9 /* SignUp */,
 				159C10A229E4511F00ABA0C9 /* Login */,
@@ -150,6 +161,34 @@
 				15300DBA29F59F2C0060D765 /* Button.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		15300DBE29F64F870060D765 /* ChangePassword */ = {
+			isa = PBXGroup;
+			children = (
+				15300DC429F65DB00060D765 /* ChangePasswordModuleBuilder.swift */,
+				15300DC029F64FA40060D765 /* Presenter */,
+				15300DBF29F64F980060D765 /* View */,
+			);
+			path = ChangePassword;
+			sourceTree = "<group>";
+		};
+		15300DBF29F64F980060D765 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				15300DBC29F5ACB10060D765 /* ChangePasswordViewController.swift */,
+				15300DC129F64FD00060D765 /* ChangePasswordViewIO.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		15300DC029F64FA40060D765 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				15300DC329F650AB0060D765 /* ChangePasswordPresenter.swift */,
+				15D5525029E333D30073888B /* ChangePasswordModuleIO.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		153D987129D5F5FF00141BCB = {
@@ -266,8 +305,8 @@
 		159C10A729E4515F00ABA0C9 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				15300DC529F65EB60060D765 /* SignOutModuleIO.swift */,
 				15D5524A29E310440073888B /* SignOutPresenter.swift */,
-				15D5525029E333D30073888B /* SignOutModuleIO.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -453,15 +492,19 @@
 			files = (
 				15046D7829E9CE1500564385 /* AuthFlowIO.swift in Sources */,
 				15D5524D29E3107D0073888B /* SignUpViewIO.swift in Sources */,
+				15300DBD29F5ACB10060D765 /* ChangePasswordViewController.swift in Sources */,
 				151A8C1D29DA0D8C000F2830 /* LoginViewController.swift in Sources */,
 				154B606029E82B32000FD3EC /* ProfileCoordinator.swift in Sources */,
 				154B604D29E70C60000FD3EC /* Coordinator.swift in Sources */,
 				151A8C2229DA1278000F2830 /* AuthorizationService.swift in Sources */,
-				15D5525129E333D30073888B /* SignOutModuleIO.swift in Sources */,
+				15D5525129E333D30073888B /* ChangePasswordModuleIO.swift in Sources */,
 				151A8C2A29DB0C80000F2830 /* AppCoordinator.swift in Sources */,
 				154B604F29E70E49000FD3EC /* AuthCoordinator.swift in Sources */,
+				15300DC229F64FD00060D765 /* ChangePasswordViewIO.swift in Sources */,
+				15300DC629F65EB60060D765 /* SignOutModuleIO.swift in Sources */,
 				151A8C2C29DB1994000F2830 /* LoginModuleIO.swift in Sources */,
 				151A8C2829DA2633000F2830 /* SignOutViewController.swift in Sources */,
+				15300DC829F665680060D765 /* ChangePasswordPresenter.swift in Sources */,
 				159C10A029E34BB800ABA0C9 /* LoginModuleBuilder.swift in Sources */,
 				151A8C2029DA1141000F2830 /* AuthorizationServiceProtocol.swift in Sources */,
 				15D5524B29E310440073888B /* SignOutPresenter.swift in Sources */,
@@ -480,6 +523,7 @@
 				159C10AD29E459BD00ABA0C9 /* SignOutModuleBuilder.swift in Sources */,
 				154B605E29E82B08000FD3EC /* FavoriteCoordinator.swift in Sources */,
 				154B605A29E827AF000FD3EC /* MainTabBarController.swift in Sources */,
+				15300DC729F665650060D765 /* ChangePasswordModuleBuilder.swift in Sources */,
 				159C10AE29E459C500ABA0C9 /* SignUpModuleBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -34,6 +34,12 @@ extension SignOutPresenter: SignOutViewOutput {
             }
         }
     }
+    
+    func changePassword() {
+        output.moduleWantsToChangePassword(self)
+    }
 }
 
-extension SignUpPresenter: SignOutModuleInput { }
+extension SignUpPresenter: SignOutModuleInput {}
+
+extension SignOutPresenter: SignOutModuleInput {}

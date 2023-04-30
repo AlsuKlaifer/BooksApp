@@ -7,6 +7,8 @@
 
 import Foundation
 
-protocol SignOutModuleOutput: AnyObject {}
+protocol SignOutModuleOutput: AnyObject {
+    func moduleWantsToChangePassword(_ model: SignOutModuleInput)
+}
 
 protocol SignOutModuleInput: AnyObject {}
