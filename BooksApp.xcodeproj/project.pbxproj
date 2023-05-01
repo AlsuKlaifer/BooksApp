@@ -39,6 +39,7 @@
 		159C10AD29E459BD00ABA0C9 /* SignOutModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159C10AC29E453DC00ABA0C9 /* SignOutModuleBuilder.swift */; };
 		159C10AE29E459C500ABA0C9 /* SignUpModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159C10AB29E453AA00ABA0C9 /* SignUpModuleBuilder.swift */; };
 		15B75C7229FE9D5000B886DB /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B75C7129FE9D5000B886DB /* TextField.swift */; };
+		15B8E51F29FEA48F00D340AA /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B8E51E29FEA48F00D340AA /* CategoryCollectionViewCell.swift */; };
 		15D5524929E310310073888B /* SignUpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D5524829E310310073888B /* SignUpPresenter.swift */; };
 		15D5524B29E310440073888B /* SignOutPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D5524A29E310440073888B /* SignOutPresenter.swift */; };
 		15D5524D29E3107D0073888B /* SignUpViewIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D5524C29E3107D0073888B /* SignUpViewIO.swift */; };
@@ -46,6 +47,11 @@
 		15D5525129E333D30073888B /* ChangePasswordModuleIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D5525029E333D30073888B /* ChangePasswordModuleIO.swift */; };
 		15D5525329E3344B0073888B /* SignOutViewIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D5525229E3344B0073888B /* SignOutViewIO.swift */; };
 		15D871B929D9D7D100B74A81 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 15D871B829D9D7D100B74A81 /* GoogleService-Info.plist */; };
+		15DDDF0929FEABC1007A16DE /* NewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DDDF0829FEABC1007A16DE /* NewCollectionViewCell.swift */; };
+		15DDDF0B29FEABD1007A16DE /* PopularCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DDDF0A29FEABD1007A16DE /* PopularCollectionViewCell.swift */; };
+		15DDDF0D29FEAC1B007A16DE /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DDDF0C29FEAC1B007A16DE /* Book.swift */; };
+		15DDDF0F29FEACA5007A16DE /* ListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DDDF0E29FEACA5007A16DE /* ListSection.swift */; };
+		15DDDF1329FEAD33007A16DE /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DDDF1229FEAD33007A16DE /* MockData.swift */; };
 		67481667ADFE33E382F4DDD4 /* Pods_BooksApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE858412584FDC7CFA83286B /* Pods_BooksApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +90,7 @@
 		159C10AB29E453AA00ABA0C9 /* SignUpModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModuleBuilder.swift; sourceTree = "<group>"; };
 		159C10AC29E453DC00ABA0C9 /* SignOutModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutModuleBuilder.swift; sourceTree = "<group>"; };
 		15B75C7129FE9D5000B886DB /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		15B8E51E29FEA48F00D340AA /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		15D5524829E310310073888B /* SignUpPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPresenter.swift; sourceTree = "<group>"; };
 		15D5524A29E310440073888B /* SignOutPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutPresenter.swift; sourceTree = "<group>"; };
 		15D5524C29E3107D0073888B /* SignUpViewIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewIO.swift; sourceTree = "<group>"; };
@@ -91,6 +98,11 @@
 		15D5525029E333D30073888B /* ChangePasswordModuleIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordModuleIO.swift; sourceTree = "<group>"; };
 		15D5525229E3344B0073888B /* SignOutViewIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutViewIO.swift; sourceTree = "<group>"; };
 		15D871B829D9D7D100B74A81 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		15DDDF0829FEABC1007A16DE /* NewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCollectionViewCell.swift; sourceTree = "<group>"; };
+		15DDDF0A29FEABD1007A16DE /* PopularCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularCollectionViewCell.swift; sourceTree = "<group>"; };
+		15DDDF0C29FEAC1B007A16DE /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		15DDDF0E29FEACA5007A16DE /* ListSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSection.swift; sourceTree = "<group>"; };
+		15DDDF1229FEAD33007A16DE /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		55D74E3D5CFE846510040B84 /* Pods-BooksApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BooksApp.debug.xcconfig"; path = "Target Support Files/Pods-BooksApp/Pods-BooksApp.debug.xcconfig"; sourceTree = "<group>"; };
 		770BE6F8A31929EB75550F40 /* Pods-BooksApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BooksApp.release.xcconfig"; path = "Target Support Files/Pods-BooksApp/Pods-BooksApp.release.xcconfig"; sourceTree = "<group>"; };
 		AE858412584FDC7CFA83286B /* Pods_BooksApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BooksApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -131,7 +143,8 @@
 		151A8C1429DA046F000F2830 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				154B605229E7E30D000FD3EC /* Books */,
+				15B8E51C29FEA43500D340AA /* Main */,
+				154B605229E7E30D000FD3EC /* FavoriteBooks */,
 				151A8C1529DA048A000F2830 /* Authorization */,
 			);
 			path = Modules;
@@ -240,18 +253,18 @@
 			path = Coordinators;
 			sourceTree = "<group>";
 		};
-		154B605229E7E30D000FD3EC /* Books */ = {
+		154B605229E7E30D000FD3EC /* FavoriteBooks */ = {
 			isa = PBXGroup;
 			children = (
-				154B605329E7E336000FD3EC /* BooksViewController.swift */,
 				154B605529E7E35D000FD3EC /* FavoriteViewController.swift */,
 			);
-			path = Books;
+			path = FavoriteBooks;
 			sourceTree = "<group>";
 		};
 		159C10A129E450AB00ABA0C9 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				15DDDF1129FEAD23007A16DE /* Books */,
 				151A8C1E29DA112B000F2830 /* Auth */,
 			);
 			path = Services;
@@ -339,6 +352,43 @@
 				151A8C1829DA0867000F2830 /* LoginViewIO.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		15B8E51C29FEA43500D340AA /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				15DDDF0C29FEAC1B007A16DE /* Book.swift */,
+				15DDDF0E29FEACA5007A16DE /* ListSection.swift */,
+				15DDDF1029FEACE7007A16DE /* View */,
+				15B8E51D29FEA46E00D340AA /* Cells */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		15B8E51D29FEA46E00D340AA /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				15B8E51E29FEA48F00D340AA /* CategoryCollectionViewCell.swift */,
+				15DDDF0829FEABC1007A16DE /* NewCollectionViewCell.swift */,
+				15DDDF0A29FEABD1007A16DE /* PopularCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		15DDDF1029FEACE7007A16DE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				154B605329E7E336000FD3EC /* BooksViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		15DDDF1129FEAD23007A16DE /* Books */ = {
+			isa = PBXGroup;
+			children = (
+				15DDDF1229FEAD33007A16DE /* MockData.swift */,
+			);
+			path = Books;
 			sourceTree = "<group>";
 		};
 		52A85B96CBFC2AFA47C77F96 /* Frameworks */ = {
@@ -496,10 +546,13 @@
 				15046D7829E9CE1500564385 /* AuthFlowIO.swift in Sources */,
 				15D5524D29E3107D0073888B /* SignUpViewIO.swift in Sources */,
 				15300DBD29F5ACB10060D765 /* ChangePasswordViewController.swift in Sources */,
+				15DDDF0F29FEACA5007A16DE /* ListSection.swift in Sources */,
+				15B8E51F29FEA48F00D340AA /* CategoryCollectionViewCell.swift in Sources */,
 				151A8C1D29DA0D8C000F2830 /* LoginViewController.swift in Sources */,
 				154B606029E82B32000FD3EC /* ProfileCoordinator.swift in Sources */,
 				154B604D29E70C60000FD3EC /* Coordinator.swift in Sources */,
 				151A8C2229DA1278000F2830 /* AuthorizationService.swift in Sources */,
+				15DDDF0D29FEAC1B007A16DE /* Book.swift in Sources */,
 				15D5525129E333D30073888B /* ChangePasswordModuleIO.swift in Sources */,
 				151A8C2A29DB0C80000F2830 /* AppCoordinator.swift in Sources */,
 				154B604F29E70E49000FD3EC /* AuthCoordinator.swift in Sources */,
@@ -509,7 +562,9 @@
 				151A8C2829DA2633000F2830 /* SignOutViewController.swift in Sources */,
 				15300DC829F665680060D765 /* ChangePasswordPresenter.swift in Sources */,
 				15B75C7229FE9D5000B886DB /* TextField.swift in Sources */,
+				15DDDF1329FEAD33007A16DE /* MockData.swift in Sources */,
 				159C10A029E34BB800ABA0C9 /* LoginModuleBuilder.swift in Sources */,
+				15DDDF0B29FEABD1007A16DE /* PopularCollectionViewCell.swift in Sources */,
 				151A8C2029DA1141000F2830 /* AuthorizationServiceProtocol.swift in Sources */,
 				15D5524B29E310440073888B /* SignOutPresenter.swift in Sources */,
 				15D5524929E310310073888B /* SignUpPresenter.swift in Sources */,
@@ -529,6 +584,7 @@
 				154B605A29E827AF000FD3EC /* MainTabBarController.swift in Sources */,
 				15300DC729F665650060D765 /* ChangePasswordModuleBuilder.swift in Sources */,
 				159C10AE29E459C500ABA0C9 /* SignUpModuleBuilder.swift in Sources */,
+				15DDDF0929FEABC1007A16DE /* NewCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -675,6 +731,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -703,6 +760,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

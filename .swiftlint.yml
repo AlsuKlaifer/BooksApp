@@ -9,6 +9,8 @@ disabled_rules:
   - trailing_whitespace
   - notification_center_detachment
   - orphaned_doc_comment
+  - vertical_whitespace_opening_braces
+  - line_length
 
 opt_in_rules:
   - attributes
@@ -74,10 +76,6 @@ identifier_name:
     - x
     - y
     - z
-
-line_length:
-  ignores_urls: true
-  ignores_comments: true
 
 multiline_arguments:
   first_argument_location: next_line
