@@ -39,19 +39,21 @@ final class PopularCollectionViewCell: UICollectionViewCell {
 
     func setupView() {
         backgroundColor = .systemGray5
+        self.layer.cornerRadius = 10
         addSubview(popularLabel)
         addSubview(popularImageView)
     }
 
-    func configureCell(popularName: String, imageName: String) {
-        popularLabel.text = popularName
-        popularImageView.image = UIImage(systemName: imageName)
+    func configureCell(with book: Book) {
+        popularLabel.text = book.title
+        popularImageView.image = UIImage(systemName: book.image)
     }
 
     func setConstraints () {
         NSLayoutConstraint.activate([
             popularImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             popularImageView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+            popularImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
             popularImageView.widthAnchor.constraint(equalToConstant: 100)
         ])
 

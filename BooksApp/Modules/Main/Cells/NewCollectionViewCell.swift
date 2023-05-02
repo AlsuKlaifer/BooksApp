@@ -11,7 +11,8 @@ final class NewCollectionViewCell: UICollectionViewCell {
 
     private let newImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .center
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -20,8 +21,8 @@ final class NewCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.text = "New"
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 14)
-        label.textColor = .black
+        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -39,21 +40,23 @@ final class NewCollectionViewCell: UICollectionViewCell {
 
     func setupView() {
         backgroundColor = .systemGray5
-        addSubview(newLabel)
         addSubview(newImageView)
+        addSubview(newLabel)
     }
 
-    func configureCell(name: String, imageName: String) {
-        newLabel.text = name
-        newImageView.image = UIImage(systemName: imageName)
+    func configureCell(with book: Book) {
+        newLabel.text = book.title.uppercased()
+        newImageView.image = UIImage(systemName: book.image)
     }
 
     func setConstraints () {
         NSLayoutConstraint.activate([
-            newLabel.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0),
-            newLabel.topAnchor.constraint(equalTo: topAnchor, constant: 20),
-            newImageView.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0),
-            newImageView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 0)
+            newImageView.topAnchor.constraint(equalTo: topAnchor, constant: 0),
+            newImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
+            newImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
+            newImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0),
+            newLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            newLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10)
         ])
     }
 }

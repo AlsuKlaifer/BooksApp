@@ -9,25 +9,15 @@ import UIKit
 
 final class CategoryCollectionViewCell: UICollectionViewCell {
     
-//    private let categoryButton: UIButton = {
-//        let button = UIButton()
-//        button.setTitle("Category", for: .normal)
-//        button.titleLabel?.font = UIFont(name: "System", size: 15)
-//        button.setTitleColor(UIColor(ciColor: .black), for: .normal)
-//        button.tintColor = .black
-//        button.backgroundColor = UIColor(red: 1, green: 184 / 255, blue: 45 / 255, alpha: 1)
-//        button.layer.cornerRadius = 15
-//        button.translatesAutoresizingMaskIntoConstraints = false
-//        return button
-//    }()
-    
     private let categoryLabel: UILabel = {
         let label = UILabel()
         label.text = "Category"
         label.font = .systemFont(ofSize: 15)
         label.tintColor = .label
         label.backgroundColor = UIColor(red: 1, green: 184 / 255, blue: 45 / 255, alpha: 1)
+        label.layer.masksToBounds = true
         label.layer.cornerRadius = 15
+        label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

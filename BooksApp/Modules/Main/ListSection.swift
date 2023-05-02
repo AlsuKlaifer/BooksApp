@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ListSection {
+enum ListSection: Hashable {
     case new([Book])
     case category([Book])
     case popular([Book])
@@ -18,21 +18,6 @@ enum ListSection {
             .category(let items),
             .popular(let items):
             return items
-        }
-    }
-
-    var count: Int {
-        return items.count
-    }
-
-    var title: String {
-        switch self {
-        case .new:
-            return ""
-        case .category:
-            return "Recommend"
-        case .popular:
-            return "Popular"
         }
     }
 }

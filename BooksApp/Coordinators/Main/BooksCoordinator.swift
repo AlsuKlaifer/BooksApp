@@ -16,7 +16,6 @@ final class BooksCoordinator: Coordinator {
     }
     
     func start() {
-        navigationController.navigationBar.prefersLargeTitles = true
         let viewController = BooksViewController()
         viewController.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house"), tag: 0)
         navigationController.viewControllers = [viewController]
