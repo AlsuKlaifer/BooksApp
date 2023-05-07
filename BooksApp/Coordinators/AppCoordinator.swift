@@ -9,7 +9,7 @@ import UIKit
 import FirebaseAuth
 
 class AppCoordinator {
-    
+
     var window: UIWindow?
         
     func start(_ scene: UIWindowScene) {
