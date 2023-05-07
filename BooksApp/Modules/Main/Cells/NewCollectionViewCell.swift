@@ -44,9 +44,14 @@ final class NewCollectionViewCell: UICollectionViewCell {
         addSubview(newLabel)
     }
 
-    func configureCell(with book: Book) {
-        newLabel.text = book.title.uppercased()
-        newImageView.image = UIImage(systemName: book.image)
+    func configureCell(with book: ListItem) {
+        switch book {
+        case .book(let book):
+            newLabel.text = book.title.uppercased()
+            newImageView.image = UIImage(systemName: book.image)
+        case .category:
+            return
+        }
     }
 
     func setConstraints () {
@@ -57,6 +62,6 @@ final class NewCollectionViewCell: UICollectionViewCell {
             newImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0),
             newLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             newLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10)
-        ])
+            ])
     }
 }

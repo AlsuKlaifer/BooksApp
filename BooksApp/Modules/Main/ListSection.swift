@@ -8,16 +8,21 @@
 import Foundation
 
 enum ListSection: Hashable {
-    case new([Book])
-    case category([Book])
-    case popular([Book])
+    case new([ListItem])
+    case category([ListItem])
+    case popular([ListItem])
 
-    var items: [Book] {
+    var items: [ListItem] {
         switch self {
         case .new(let items),
             .category(let items),
             .popular(let items):
-            return items
+        return items
         }
     }
+}
+
+enum ListItem: Hashable {
+    case book(Book)
+    case category(String)
 }

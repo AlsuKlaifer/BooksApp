@@ -44,9 +44,14 @@ final class PopularCollectionViewCell: UICollectionViewCell {
         addSubview(popularImageView)
     }
 
-    func configureCell(with book: Book) {
-        popularLabel.text = book.title
-        popularImageView.image = UIImage(systemName: book.image)
+    func configureCell(with book: ListItem) {
+        switch book {
+        case .book(let book):
+            popularLabel.text = book.title
+            popularImageView.image = UIImage(systemName: book.image)
+        case .category:
+            return
+        }
     }
 
     func setConstraints () {

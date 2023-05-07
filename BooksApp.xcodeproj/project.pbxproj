@@ -23,6 +23,8 @@
 		15300DC629F65EB60060D765 /* SignOutModuleIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15300DC529F65EB60060D765 /* SignOutModuleIO.swift */; };
 		15300DC729F665650060D765 /* ChangePasswordModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15300DC429F65DB00060D765 /* ChangePasswordModuleBuilder.swift */; };
 		15300DC829F665680060D765 /* ChangePasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15300DC329F650AB0060D765 /* ChangePasswordPresenter.swift */; };
+		153780822A07DC7000BF83FE /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153780812A07DC7000BF83FE /* NetworkService.swift */; };
+		153780842A07E19800BF83FE /* APICommonModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153780832A07E19800BF83FE /* APICommonModels.swift */; };
 		153D987E29D5F5FF00141BCB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153D987D29D5F5FF00141BCB /* AppDelegate.swift */; };
 		153D988029D5F5FF00141BCB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153D987F29D5F5FF00141BCB /* SceneDelegate.swift */; };
 		153D988729D5F60000141BCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 153D988629D5F60000141BCB /* Assets.xcassets */; };
@@ -72,6 +74,8 @@
 		15300DC329F650AB0060D765 /* ChangePasswordPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordPresenter.swift; sourceTree = "<group>"; };
 		15300DC429F65DB00060D765 /* ChangePasswordModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordModuleBuilder.swift; sourceTree = "<group>"; };
 		15300DC529F65EB60060D765 /* SignOutModuleIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutModuleIO.swift; sourceTree = "<group>"; };
+		153780812A07DC7000BF83FE /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		153780832A07E19800BF83FE /* APICommonModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICommonModels.swift; sourceTree = "<group>"; };
 		153D987A29D5F5FF00141BCB /* BooksApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BooksApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		153D987D29D5F5FF00141BCB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		153D987F29D5F5FF00141BCB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -205,6 +209,15 @@
 				15D5525029E333D30073888B /* ChangePasswordModuleIO.swift */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		153780802A07DC4400BF83FE /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				153780812A07DC7000BF83FE /* NetworkService.swift */,
+				153780832A07E19800BF83FE /* APICommonModels.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		153D987129D5F5FF00141BCB = {
@@ -386,6 +399,7 @@
 		15DDDF1129FEAD23007A16DE /* Books */ = {
 			isa = PBXGroup;
 			children = (
+				153780802A07DC4400BF83FE /* Network */,
 				15DDDF1229FEAD33007A16DE /* MockData.swift */,
 			);
 			path = Books;
@@ -547,12 +561,14 @@
 				15D5524D29E3107D0073888B /* SignUpViewIO.swift in Sources */,
 				15300DBD29F5ACB10060D765 /* ChangePasswordViewController.swift in Sources */,
 				15DDDF0F29FEACA5007A16DE /* ListSection.swift in Sources */,
+				153780822A07DC7000BF83FE /* NetworkService.swift in Sources */,
 				15B8E51F29FEA48F00D340AA /* CategoryCollectionViewCell.swift in Sources */,
 				151A8C1D29DA0D8C000F2830 /* LoginViewController.swift in Sources */,
 				154B606029E82B32000FD3EC /* ProfileCoordinator.swift in Sources */,
 				154B604D29E70C60000FD3EC /* Coordinator.swift in Sources */,
 				151A8C2229DA1278000F2830 /* AuthorizationService.swift in Sources */,
 				15DDDF0D29FEAC1B007A16DE /* Book.swift in Sources */,
+				153780842A07E19800BF83FE /* APICommonModels.swift in Sources */,
 				15D5525129E333D30073888B /* ChangePasswordModuleIO.swift in Sources */,
 				151A8C2A29DB0C80000F2830 /* AppCoordinator.swift in Sources */,
 				154B604F29E70E49000FD3EC /* AuthCoordinator.swift in Sources */,

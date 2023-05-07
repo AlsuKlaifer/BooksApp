@@ -11,27 +11,11 @@ final class BooksViewController: UIViewController {
 
     private let sections = MockData.shared.data
 
-    private lazy var searchBar: UISearchBar = {
-        let searchBar = UISearchBar()
-        searchBar.autocorrectionType = .no
-        searchBar.placeholder = "Search books"
-        searchBar.autocapitalizationType = .none
-        searchBar.searchTextField.layer.cornerRadius = 20
-        searchBar.searchBarStyle = .minimal
-        searchBar.backgroundColor = .clear
-        searchBar.searchTextField.tokenBackgroundColor = .white
-        searchBar.translatesAutoresizingMaskIntoConstraints = false
-        searchBar.searchTextField.clipsToBounds = true
-        searchBar.searchTextField.layer.borderWidth = 1
-        searchBar.searchTextField.layer.borderColor = CGColor(red: 0, green: 0, blue: 0, alpha: 1)
-        searchBar.searchTextField.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            searchBar.searchTextField.heightAnchor.constraint(equalToConstant: 45),
-            searchBar.searchTextField.leadingAnchor.constraint(equalTo: searchBar.leadingAnchor, constant: 10),
-            searchBar.searchTextField.trailingAnchor.constraint(equalTo: searchBar.trailingAnchor, constant: -10),
-            searchBar.searchTextField.topAnchor.constraint(equalTo: searchBar.topAnchor, constant: 0)
-        ])
-        return searchBar
+    private let searchController: UISearchController = {
+        let searchController = UISearchController()
+        searchController.searchBar.tintColor = .orange
+        searchController.searchBar.placeholder = "Search books"
+        return searchController
     }()
     
     private lazy var collectionView: UICollectionView = {
@@ -40,7 +24,7 @@ final class BooksViewController: UIViewController {
         return collectionView
     }()
 
-    var dataSource: UICollectionViewDiffableDataSource<ListSection, Book>?
+    var dataSource: UICollectionViewDiffableDataSource<ListSection, ListItem>?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +34,18 @@ final class BooksViewController: UIViewController {
         createDataSource()
         reloadData()
         setConstraints()
+        
+        navigationItem.searchController = searchController
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationItem.hidesSearchBarWhenScrolling = false
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        navigationItem.hidesSearchBarWhenScrolling = true
     }
 
     func setupView() {
@@ -143,33 +139,32 @@ extension BooksViewController {
 
 extension BooksViewController {
     func createDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<ListSection, Book>(
+        dataSource = UICollectionViewDiffableDataSource<ListSection, ListItem>(
             collectionView: collectionView,
-            cellProvider: { collectionView, indexPath, book -> UICollectionViewCell? in
+            cellProvider: { collectionView, indexPath, item -> UICollectionViewCell? in
                 switch self.sections[indexPath.section] {
                 case .new:
                     guard let cell = collectionView.dequeueReusableCell(
                         withReuseIdentifier: "NewCollectionViewCell",
                         for: indexPath) as? NewCollectionViewCell
-                        else { return UICollectionViewCell() }
-                    cell.configureCell(with: book)
+                    else { return UICollectionViewCell() }
+                    cell.configureCell(with: item)
                     return cell
-
+                    
                 case .popular:
                     guard let cell = collectionView.dequeueReusableCell(
                         withReuseIdentifier: "PopularCollectionViewCell",
                         for: indexPath) as? PopularCollectionViewCell
                         else { return UICollectionViewCell() }
-                    cell.configureCell(with: book)
+                    cell.configureCell(with: item)
                     return cell
 
-                case .category(let category):
+                case .category:
                     guard let cell = collectionView.dequeueReusableCell(
                         withReuseIdentifier: "CategoryCollectionViewCell",
                         for: indexPath) as? CategoryCollectionViewCell
                         else { return UICollectionViewCell() }
-                    let categoty = category[indexPath.row]
-                    cell.configureCell(categoryName: categoty.title)
+                    cell.configureCell(with: item)
                     return cell
                 }
             }
@@ -177,7 +172,7 @@ extension BooksViewController {
     }
     
     func reloadData() {
-        var snapshot = NSDiffableDataSourceSnapshot<ListSection, Book>()
+        var snapshot = NSDiffableDataSourceSnapshot<ListSection, ListItem>()
         snapshot.appendSections(sections)
         
         for section in sections {
@@ -192,14 +187,9 @@ extension BooksViewController {
 extension BooksViewController {
 
     private func setConstraints() {
-        view.addSubview(searchBar)
         
         NSLayoutConstraint.activate([
-            searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
-            searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-            searchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-            searchBar.heightAnchor.constraint(equalToConstant: 45),
-            collectionView.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 10),
+            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10)

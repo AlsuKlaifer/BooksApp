@@ -48,8 +48,13 @@ final class CategoryCollectionViewCell: UICollectionViewCell {
         addSubview(categoryLabel)
     }
 
-    func configureCell(categoryName: String) {
-        categoryLabel.text = categoryName
+    func configureCell(with category: ListItem) {
+        switch category {
+        case .book:
+            return
+        case .category(let category):
+            categoryLabel.text = category
+        }
     }
 
     func setConstraints() {
