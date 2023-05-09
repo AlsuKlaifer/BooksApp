@@ -22,7 +22,7 @@ final class NewCollectionViewCell: UICollectionViewCell {
         label.text = "New"
         label.textAlignment = .center
         label.font = UIFont.boldSystemFont(ofSize: 20)
-        label.textColor = .white
+        label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -47,11 +47,17 @@ final class NewCollectionViewCell: UICollectionViewCell {
     func configureCell(with book: ListItem) {
         switch book {
         case .book(let book):
-            newLabel.text = book.title.uppercased()
-            newImageView.image = UIImage(systemName: book.image)
+            newLabel.text = book.volumeInfo.title.uppercased()
+            newImageView.image = UIImage(systemName: "sun.max.fill")
         case .category:
             return
         }
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        newImageView.image = UIImage(systemName: "sun.max.fill") // не работает
+        newLabel.text = nil
     }
 
     func setConstraints () {
@@ -62,6 +68,6 @@ final class NewCollectionViewCell: UICollectionViewCell {
             newImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0),
             newLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             newLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10)
-            ])
+        ])
     }
 }

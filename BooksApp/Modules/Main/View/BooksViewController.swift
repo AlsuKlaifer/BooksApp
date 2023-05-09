@@ -9,8 +9,6 @@ import UIKit
 
 final class BooksViewController: UIViewController {
 
-    private let sections = MockData.shared.data
-
     private let searchController: UISearchController = {
         let searchController = UISearchController()
         searchController.searchBar.tintColor = .orange
@@ -23,13 +21,33 @@ final class BooksViewController: UIViewController {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
-
+    
     var dataSource: UICollectionViewDiffableDataSource<ListSection, ListItem>?
+    
+    var sections: [ListSection] = []
+    
+    // Dependencies
+    private let presenter: BooksViewOutput
+    
+    // MARK: - Initialization
+    
+    init(presenter: BooksViewOutput) {
+        self.presenter = presenter
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
 
+        presenter.viewDidLoad()
+//        sections = self.presenter.data
         setupView()
         createDataSource()
         reloadData()
@@ -122,7 +140,8 @@ extension BooksViewController {
     private func createPopularSection() -> NSCollectionLayoutSection {
         let item = NSCollectionLayoutItem(layoutSize: .init(
             widthDimension: .fractionalWidth(1),
-            heightDimension: .fractionalHeight(120)))
+            heightDimension: .fractionalHeight(120))
+        )
         item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0)
         let group = NSCollectionLayoutGroup.vertical(
             layoutSize: .init(
@@ -197,23 +216,12 @@ extension BooksViewController {
     }
 }
 
-// MARK: - SwiftUI
-
-import SwiftUI
-
-struct BooksProvider: PreviewProvider {
-    static var previews: some View {
-        ContainterView().edgesIgnoringSafeArea(.all)
-    }
-
-    struct ContainterView: UIViewControllerRepresentable {
-        func updateUIViewController(_ uiViewController: BooksViewController, context: Context) { }
-
-        let booksVC = BooksViewController()
-        func makeUIViewController(
-            context: UIViewControllerRepresentableContext<BooksProvider.ContainterView>
-        ) -> BooksViewController {
-            return booksVC
-        }
+extension BooksViewController: BooksViewInput {
+    func getListSections(sections: [ListSection]) {
+        self.sections = sections
+        self.collectionView.reloadData()
+        self.reloadData()
+        print("input", sections)
+        print("sections", self.sections)
     }
 }

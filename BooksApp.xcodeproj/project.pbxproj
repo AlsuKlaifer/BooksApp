@@ -25,6 +25,10 @@
 		15300DC829F665680060D765 /* ChangePasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15300DC329F650AB0060D765 /* ChangePasswordPresenter.swift */; };
 		153780822A07DC7000BF83FE /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153780812A07DC7000BF83FE /* NetworkService.swift */; };
 		153780842A07E19800BF83FE /* APICommonModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153780832A07E19800BF83FE /* APICommonModels.swift */; };
+		153780882A0925A600BF83FE /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153780872A0925A600BF83FE /* CacheManager.swift */; };
+		1537808B2A092AFF00BF83FE /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1537808A2A092AFF00BF83FE /* UIImageView+Extensions.swift */; };
+		1537808E2A0948F300BF83FE /* BooksPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1537808D2A0948F300BF83FE /* BooksPresenter.swift */; };
+		153780902A09498F00BF83FE /* BooksViewIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1537808F2A09498F00BF83FE /* BooksViewIO.swift */; };
 		153D987E29D5F5FF00141BCB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153D987D29D5F5FF00141BCB /* AppDelegate.swift */; };
 		153D988029D5F5FF00141BCB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153D987F29D5F5FF00141BCB /* SceneDelegate.swift */; };
 		153D988729D5F60000141BCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 153D988629D5F60000141BCB /* Assets.xcassets */; };
@@ -76,6 +80,10 @@
 		15300DC529F65EB60060D765 /* SignOutModuleIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutModuleIO.swift; sourceTree = "<group>"; };
 		153780812A07DC7000BF83FE /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		153780832A07E19800BF83FE /* APICommonModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICommonModels.swift; sourceTree = "<group>"; };
+		153780872A0925A600BF83FE /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
+		1537808A2A092AFF00BF83FE /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
+		1537808D2A0948F300BF83FE /* BooksPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksPresenter.swift; sourceTree = "<group>"; };
+		1537808F2A09498F00BF83FE /* BooksViewIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksViewIO.swift; sourceTree = "<group>"; };
 		153D987A29D5F5FF00141BCB /* BooksApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BooksApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		153D987D29D5F5FF00141BCB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		153D987F29D5F5FF00141BCB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -179,6 +187,7 @@
 			children = (
 				15300DBA29F59F2C0060D765 /* Button.swift */,
 				15B75C7129FE9D5000B886DB /* TextField.swift */,
+				1537808A2A092AFF00BF83FE /* UIImageView+Extensions.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -218,6 +227,23 @@
 				153780832A07E19800BF83FE /* APICommonModels.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		153780892A09270000BF83FE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				15DDDF0E29FEACA5007A16DE /* ListSection.swift */,
+				15DDDF0C29FEAC1B007A16DE /* Book.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		1537808C2A09314D00BF83FE /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				1537808D2A0948F300BF83FE /* BooksPresenter.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		153D987129D5F5FF00141BCB = {
@@ -370,9 +396,9 @@
 		15B8E51C29FEA43500D340AA /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				15DDDF0C29FEAC1B007A16DE /* Book.swift */,
-				15DDDF0E29FEACA5007A16DE /* ListSection.swift */,
+				153780892A09270000BF83FE /* Models */,
 				15DDDF1029FEACE7007A16DE /* View */,
+				1537808C2A09314D00BF83FE /* Presenter */,
 				15B8E51D29FEA46E00D340AA /* Cells */,
 			);
 			path = Main;
@@ -392,6 +418,7 @@
 			isa = PBXGroup;
 			children = (
 				154B605329E7E336000FD3EC /* BooksViewController.swift */,
+				1537808F2A09498F00BF83FE /* BooksViewIO.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -401,6 +428,7 @@
 			children = (
 				153780802A07DC4400BF83FE /* Network */,
 				15DDDF1229FEAD33007A16DE /* MockData.swift */,
+				153780872A0925A600BF83FE /* CacheManager.swift */,
 			);
 			path = Books;
 			sourceTree = "<group>";
@@ -558,12 +586,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				15046D7829E9CE1500564385 /* AuthFlowIO.swift in Sources */,
+				153780882A0925A600BF83FE /* CacheManager.swift in Sources */,
 				15D5524D29E3107D0073888B /* SignUpViewIO.swift in Sources */,
 				15300DBD29F5ACB10060D765 /* ChangePasswordViewController.swift in Sources */,
 				15DDDF0F29FEACA5007A16DE /* ListSection.swift in Sources */,
 				153780822A07DC7000BF83FE /* NetworkService.swift in Sources */,
 				15B8E51F29FEA48F00D340AA /* CategoryCollectionViewCell.swift in Sources */,
 				151A8C1D29DA0D8C000F2830 /* LoginViewController.swift in Sources */,
+				1537808E2A0948F300BF83FE /* BooksPresenter.swift in Sources */,
+				1537808B2A092AFF00BF83FE /* UIImageView+Extensions.swift in Sources */,
 				154B606029E82B32000FD3EC /* ProfileCoordinator.swift in Sources */,
 				154B604D29E70C60000FD3EC /* Coordinator.swift in Sources */,
 				151A8C2229DA1278000F2830 /* AuthorizationService.swift in Sources */,
@@ -599,6 +630,7 @@
 				154B605E29E82B08000FD3EC /* FavoriteCoordinator.swift in Sources */,
 				154B605A29E827AF000FD3EC /* MainTabBarController.swift in Sources */,
 				15300DC729F665650060D765 /* ChangePasswordModuleBuilder.swift in Sources */,
+				153780902A09498F00BF83FE /* BooksViewIO.swift in Sources */,
 				159C10AE29E459C500ABA0C9 /* SignUpModuleBuilder.swift in Sources */,
 				15DDDF0929FEABC1007A16DE /* NewCollectionViewCell.swift in Sources */,
 			);

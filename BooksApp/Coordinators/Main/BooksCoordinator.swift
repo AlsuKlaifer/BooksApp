@@ -16,7 +16,10 @@ final class BooksCoordinator: Coordinator {
     }
     
     func start() {
-        let viewController = BooksViewController()
+        
+        let presenter = BooksPresenter(networkService: NetworkService())
+        let viewController = BooksViewController(presenter: presenter)
+        presenter.view = viewController
         viewController.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house"), tag: 0)
         navigationController.viewControllers = [viewController]
     }

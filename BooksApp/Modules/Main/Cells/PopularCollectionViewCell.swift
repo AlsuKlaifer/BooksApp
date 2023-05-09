@@ -13,6 +13,7 @@ final class PopularCollectionViewCell: UICollectionViewCell {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.tintColor = .gray
         return imageView
     }()
 
@@ -47,8 +48,8 @@ final class PopularCollectionViewCell: UICollectionViewCell {
     func configureCell(with book: ListItem) {
         switch book {
         case .book(let book):
-            popularLabel.text = book.title
-            popularImageView.image = UIImage(systemName: book.image)
+            popularLabel.text = book.volumeInfo.title
+            popularImageView.image = UIImage(systemName: "book.closed.fill")
         case .category:
             return
         }

@@ -10,30 +10,32 @@ import Foundation
 struct MockData {
 
     static let shared = MockData()
+    
+//    var data: [ListSection] { [new, category, popular] }
 
-    private let new: ListSection = {
+    let new: ListSection = {
         .new([
-        ListItem.book(Book(title: "Book 1", author: "Author 1", image: "sun.max.fill")),
-        ListItem.book(Book(title: "Book 2", author: "Author 2", image: "sun.max.fill")),
-        ListItem.book(Book(title: "Book 3", author: "Author 3", image: "sun.max.fill")),
-        ListItem.book(Book(title: "Book 4", author: "Author 4", image: "sun.max.fill")),
-        ListItem.book(Book(title: "Book 5", author: "Author 5", image: "sun.max.fill")),
+//        ListItem.book(Book(title: "Book 1", author: "Author 1", image: "sun.max.fill")),
+//        ListItem.book(Book(title: "Book 2", author: "Author 2", image: "sun.max.fill")),
+//        ListItem.book(Book(title: "Book 3", author: "Author 3", image: "sun.max.fill")),
+//        ListItem.book(Book(title: "Book 4", author: "Author 4", image: "sun.max.fill")),
+//        ListItem.book(Book(title: "Book 5", author: "Author 5", image: "sun.max.fill")),
     ]) }()
 
     private let popular: ListSection = {
         .popular([
-            ListItem.book(Book(title: "Book 1", author: "Author 1", image: "book.closed.fill")),
-            ListItem.book(Book(title: "Book 2", author: "Author 2", image: "book.closed.fill")),
-            ListItem.book(Book(title: "Book 3", author: "Author 3", image: "book.closed.fill")),
-            ListItem.book(Book(title: "Book 4", author: "Author 4", image: "book.closed.fill")),
-            ListItem.book(Book(title: "Book 5", author: "Author 5", image: "book.closed.fill")),
-            ListItem.book(Book(title: "Book 6", author: "Author 5", image: "book.closed.fill")),
-            ListItem.book(Book(title: "Book 7", author: "Author 5", image: "book.closed.fill")),
-            ListItem.book(Book(title: "Book 8", author: "Author 5", image: "book.closed.fill"))
+//            ListItem.book(Book(title: "Book 1", author: "Author 1", image: "book.closed.fill")),
+//            ListItem.book(Book(title: "Book 2", author: "Author 2", image: "book.closed.fill")),
+//            ListItem.book(Book(title: "Book 3", author: "Author 3", image: "book.closed.fill")),
+//            ListItem.book(Book(title: "Book 4", author: "Author 4", image: "book.closed.fill")),
+//            ListItem.book(Book(title: "Book 5", author: "Author 5", image: "book.closed.fill")),
+//            ListItem.book(Book(title: "Book 6", author: "Author 5", image: "book.closed.fill")),
+//            ListItem.book(Book(title: "Book 7", author: "Author 5", image: "book.closed.fill")),
+//            ListItem.book(Book(title: "Book 8", author: "Author 5", image: "book.closed.fill"))
         ])
     }()
-
-    private let category: ListSection = {
+    
+    let category: ListSection = {
         .category([
             ListItem.category("Category 1"),
             ListItem.category("Category 2"),
@@ -42,6 +44,12 @@ struct MockData {
             ListItem.category("Category 5")
         ])
     }()
-
-    var data: [ListSection] { [new, category, popular] }
+    
+    let section: ListSection = {
+        .category(
+            ["1", "2", "3"].map({ item in
+                ListItem.category(item)
+            })
+        )
+    }()
 }
