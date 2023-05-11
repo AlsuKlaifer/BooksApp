@@ -15,7 +15,8 @@ protocol BooksViewInput: AnyObject {
 
 // presenter
 protocol BooksViewOutput: AnyObject {
-    var dataSource: [ListItem] { get }
+    var dataSourcePopular: [ListItem] { get }
+    var dataSourceNew: [ListItem] { get }
     var data: [ListSection] { get set }
     func viewDidLoad()
 }

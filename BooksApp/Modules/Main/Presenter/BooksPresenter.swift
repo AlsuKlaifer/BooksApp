@@ -14,10 +14,9 @@ final class BooksPresenter: BooksViewOutput {
     private let networkService: INetworkService
 
     // Properties
-    var dataSource: [ListItem] = []
-    private let sections = MockData.shared
+    var dataSourcePopular: [ListItem] = []
+    var dataSourceNew: [ListItem] = []
     var data: [ListSection] = []
-    private var isLoading = false
 
     // MARK: - Initialization
 
@@ -29,30 +28,38 @@ final class BooksPresenter: BooksViewOutput {
 
     func viewDidLoad() {
         obtainData()
-        print("DATASOURSE", dataSource)
+        data = [ListSection.new([]), MockData.shared.category]
     }
 
     // MARK: - Private
 
     private func obtainData() {
-        guard !isLoading else { return }
-        isLoading = true
+        networkService.getPopularBooks { [weak self] (models: [Book]) in
+            guard let self else { return }
+            let items = models.map { book -> ListItem in
+                return ListItem.book(Book(
+                    id: book.id,
+                    selfLink: book.selfLink,
+                    volumeInfo: book.volumeInfo,
+                    accessInfo: book.accessInfo))
+            }
+            self.dataSourcePopular += items
+            self.data.append(ListSection.popular(self.dataSourcePopular))
+            self.view?.getListSections(sections: self.data)
+        }
+        
         networkService.getNewBooks { [weak self] (models: [Book]) in
             guard let self else { return }
             let items = models.map { book -> ListItem in
                 return ListItem.book(Book(
-                    kind: book.kind,
                     id: book.id,
-                    etag: book.etag,
                     selfLink: book.selfLink,
                     volumeInfo: book.volumeInfo,
-                    saleInfo: book.saleInfo,
                     accessInfo: book.accessInfo))
             }
-            self.dataSource += items
-            self.data = [self.sections.new, self.sections.category, ListSection.popular(self.dataSource)]
+            self.dataSourceNew += items
+            self.data[0] = ListSection.new(self.dataSourceNew)
             self.view?.getListSections(sections: self.data)
-            self.isLoading = false
         }
     }
 }

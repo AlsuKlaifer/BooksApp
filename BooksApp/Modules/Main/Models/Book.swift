@@ -8,12 +8,10 @@
 import Foundation
 
 struct Book: Hashable, Decodable {
-    let kind: String
     let id: String
-    let etag: String
     let selfLink: String
     let volumeInfo: VolumeInfo
-    let saleInfo: SaleInfo
+//    let saleInfo: SaleInfo
     let accessInfo: AccessInfo
 //    let searchInfo: String?
 }
@@ -21,11 +19,11 @@ struct Book: Hashable, Decodable {
 struct VolumeInfo: Hashable, Decodable {
     let title: String
     let authors: [String]?
-    let publisher: String
+//    let publisher: String
     let publishedDate: String
     let description: String?
     let imageLinks: ImageLinks
-    let pageCount: Int
+    let pageCount: Int?
     let categories: [String]?
     let averageRating: Float?
     let language: String
@@ -57,9 +55,3 @@ struct Pdf: Hashable, Decodable {
 struct ImageLinks: Hashable, Decodable {
     let thumbnail: String
 }
-
-//struct Book: Hashable, Decodable {
-//    let title: String
-//    let author: String
-//    let image: String
-//}

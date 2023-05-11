@@ -11,8 +11,10 @@ final class PopularCollectionViewCell: UICollectionViewCell {
 
     private let popularImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 5
         imageView.tintColor = .gray
         return imageView
     }()
@@ -20,9 +22,10 @@ final class PopularCollectionViewCell: UICollectionViewCell {
     private let popularLabel: UILabel = {
         let label = UILabel()
         label.text = "Popular"
-        label.textAlignment = .center
+        label.textAlignment = .left
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = .black
+        label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -48,8 +51,8 @@ final class PopularCollectionViewCell: UICollectionViewCell {
     func configureCell(with book: ListItem) {
         switch book {
         case .book(let book):
-            popularLabel.text = book.volumeInfo.title
-            popularImageView.image = UIImage(systemName: "book.closed.fill")
+            popularLabel.text = book.volumeInfo.title.uppercased()
+            popularImageView.downloadImage(from: book.volumeInfo.imageLinks.thumbnail)
         case .category:
             return
         }
@@ -57,14 +60,15 @@ final class PopularCollectionViewCell: UICollectionViewCell {
 
     func setConstraints () {
         NSLayoutConstraint.activate([
-            popularImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            popularImageView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
-            popularImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
-            popularImageView.widthAnchor.constraint(equalToConstant: 100)
+            popularImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            popularImageView.topAnchor.constraint(equalTo: topAnchor, constant: 5),
+            popularImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5),
+            popularImageView.widthAnchor.constraint(equalToConstant: 80)
         ])
 
         NSLayoutConstraint.activate([
-            popularLabel.leadingAnchor.constraint(equalTo: popularImageView.trailingAnchor, constant: 50),
+            popularLabel.leadingAnchor.constraint(equalTo: popularImageView.trailingAnchor, constant: 30),
+            popularLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             popularLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10)
         ])
     }

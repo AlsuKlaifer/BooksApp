@@ -15,22 +15,22 @@ final class BooksViewController: UIViewController {
         searchController.searchBar.placeholder = "Search books"
         return searchController
     }()
-    
+
     private lazy var collectionView: UICollectionView = {
         let collectionView = createCollectionView()
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
-    
+
     var dataSource: UICollectionViewDiffableDataSource<ListSection, ListItem>?
-    
+
     var sections: [ListSection] = []
-    
+
     // Dependencies
     private let presenter: BooksViewOutput
-    
+
     // MARK: - Initialization
-    
+
     init(presenter: BooksViewOutput) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
@@ -39,7 +39,7 @@ final class BooksViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
@@ -47,15 +47,14 @@ final class BooksViewController: UIViewController {
         view.backgroundColor = .systemBackground
 
         presenter.viewDidLoad()
-//        sections = self.presenter.data
         setupView()
         createDataSource()
         reloadData()
         setConstraints()
-        
+
         navigationItem.searchController = searchController
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationItem.hidesSearchBarWhenScrolling = false
@@ -90,9 +89,9 @@ extension BooksViewController {
     }
 
     // MARK: - Setup Layout
-    
+
     private func createCompositionalLayout() -> UICollectionViewLayout {
-        let layout = UICollectionViewCompositionalLayout(sectionProvider: { [weak self] sectionIndex, _ in
+        let layout = UICollectionViewCompositionalLayout { [weak self] sectionIndex, _ in
             guard let self else { fatalError("Self is nil") }
             let section = self.sections[sectionIndex]
             switch section {
@@ -103,7 +102,7 @@ extension BooksViewController {
             case .popular:
                 return self.createPopularSection()
             }
-        })
+        }
         return layout
     }
 
@@ -159,41 +158,39 @@ extension BooksViewController {
 extension BooksViewController {
     func createDataSource() {
         dataSource = UICollectionViewDiffableDataSource<ListSection, ListItem>(
-            collectionView: collectionView,
-            cellProvider: { collectionView, indexPath, item -> UICollectionViewCell? in
-                switch self.sections[indexPath.section] {
-                case .new:
-                    guard let cell = collectionView.dequeueReusableCell(
-                        withReuseIdentifier: "NewCollectionViewCell",
-                        for: indexPath) as? NewCollectionViewCell
+            collectionView: collectionView) { collectionView, indexPath, item -> UICollectionViewCell? in
+            switch self.sections[indexPath.section] {
+            case .new:
+                guard let cell = collectionView.dequeueReusableCell(
+                    withReuseIdentifier: "NewCollectionViewCell",
+                    for: indexPath) as? NewCollectionViewCell
                     else { return UICollectionViewCell() }
-                    cell.configureCell(with: item)
-                    return cell
-                    
-                case .popular:
-                    guard let cell = collectionView.dequeueReusableCell(
-                        withReuseIdentifier: "PopularCollectionViewCell",
-                        for: indexPath) as? PopularCollectionViewCell
-                        else { return UICollectionViewCell() }
-                    cell.configureCell(with: item)
-                    return cell
+                cell.configureCell(with: item)
+                return cell
 
-                case .category:
-                    guard let cell = collectionView.dequeueReusableCell(
-                        withReuseIdentifier: "CategoryCollectionViewCell",
-                        for: indexPath) as? CategoryCollectionViewCell
-                        else { return UICollectionViewCell() }
-                    cell.configureCell(with: item)
-                    return cell
-                }
+            case .popular:
+                guard let cell = collectionView.dequeueReusableCell(
+                    withReuseIdentifier: "PopularCollectionViewCell",
+                    for: indexPath) as? PopularCollectionViewCell
+                    else { return UICollectionViewCell() }
+                cell.configureCell(with: item)
+                return cell
+
+            case .category:
+                guard let cell = collectionView.dequeueReusableCell(
+                    withReuseIdentifier: "CategoryCollectionViewCell",
+                    for: indexPath) as? CategoryCollectionViewCell
+                    else { return UICollectionViewCell() }
+                cell.configureCell(with: item)
+                return cell
             }
-        )
+        }
     }
-    
+
     func reloadData() {
         var snapshot = NSDiffableDataSourceSnapshot<ListSection, ListItem>()
         snapshot.appendSections(sections)
-        
+
         for section in sections {
             snapshot.appendItems(section.items, toSection: section)
         }
@@ -206,7 +203,7 @@ extension BooksViewController {
 extension BooksViewController {
 
     private func setConstraints() {
-        
+
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
@@ -221,7 +218,5 @@ extension BooksViewController: BooksViewInput {
         self.sections = sections
         self.collectionView.reloadData()
         self.reloadData()
-        print("input", sections)
-        print("sections", self.sections)
     }
 }
