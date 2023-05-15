@@ -16,7 +16,7 @@ final class BooksCoordinator: Coordinator {
     }
     
     func start() {
-        let viewController = BooksViewController()
+        let viewController = BooksModuleBuilder().build()
         viewController.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house"), tag: 0)
         navigationController.viewControllers = [viewController]
     }

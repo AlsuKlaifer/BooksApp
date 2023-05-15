@@ -9,6 +9,8 @@ import UIKit
 
 final class NewCollectionViewCell: UICollectionViewCell {
 
+    static let reuseIdentifier = "NewCollectionViewCell"
+    
     private let newImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
@@ -20,9 +22,11 @@ final class NewCollectionViewCell: UICollectionViewCell {
     private let newLabel: UILabel = {
         let label = UILabel()
         label.text = "New"
-        label.textAlignment = .center
+        label.textAlignment = .left
         label.font = UIFont.boldSystemFont(ofSize: 20)
         label.textColor = .white
+        label.numberOfLines = 0
+        label.backgroundColor = UIColor(red: 10 / 255, green: 10 / 255, blue: 10 / 255, alpha: 0.5)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -44,9 +48,20 @@ final class NewCollectionViewCell: UICollectionViewCell {
         addSubview(newLabel)
     }
 
-    func configureCell(with book: Book) {
-        newLabel.text = book.title.uppercased()
-        newImageView.image = UIImage(systemName: book.image)
+    func configureCell(with book: ListItem) {
+        switch book {
+        case .book(let book):
+            newLabel.text = book.volumeInfo.title.uppercased()
+            newImageView.downloadImage(from: book.volumeInfo.imageLinks.thumbnail)
+        case .category:
+            return
+        }
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        newImageView.image = UIImage(systemName: "sun.max.fill") // не работает
+        newLabel.text = nil
     }
 
     func setConstraints () {
@@ -54,8 +69,12 @@ final class NewCollectionViewCell: UICollectionViewCell {
             newImageView.topAnchor.constraint(equalTo: topAnchor, constant: 0),
             newImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
             newImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
-            newImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0),
+            newImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0)
+        ])
+        
+        NSLayoutConstraint.activate([
             newLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            newLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             newLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10)
         ])
     }
