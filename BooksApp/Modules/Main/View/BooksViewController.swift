@@ -9,47 +9,60 @@ import UIKit
 
 final class BooksViewController: UIViewController {
 
-    private let sections = MockData.shared.data
-
-    private lazy var searchBar: UISearchBar = {
-        let searchBar = UISearchBar()
-        searchBar.autocorrectionType = .no
-        searchBar.placeholder = "Search books"
-        searchBar.autocapitalizationType = .none
-        searchBar.searchTextField.layer.cornerRadius = 20
-        searchBar.searchBarStyle = .minimal
-        searchBar.backgroundColor = .clear
-        searchBar.searchTextField.tokenBackgroundColor = .white
-        searchBar.translatesAutoresizingMaskIntoConstraints = false
-        searchBar.searchTextField.clipsToBounds = true
-        searchBar.searchTextField.layer.borderWidth = 1
-        searchBar.searchTextField.layer.borderColor = CGColor(red: 0, green: 0, blue: 0, alpha: 1)
-        searchBar.searchTextField.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            searchBar.searchTextField.heightAnchor.constraint(equalToConstant: 45),
-            searchBar.searchTextField.leadingAnchor.constraint(equalTo: searchBar.leadingAnchor, constant: 10),
-            searchBar.searchTextField.trailingAnchor.constraint(equalTo: searchBar.trailingAnchor, constant: -10),
-            searchBar.searchTextField.topAnchor.constraint(equalTo: searchBar.topAnchor, constant: 0)
-        ])
-        return searchBar
+    private let searchController: UISearchController = {
+        let searchController = UISearchController()
+        searchController.searchBar.tintColor = .orange
+        searchController.searchBar.placeholder = "Search books"
+        return searchController
     }()
-    
+
     private lazy var collectionView: UICollectionView = {
         let collectionView = createCollectionView()
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
 
-    var dataSource: UICollectionViewDiffableDataSource<ListSection, Book>?
+    var dataSource: UICollectionViewDiffableDataSource<ListSection, ListItem>?
+
+//    var sections: [ListSection] = []
+
+    // Dependencies
+    private let output: BooksViewOutput
+
+    // MARK: - Initialization
+
+    init(presenter: BooksViewOutput) {
+        self.output = presenter
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
 
+        output.viewDidLoad()
         setupView()
         createDataSource()
         reloadData()
         setConstraints()
+
+        navigationItem.searchController = searchController
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationItem.hidesSearchBarWhenScrolling = false
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        navigationItem.hidesSearchBarWhenScrolling = true
     }
 
     func setupView() {
@@ -76,11 +89,11 @@ extension BooksViewController {
     }
 
     // MARK: - Setup Layout
-    
+
     private func createCompositionalLayout() -> UICollectionViewLayout {
-        let layout = UICollectionViewCompositionalLayout(sectionProvider: { [weak self] sectionIndex, _ in
+        let layout = UICollectionViewCompositionalLayout { [weak self] sectionIndex, _ in
             guard let self else { fatalError("Self is nil") }
-            let section = self.sections[sectionIndex]
+            let section = self.output.data[sectionIndex]
             switch section {
             case .new:
                 return self.createNewSection()
@@ -89,7 +102,7 @@ extension BooksViewController {
             case .popular:
                 return self.createPopularSection()
             }
-        })
+        }
         return layout
     }
 
@@ -126,7 +139,8 @@ extension BooksViewController {
     private func createPopularSection() -> NSCollectionLayoutSection {
         let item = NSCollectionLayoutItem(layoutSize: .init(
             widthDimension: .fractionalWidth(1),
-            heightDimension: .fractionalHeight(120)))
+            heightDimension: .fractionalHeight(120))
+        )
         item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0)
         let group = NSCollectionLayoutGroup.vertical(
             layoutSize: .init(
@@ -143,44 +157,41 @@ extension BooksViewController {
 
 extension BooksViewController {
     func createDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<ListSection, Book>(
-            collectionView: collectionView,
-            cellProvider: { collectionView, indexPath, book -> UICollectionViewCell? in
-                switch self.sections[indexPath.section] {
-                case .new:
-                    guard let cell = collectionView.dequeueReusableCell(
-                        withReuseIdentifier: "NewCollectionViewCell",
-                        for: indexPath) as? NewCollectionViewCell
-                        else { return UICollectionViewCell() }
-                    cell.configureCell(with: book)
-                    return cell
+        dataSource = UICollectionViewDiffableDataSource<ListSection, ListItem>(
+            collectionView: collectionView) { collectionView, indexPath, item -> UICollectionViewCell? in
+            switch self.output.data[indexPath.section] {
+            case .new:
+                guard let cell = collectionView.dequeueReusableCell(
+                    withReuseIdentifier: NewCollectionViewCell.reuseIdentifier,
+                    for: indexPath) as? NewCollectionViewCell
+                    else { return UICollectionViewCell() }
+                cell.configureCell(with: item)
+                return cell
 
-                case .popular:
-                    guard let cell = collectionView.dequeueReusableCell(
-                        withReuseIdentifier: "PopularCollectionViewCell",
-                        for: indexPath) as? PopularCollectionViewCell
-                        else { return UICollectionViewCell() }
-                    cell.configureCell(with: book)
-                    return cell
+            case .popular:
+                guard let cell = collectionView.dequeueReusableCell(
+                    withReuseIdentifier: PopularCollectionViewCell.reuseIdentifier,
+                    for: indexPath) as? PopularCollectionViewCell
+                    else { return UICollectionViewCell() }
+                cell.configureCell(with: item)
+                return cell
 
-                case .category(let category):
-                    guard let cell = collectionView.dequeueReusableCell(
-                        withReuseIdentifier: "CategoryCollectionViewCell",
-                        for: indexPath) as? CategoryCollectionViewCell
-                        else { return UICollectionViewCell() }
-                    let categoty = category[indexPath.row]
-                    cell.configureCell(categoryName: categoty.title)
-                    return cell
-                }
+            case .category:
+                guard let cell = collectionView.dequeueReusableCell(
+                    withReuseIdentifier: CategoryCollectionViewCell.reuseIdentifier,
+                    for: indexPath) as? CategoryCollectionViewCell
+                    else { return UICollectionViewCell() }
+                cell.configureCell(with: item)
+                return cell
             }
-        )
+        }
     }
-    
+
     func reloadData() {
-        var snapshot = NSDiffableDataSourceSnapshot<ListSection, Book>()
-        snapshot.appendSections(sections)
-        
-        for section in sections {
+        var snapshot = NSDiffableDataSourceSnapshot<ListSection, ListItem>()
+        snapshot.appendSections(output.data)
+
+        for section in output.data {
             snapshot.appendItems(section.items, toSection: section)
         }
         dataSource?.apply(snapshot)
@@ -192,14 +203,9 @@ extension BooksViewController {
 extension BooksViewController {
 
     private func setConstraints() {
-        view.addSubview(searchBar)
-        
+
         NSLayoutConstraint.activate([
-            searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
-            searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-            searchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-            searchBar.heightAnchor.constraint(equalToConstant: 45),
-            collectionView.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 10),
+            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10)
@@ -207,23 +213,10 @@ extension BooksViewController {
     }
 }
 
-// MARK: - SwiftUI
-
-import SwiftUI
-
-struct BooksProvider: PreviewProvider {
-    static var previews: some View {
-        ContainterView().edgesIgnoringSafeArea(.all)
-    }
-
-    struct ContainterView: UIViewControllerRepresentable {
-        func updateUIViewController(_ uiViewController: BooksViewController, context: Context) { }
-
-        let booksVC = BooksViewController()
-        func makeUIViewController(
-            context: UIViewControllerRepresentableContext<BooksProvider.ContainterView>
-        ) -> BooksViewController {
-            return booksVC
-        }
-    }
+extension BooksViewController: BooksViewInput {
+//    func setListSections(sections: [ListSection]) {
+//        self.sections = sections
+//        self.collectionView.reloadData()
+//        self.reloadData()
+//    }
 }

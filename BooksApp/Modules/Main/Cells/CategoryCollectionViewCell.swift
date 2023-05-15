@@ -9,6 +9,8 @@ import UIKit
 
 final class CategoryCollectionViewCell: UICollectionViewCell {
     
+    static let reuseIdentifier = "CategoryCollectionViewCell"
+    
     private let categoryLabel: UILabel = {
         let label = UILabel()
         label.text = "Category"
@@ -48,8 +50,13 @@ final class CategoryCollectionViewCell: UICollectionViewCell {
         addSubview(categoryLabel)
     }
 
-    func configureCell(categoryName: String) {
-        categoryLabel.text = categoryName
+    func configureCell(with category: ListItem) {
+        switch category {
+        case .book:
+            return
+        case .category(let category):
+            categoryLabel.text = category
+        }
     }
 
     func setConstraints() {
