@@ -9,6 +9,8 @@ import UIKit
 
 final class CategoryCollectionViewCell: UICollectionViewCell {
     
+    static let reuseIdentifier = "CategoryCollectionViewCell"
+    
     private let categoryLabel: UILabel = {
         let label = UILabel()
         label.text = "Category"

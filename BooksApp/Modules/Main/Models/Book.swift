@@ -25,7 +25,7 @@ struct VolumeInfo: Hashable, Decodable {
     let imageLinks: ImageLinks
     let pageCount: Int?
     let categories: [String]?
-    let averageRating: Float?
+    let averageRating: Double?
     let language: String
     let previewLink: String
 }

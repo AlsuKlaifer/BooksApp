@@ -34,9 +34,9 @@ final class BooksPresenter: BooksViewOutput {
     // MARK: - Private
 
     private func obtainData() {
-        networkService.getPopularBooks { [weak self] (models: [Book]) in
+        networkService.getPopularBooks { [weak self] books in
             guard let self else { return }
-            let items = models.map { book -> ListItem in
+            let items = books.map { book -> ListItem in
                 return ListItem.book(Book(
                     id: book.id,
                     selfLink: book.selfLink,
@@ -45,12 +45,13 @@ final class BooksPresenter: BooksViewOutput {
             }
             self.dataSourcePopular += items
             self.data.append(ListSection.popular(self.dataSourcePopular))
-            self.view?.getListSections(sections: self.data)
+//            self.view?.setListSections(sections: self.data)
+            self.view?.reloadData()
         }
         
-        networkService.getNewBooks { [weak self] (models: [Book]) in
+        networkService.getNewBooks { [weak self] books in
             guard let self else { return }
-            let items = models.map { book -> ListItem in
+            let items = books.map { book -> ListItem in
                 return ListItem.book(Book(
                     id: book.id,
                     selfLink: book.selfLink,
@@ -59,7 +60,8 @@ final class BooksPresenter: BooksViewOutput {
             }
             self.dataSourceNew += items
             self.data[0] = ListSection.new(self.dataSourceNew)
-            self.view?.getListSections(sections: self.data)
+//            self.view?.setListSections(sections: self.data)
+            self.view?.reloadData()
         }
     }
 }

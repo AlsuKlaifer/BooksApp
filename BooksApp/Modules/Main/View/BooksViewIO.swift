@@ -10,7 +10,7 @@ import Foundation
 // view
 protocol BooksViewInput: AnyObject {
     func reloadData()
-    func getListSections(sections: [ListSection])
+//    func setListSections(sections: [ListSection])
 }
 
 // presenter

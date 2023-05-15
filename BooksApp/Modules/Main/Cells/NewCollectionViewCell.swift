@@ -9,6 +9,8 @@ import UIKit
 
 final class NewCollectionViewCell: UICollectionViewCell {
 
+    static let reuseIdentifier = "NewCollectionViewCell"
+    
     private let newImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill

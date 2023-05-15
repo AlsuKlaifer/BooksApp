@@ -24,15 +24,15 @@ final class BooksViewController: UIViewController {
 
     var dataSource: UICollectionViewDiffableDataSource<ListSection, ListItem>?
 
-    var sections: [ListSection] = []
+//    var sections: [ListSection] = []
 
     // Dependencies
-    private let presenter: BooksViewOutput
+    private let output: BooksViewOutput
 
     // MARK: - Initialization
 
     init(presenter: BooksViewOutput) {
-        self.presenter = presenter
+        self.output = presenter
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -46,7 +46,7 @@ final class BooksViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
 
-        presenter.viewDidLoad()
+        output.viewDidLoad()
         setupView()
         createDataSource()
         reloadData()
@@ -93,7 +93,7 @@ extension BooksViewController {
     private func createCompositionalLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout { [weak self] sectionIndex, _ in
             guard let self else { fatalError("Self is nil") }
-            let section = self.sections[sectionIndex]
+            let section = self.output.data[sectionIndex]
             switch section {
             case .new:
                 return self.createNewSection()
@@ -159,10 +159,10 @@ extension BooksViewController {
     func createDataSource() {
         dataSource = UICollectionViewDiffableDataSource<ListSection, ListItem>(
             collectionView: collectionView) { collectionView, indexPath, item -> UICollectionViewCell? in
-            switch self.sections[indexPath.section] {
+            switch self.output.data[indexPath.section] {
             case .new:
                 guard let cell = collectionView.dequeueReusableCell(
-                    withReuseIdentifier: "NewCollectionViewCell",
+                    withReuseIdentifier: NewCollectionViewCell.reuseIdentifier,
                     for: indexPath) as? NewCollectionViewCell
                     else { return UICollectionViewCell() }
                 cell.configureCell(with: item)
@@ -170,7 +170,7 @@ extension BooksViewController {
 
             case .popular:
                 guard let cell = collectionView.dequeueReusableCell(
-                    withReuseIdentifier: "PopularCollectionViewCell",
+                    withReuseIdentifier: PopularCollectionViewCell.reuseIdentifier,
                     for: indexPath) as? PopularCollectionViewCell
                     else { return UICollectionViewCell() }
                 cell.configureCell(with: item)
@@ -178,7 +178,7 @@ extension BooksViewController {
 
             case .category:
                 guard let cell = collectionView.dequeueReusableCell(
-                    withReuseIdentifier: "CategoryCollectionViewCell",
+                    withReuseIdentifier: CategoryCollectionViewCell.reuseIdentifier,
                     for: indexPath) as? CategoryCollectionViewCell
                     else { return UICollectionViewCell() }
                 cell.configureCell(with: item)
@@ -189,9 +189,9 @@ extension BooksViewController {
 
     func reloadData() {
         var snapshot = NSDiffableDataSourceSnapshot<ListSection, ListItem>()
-        snapshot.appendSections(sections)
+        snapshot.appendSections(output.data)
 
-        for section in sections {
+        for section in output.data {
             snapshot.appendItems(section.items, toSection: section)
         }
         dataSource?.apply(snapshot)
@@ -214,9 +214,9 @@ extension BooksViewController {
 }
 
 extension BooksViewController: BooksViewInput {
-    func getListSections(sections: [ListSection]) {
-        self.sections = sections
-        self.collectionView.reloadData()
-        self.reloadData()
-    }
+//    func setListSections(sections: [ListSection]) {
+//        self.sections = sections
+//        self.collectionView.reloadData()
+//        self.reloadData()
+//    }
 }

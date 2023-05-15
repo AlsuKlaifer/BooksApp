@@ -9,6 +9,8 @@ import UIKit
 
 final class PopularCollectionViewCell: UICollectionViewCell {
 
+    static let reuseIdentifier = "PopularCollectionViewCell"
+
     private let popularImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill

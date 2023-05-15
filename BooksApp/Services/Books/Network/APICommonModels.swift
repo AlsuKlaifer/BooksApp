@@ -11,10 +11,4 @@ struct APIResponse<ContentModel: Decodable>: Decodable {
     let kind: String
     let totalItems: Int
     let items: ContentModel
-    
-    enum CodingKeys: String, CodingKey {
-        case kind
-        case totalItems
-        case items
-    }
 }
