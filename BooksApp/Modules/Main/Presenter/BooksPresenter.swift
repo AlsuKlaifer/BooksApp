@@ -12,6 +12,7 @@ final class BooksPresenter: BooksViewOutput {
     // Dependencies
     weak var view: BooksViewInput?
     private let networkService: INetworkService
+    private let output: BooksModuleOutput
 
     // Properties
     var dataSourcePopular: [ListItem] = []
@@ -20,7 +21,8 @@ final class BooksPresenter: BooksViewOutput {
 
     // MARK: - Initialization
 
-    init(networkService: INetworkService) {
+    init(output: BooksModuleOutput, networkService: INetworkService) {
+        self.output = output
         self.networkService = networkService
     }
 
@@ -45,7 +47,6 @@ final class BooksPresenter: BooksViewOutput {
             }
             self.dataSourcePopular += items
             self.data.append(ListSection.popular(self.dataSourcePopular))
-//            self.view?.setListSections(sections: self.data)
             self.view?.reloadData()
         }
         
@@ -60,8 +61,18 @@ final class BooksPresenter: BooksViewOutput {
             }
             self.dataSourceNew += items
             self.data[0] = ListSection.new(self.dataSourceNew)
-//            self.view?.setListSections(sections: self.data)
             self.view?.reloadData()
         }
     }
+    
+    func didSelectItem(item: ListItem) {
+        switch item {
+        case .book(let book):
+            output.didSelectBook(module: self, book: book)
+        case .category(let category):
+            return
+        }
+    }
 }
+
+extension BooksPresenter: BooksModuleInput {}

@@ -9,6 +9,20 @@ import UIKit
 
 class DescriptionViewController: UIViewController {
 
+    // Dependencies
+    private let output: DescriptionViewOutput
+
+    // MARK: - Initialization
+
+    init(presenter: DescriptionViewOutput) {
+        self.output = presenter
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     lazy var imageView: UIImageView = {
         let image = UIImageView()
         image.clipsToBounds = true
@@ -16,19 +30,22 @@ class DescriptionViewController: UIViewController {
         image.image = UIImage(systemName: "book")
         image.tintColor = .black
         image.translatesAutoresizingMaskIntoConstraints = false
+        image.layer.cornerRadius = 10
         return image
     }()
     
-    lazy var nameLabel: UILabel = {
+    lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .label
         label.text = "Book title".uppercased()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 25, weight: .bold)
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    lazy var emailLabel: UILabel = {
+    lazy var authorLabel: UILabel = {
         let label = UILabel()
         label.textColor = .gray
         label.text = "Author"
@@ -80,12 +97,13 @@ class DescriptionViewController: UIViewController {
         
         view.backgroundColor = .systemBackground
         setConstraints()
+        reloadData()
     }
     
     func setConstraints() {
         view.addSubview(imageView)
-        view.addSubview(nameLabel)
-        view.addSubview(emailLabel)
+        view.addSubview(titleLabel)
+        view.addSubview(authorLabel)
         view.addSubview(readButton)
         
         let stackview = UIStackView(arrangedSubviews: [favoriteButton, downloadButton, shareButton])
@@ -97,24 +115,26 @@ class DescriptionViewController: UIViewController {
 
         NSLayoutConstraint.activate([
             imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
-            imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 110),
+            imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
             imageView.heightAnchor.constraint(equalToConstant: 200),
             imageView.widthAnchor.constraint(equalToConstant: 150)
         ])
         
         NSLayoutConstraint.activate([
-            nameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
-            nameLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 30)
+            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
+            titleLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
+            titleLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20),
+            titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 40)
         ])
         
         NSLayoutConstraint.activate([
-            emailLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
-            emailLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 10)
+            authorLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
+            authorLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10)
         ])
         
         NSLayoutConstraint.activate([
             stackview.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
-            stackview.topAnchor.constraint(equalTo: emailLabel.bottomAnchor, constant: 30)
+            stackview.topAnchor.constraint(equalTo: authorLabel.bottomAnchor, constant: 30)
         ])
         
         NSLayoutConstraint.activate([
@@ -124,23 +144,11 @@ class DescriptionViewController: UIViewController {
     }
 }
 
-// MARK: - SwiftUI
-
-import SwiftUI
-
-struct DescriptionProvider: PreviewProvider {
-    static var previews: some View {
-        ContainterView().edgesIgnoringSafeArea(.all)
-    }
-
-    struct ContainterView: UIViewControllerRepresentable {
-        func updateUIViewController(_ uiViewController: DescriptionViewController, context: Context) { }
-
-        let descriptionVC = DescriptionViewController()
-        func makeUIViewController(
-            context: UIViewControllerRepresentableContext<DescriptionProvider.ContainterView>
-        ) -> DescriptionViewController {
-            return descriptionVC
-        }
+extension DescriptionViewController: DescriptionViewInput {
+    func reloadData() {
+        let book = output.book
+        titleLabel.text = book.volumeInfo.title
+        authorLabel.text = book.volumeInfo.authors?[0]
+        imageView.downloadImage(from: book.volumeInfo.imageLinks.thumbnail)
     }
 }

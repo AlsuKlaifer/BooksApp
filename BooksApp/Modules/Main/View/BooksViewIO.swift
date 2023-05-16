@@ -10,7 +10,6 @@ import Foundation
 // view
 protocol BooksViewInput: AnyObject {
     func reloadData()
-//    func setListSections(sections: [ListSection])
 }
 
 // presenter
@@ -18,5 +17,6 @@ protocol BooksViewOutput: AnyObject {
     var dataSourcePopular: [ListItem] { get }
     var dataSourceNew: [ListItem] { get }
     var data: [ListSection] { get set }
+    func didSelectItem(item: ListItem)
     func viewDidLoad()
 }
