@@ -8,9 +8,7 @@
 import Foundation
 
 // view
-protocol DescriptionViewInput: AnyObject {
-    func reloadData()
-}
+protocol DescriptionViewInput: AnyObject {}
 
 // presenter
 protocol DescriptionViewOutput: AnyObject {

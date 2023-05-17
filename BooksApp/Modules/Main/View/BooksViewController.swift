@@ -200,11 +200,9 @@ extension BooksViewController {
 
 extension BooksViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.section != 1 {
-            let section = output.data[indexPath.section]
-            let item = section.items[indexPath.item]
-            output.didSelectItem(item: item)
-        }
+        let section = output.data[indexPath.section]
+        let item = section.items[indexPath.item]
+        output.didSelectItem(item: item)
         print("you tapped on section: \(indexPath.section), item: \(indexPath.item)")
     }
 }

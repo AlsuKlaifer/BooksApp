@@ -65,12 +65,29 @@ final class BooksPresenter: BooksViewOutput {
         }
     }
     
+    func getCategory(category: String) {
+        networkService.getCategoryBooks(category: category) { [weak self] books in
+            guard let self else { return }
+            let items = books.map { book -> ListItem in
+                return ListItem.book(Book(
+                    id: book.id,
+                    selfLink: book.selfLink,
+                    volumeInfo: book.volumeInfo,
+                    accessInfo: book.accessInfo))
+            }
+            self.dataSourcePopular = items
+            self.data[2] = ListSection.popular(self.dataSourcePopular)
+            self.view?.reloadData()
+        }
+    }
+    
+    
     func didSelectItem(item: ListItem) {
         switch item {
         case .book(let book):
             output.didSelectBook(module: self, book: book)
         case .category(let category):
-            return
+            getCategory(category: category)
         }
     }
 }

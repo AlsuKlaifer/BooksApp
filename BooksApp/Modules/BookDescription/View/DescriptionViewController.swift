@@ -56,21 +56,24 @@ class DescriptionViewController: UIViewController {
     
     lazy var favoriteButton: UIButton = {
         let button = RoundButton()
-        button.setImage(UIImage(systemName: "star"), for: .normal)
+        let config = UIImage.SymbolConfiguration(pointSize: .zero, weight: .bold, scale: .large)
+        button.setImage(UIImage(systemName: "star", withConfiguration: config), for: .normal)
         button.addTarget(self, action: #selector(readButtonTapped), for: .touchUpInside)
         return button
     }()
     
     lazy var shareButton: UIButton = {
         let button = RoundButton()
-        button.setImage(UIImage(systemName: "person"), for: .normal)
+        let config = UIImage.SymbolConfiguration(pointSize: .zero, weight: .bold, scale: .large)
+        button.setImage(UIImage(systemName: "square.and.arrow.up", withConfiguration: config), for: .normal)
         button.addTarget(self, action: #selector(readButtonTapped), for: .touchUpInside)
         return button
     }()
     
     lazy var downloadButton: UIButton = {
         let button = RoundButton()
-        button.setImage(UIImage(systemName: "house"), for: .normal)
+        let config = UIImage.SymbolConfiguration(pointSize: .zero, weight: .bold, scale: .large)
+        button.setImage(UIImage(systemName: "house", withConfiguration: config), for: .normal)
         button.addTarget(self, action: #selector(readButtonTapped), for: .touchUpInside)
         return button
     }()
@@ -96,6 +99,7 @@ class DescriptionViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .systemBackground
+//        view.backgroundColor = UIColor(patternImage: ((UIImage(named: "background.png") ?? UIImage(systemName: "house"))!))
         setConstraints()
         reloadData()
     }
