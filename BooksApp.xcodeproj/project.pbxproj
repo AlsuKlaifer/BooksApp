@@ -24,6 +24,7 @@
 		15300DC729F665650060D765 /* ChangePasswordModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15300DC429F65DB00060D765 /* ChangePasswordModuleBuilder.swift */; };
 		15300DC829F665680060D765 /* ChangePasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15300DC329F650AB0060D765 /* ChangePasswordPresenter.swift */; };
 		153402612A140A19000943BF /* StarRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153402602A140A19000943BF /* StarRating.swift */; };
+		153402632A14BCB2000943BF /* StarTypeIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153402622A14BCB2000943BF /* StarTypeIterator.swift */; };
 		153780822A07DC7000BF83FE /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153780812A07DC7000BF83FE /* NetworkService.swift */; };
 		153780842A07E19800BF83FE /* APICommonModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153780832A07E19800BF83FE /* APICommonModels.swift */; };
 		153780882A0925A600BF83FE /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153780872A0925A600BF83FE /* CacheManager.swift */; };
@@ -87,6 +88,7 @@
 		15300DC429F65DB00060D765 /* ChangePasswordModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordModuleBuilder.swift; sourceTree = "<group>"; };
 		15300DC529F65EB60060D765 /* SignOutModuleIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutModuleIO.swift; sourceTree = "<group>"; };
 		153402602A140A19000943BF /* StarRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRating.swift; sourceTree = "<group>"; };
+		153402622A14BCB2000943BF /* StarTypeIterator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarTypeIterator.swift; sourceTree = "<group>"; };
 		153780812A07DC7000BF83FE /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		153780832A07E19800BF83FE /* APICommonModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICommonModels.swift; sourceTree = "<group>"; };
 		153780872A0925A600BF83FE /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 				1550FF922A0E233700E0C9E7 /* RoundButton.swift */,
 				1537808A2A092AFF00BF83FE /* UIImageView+Extensions.swift */,
 				153402602A140A19000943BF /* StarRating.swift */,
+				153402622A14BCB2000943BF /* StarTypeIterator.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -650,6 +653,7 @@
 				1550FF932A0E233700E0C9E7 /* RoundButton.swift in Sources */,
 				153780822A07DC7000BF83FE /* NetworkService.swift in Sources */,
 				15B8E51F29FEA48F00D340AA /* CategoryCollectionViewCell.swift in Sources */,
+				153402632A14BCB2000943BF /* StarTypeIterator.swift in Sources */,
 				151A8C1D29DA0D8C000F2830 /* LoginViewController.swift in Sources */,
 				1537808E2A0948F300BF83FE /* BooksPresenter.swift in Sources */,
 				1537808B2A092AFF00BF83FE /* UIImageView+Extensions.swift in Sources */,

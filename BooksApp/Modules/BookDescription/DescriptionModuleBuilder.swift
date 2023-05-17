@@ -9,7 +9,13 @@ import UIKit
 
 final class DescriptionModuleBuilder {
     
-    func build(book: Book) -> UIViewController {
+    private let book: Book
+    
+    init(book: Book) {
+        self.book = book
+    }
+    
+    func build() -> UIViewController {
         let presenter = DescriptionPresenter(book: book)
         let viewController = DescriptionViewController(presenter: presenter)
         presenter.view = viewController

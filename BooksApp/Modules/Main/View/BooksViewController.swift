@@ -203,7 +203,6 @@ extension BooksViewController: UICollectionViewDelegate {
         let section = output.data[indexPath.section]
         let item = section.items[indexPath.item]
         output.didSelectItem(item: item)
-        print("you tapped on section: \(indexPath.section), item: \(indexPath.item)")
     }
 }
 

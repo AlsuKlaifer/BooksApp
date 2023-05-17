@@ -2,16 +2,14 @@
 //  StarRatingView.swift
 //  Star Rating View
 //
-//  Created by Roberth H-T on 2018-02-05.
-//  Copyright © 2018 Roberth Hansson-Tornéus. All rights reserved.
+//  Created by Alsu Faizova on 16.05.2023.
 //
 
 import UIKit
 
-// MARK - Types
 enum StarType: String {
     
-    case star = "star", halfStar = "star.leadinghalf.filled", filledStar = "star.fill"
+    case emptyStar = "star", halfStar = "star.leadinghalf.filled", filledStar = "star.fill"
     
     var toImage: UIImage {
         let config = UIImage.SymbolConfiguration(pointSize: .zero, weight: .heavy, scale: .large)
@@ -128,71 +126,5 @@ extension StarRatingView {
         starImageView.image = starType.toImage
         
         return starImageView
-    }
-    
-//    private func addShadow() {
-//
-//        guard let starRatingStackView = self.starRatingStackView else { return }
-//
-//        starRatingStackView.arrangedSubviews.forEach {
-//            let layer = $0.layer
-//            layer.shadowColor = UIColor.darkGray.cgColor
-//            layer.shadowOffset = CGSize(width: -0.5, height: 0.5)
-//            layer.shadowRadius = 0.5
-//            layer.shadowOpacity = 0.5
-//        }
-//    }
-    
-//    private func removeShadow() {
-//
-//        guard let starRatingStackView = self.starRatingStackView else { return }
-//
-//        starRatingStackView.arrangedSubviews.forEach {
-//            let layer = $0.layer
-//            layer.shadowColor = nil
-//            layer.shadowOffset = .zero
-//            layer.shadowRadius = 0
-//            layer.shadowOpacity = 0
-//        }
-//    }
-    
-//    private func updateDropShadow() {
-//
-//        (self.hasDropShadow) ? addShadow() : removeShadow()
-//    }
-}
-
-// MARK: - Iterators
-extension StarRatingView {
-    
-    private struct StarTypeIterator {
-        
-        private var tempRating: Double
-        private var initialRating: Double
-        
-        init(rating: Double) {
-            tempRating = rating
-            initialRating = rating
-        }
-        
-        mutating func set(newRating: Double) {
-            tempRating = newRating
-            initialRating = newRating
-        }
-        
-        mutating func next() -> StarType {
-            if tempRating >= 1 {
-                tempRating -= 1
-                return .filledStar
-            } else if (tempRating != 0) && (tempRating < 1) {
-                tempRating = 0
-                return .halfStar
-            }
-            return .star
-        }
-        
-        mutating func reset() {
-            tempRating = initialRating
-        }
     }
 }

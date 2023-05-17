@@ -25,7 +25,7 @@ final class BooksCoordinator: Coordinator {
 extension BooksCoordinator: BooksModuleOutput {
     
     func didSelectBook(module: BooksModuleInput, book: Book) {
-        let viewController = DescriptionModuleBuilder().build(book: book)
+        let viewController = DescriptionModuleBuilder(book: book).build()
         navigationController.pushViewController(viewController, animated: true)
     }
 }

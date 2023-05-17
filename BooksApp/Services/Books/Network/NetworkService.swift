@@ -40,8 +40,7 @@ final class NetworkService: INetworkService {
     }
     
     func getCategoryBooks(category: String, completion: @escaping ([Book]) -> Void) {
-        let params: [String: Any] = ["orderBy=": "newest"]
-        let request = AF.request(apiBase + "?q=\(category)", parameters: params)
+        let request = AF.request(apiBase + "?q=\(category)")
         
         request.responseDecodable(of: APIResponse<[Book]>.self) { dataResponse in
             let response: APIResponse<[Book]>? = dataResponse.value
