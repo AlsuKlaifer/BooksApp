@@ -25,11 +25,27 @@ final class PopularCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.text = "Popular"
         label.textAlignment = .left
-        label.font = UIFont.systemFont(ofSize: 14)
+        label.font = UIFont.boldSystemFont(ofSize: 14)
         label.textColor = .black
-        label.numberOfLines = 0
+        label.numberOfLines = 2
+        label.lineBreakMode = .byTruncatingTail
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
+    }()
+    
+    private let authorLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Author"
+        label.textAlignment = .left
+        label.font = UIFont.systemFont(ofSize: 14)
+        label.textColor = .gray
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private let starsView: StarRatingView = {
+        let stars = StarRatingView(starsCount: 0, rating: 0.0)
+        return stars
     }()
 
     override init(frame: CGRect) {
@@ -44,23 +60,34 @@ final class PopularCollectionViewCell: UICollectionViewCell {
     }
 
     func setupView() {
-        backgroundColor = .systemGray5
+        backgroundColor = .systemGray6
         self.layer.cornerRadius = 10
         addSubview(popularLabel)
         addSubview(popularImageView)
+        addSubview(authorLabel)
     }
 
     func configureCell(with book: ListItem) {
         switch book {
         case .book(let book):
             popularLabel.text = book.volumeInfo.title.uppercased()
+            authorLabel.text = book.volumeInfo.authors?[0]
             popularImageView.downloadImage(from: book.volumeInfo.imageLinks.thumbnail)
+            guard let stars = book.volumeInfo.averageRating else { return }
+            starsView.updateView(starsCount: 5, rating: stars)
         case .category:
             return
         }
     }
 
     func setConstraints () {
+        let stackview = UIStackView(arrangedSubviews: [popularLabel, authorLabel, starsView])
+        
+        stackview.axis = .vertical
+        stackview.spacing = 5
+        stackview.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(stackview)
+        
         NSLayoutConstraint.activate([
             popularImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             popularImageView.topAnchor.constraint(equalTo: topAnchor, constant: 5),
@@ -69,9 +96,9 @@ final class PopularCollectionViewCell: UICollectionViewCell {
         ])
 
         NSLayoutConstraint.activate([
-            popularLabel.leadingAnchor.constraint(equalTo: popularImageView.trailingAnchor, constant: 30),
-            popularLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            popularLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10)
+            stackview.leadingAnchor.constraint(equalTo: popularImageView.trailingAnchor, constant: 30),
+            stackview.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            stackview.topAnchor.constraint(equalTo: topAnchor, constant: 10)
         ])
     }
 }

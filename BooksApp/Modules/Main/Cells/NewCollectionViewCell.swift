@@ -15,6 +15,7 @@ final class NewCollectionViewCell: UICollectionViewCell {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 10
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -33,7 +34,7 @@ final class NewCollectionViewCell: UICollectionViewCell {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-
+        self.layer.cornerRadius = 10
         setupView()
         setConstraints()
     }

@@ -16,8 +16,16 @@ final class BooksCoordinator: Coordinator {
     }
     
     func start() {
-        let viewController = BooksModuleBuilder().build()
+        let viewController = BooksModuleBuilder(output: self).build()
         viewController.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house"), tag: 0)
         navigationController.viewControllers = [viewController]
+    }
+}
+
+extension BooksCoordinator: BooksModuleOutput {
+    
+    func didSelectBook(module: BooksModuleInput, book: Book) {
+        let viewController = DescriptionModuleBuilder(book: book).build()
+        navigationController.pushViewController(viewController, animated: true)
     }
 }

@@ -19,12 +19,11 @@ final class BooksViewController: UIViewController {
     private lazy var collectionView: UICollectionView = {
         let collectionView = createCollectionView()
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.delegate = self
         return collectionView
     }()
 
     var dataSource: UICollectionViewDiffableDataSource<ListSection, ListItem>?
-
-//    var sections: [ListSection] = []
 
     // Dependencies
     private let output: BooksViewOutput
@@ -52,6 +51,7 @@ final class BooksViewController: UIViewController {
         reloadData()
         setConstraints()
 
+        collectionView.reloadData()
         navigationItem.searchController = searchController
     }
 
@@ -69,13 +69,13 @@ final class BooksViewController: UIViewController {
         view.addSubview(collectionView)
         collectionView.register(
             NewCollectionViewCell.self,
-            forCellWithReuseIdentifier: "NewCollectionViewCell")
+            forCellWithReuseIdentifier: NewCollectionViewCell.reuseIdentifier)
         collectionView.register(
             PopularCollectionViewCell.self,
-            forCellWithReuseIdentifier: "PopularCollectionViewCell")
+            forCellWithReuseIdentifier: PopularCollectionViewCell.reuseIdentifier)
         collectionView.register(
             CategoryCollectionViewCell.self,
-            forCellWithReuseIdentifier: "CategoryCollectionViewCell")
+            forCellWithReuseIdentifier: CategoryCollectionViewCell.reuseIdentifier)
     }
 }
 
@@ -198,6 +198,14 @@ extension BooksViewController {
     }
 }
 
+extension BooksViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let section = output.data[indexPath.section]
+        let item = section.items[indexPath.item]
+        output.didSelectItem(item: item)
+    }
+}
+
 // MARK: - Set Constraints
 
 extension BooksViewController {
@@ -213,10 +221,4 @@ extension BooksViewController {
     }
 }
 
-extension BooksViewController: BooksViewInput {
-//    func setListSections(sections: [ListSection]) {
-//        self.sections = sections
-//        self.collectionView.reloadData()
-//        self.reloadData()
-//    }
-}
+extension BooksViewController: BooksViewInput {}
