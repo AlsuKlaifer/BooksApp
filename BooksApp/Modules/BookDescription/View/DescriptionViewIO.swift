@@ -13,5 +13,6 @@ protocol DescriptionViewInput: AnyObject {}
 // presenter
 protocol DescriptionViewOutput: AnyObject {
     var book: Book { get }
-    func viewDidLoad()
+    var isFavorite: Bool { get }
+    func addToFavorite()
 }
