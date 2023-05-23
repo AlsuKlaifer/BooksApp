@@ -14,5 +14,7 @@ protocol DescriptionViewInput: AnyObject {}
 protocol DescriptionViewOutput: AnyObject {
     var book: Book { get }
     var isFavorite: Bool { get }
+    var isRead: Bool { get }
     func addToFavorite()
+    func addToRead()
 }

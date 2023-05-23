@@ -11,6 +11,8 @@ final class PopularCollectionViewCell: UICollectionViewCell {
 
     static let reuseIdentifier = "PopularCollectionViewCell"
 
+    private var isFavorite: Bool = false
+    
     private let popularImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
@@ -26,7 +28,7 @@ final class PopularCollectionViewCell: UICollectionViewCell {
         label.text = "Popular"
         label.textAlignment = .left
         label.font = UIFont.boldSystemFont(ofSize: 14)
-        label.textColor = .black
+        label.textColor = .label
         label.numberOfLines = 2
         label.lineBreakMode = .byTruncatingTail
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -48,6 +50,32 @@ final class PopularCollectionViewCell: UICollectionViewCell {
         return stars
     }()
 
+//    private lazy var favoriteButton: UIButton =
+//    {
+//        let button = UIButton()
+//        isFavorite = false // достать значение из coredata
+//        let imageName = isFavorite ? "heart.fill" : "heart"
+//        let config = UIImage.SymbolConfiguration (pointSize: .zero, weight: .medium, scale: .large)
+//        button.setImage(UIImage(systemName: imageName, withConfiguration: config), for: .normal)
+//        button.tintColor = .systemYellow
+//        button.translatesAutoresizingMaskIntoConstraints = false
+//        button.addTarget(self, action: #selector(favoriteButtonTapped), for: .touchUpInside)
+//        return button
+//    }()
+    
+//    @objc func favoriteButtonTapped() {
+//        let config = UIImage.SymbolConfiguration (pointSize: .zero, weight: .medium, scale: .large)
+//        if isFavorite {
+//            // удалить из coredata
+//            favoriteButton.setImage(UIImage(systemName: "heart", withConfiguration: config), for: .normal)
+//        } else {
+//            // добавить в coredata
+//            favoriteButton.setImage(UIImage(systemName: "heart. fill", withConfiguration: config), for: .normal)
+//            favoriteButton.tintColor = .systemYellow
+//            isFavorite.toggle()
+//        }
+//    }
+        
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -62,6 +90,8 @@ final class PopularCollectionViewCell: UICollectionViewCell {
     func setupView() {
         backgroundColor = .systemGray6
         self.layer.cornerRadius = 10
+        self.layer.borderColor = UIColor.gray.cgColor
+        self.layer.borderWidth = 1
         addSubview(popularLabel)
         addSubview(popularImageView)
         addSubview(authorLabel)

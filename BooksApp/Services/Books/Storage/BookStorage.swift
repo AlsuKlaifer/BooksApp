@@ -15,16 +15,17 @@ protocol BookStorageProtocol {
     func getBookModel(with id: String) -> BookModel?
     func getBook(with id: String) -> Book?
     func updateFavorite(with id: String)
+    func updateRead(with id: String)
     func delete(id: String)
     func deleteAll()
 }
 
 final class BookStorage: BookStorageProtocol {
     
-    private let conversion: ConversionProtocol
+    private let parser: BookParserProtocol
     
-    init(conversion: ConversionProtocol) {
-        self.conversion = conversion
+    init(parser: BookParserProtocol) {
+        self.parser = parser
     }
     
     var persistentContainer: NSPersistentContainer = {
@@ -61,20 +62,7 @@ final class BookStorage: BookStorageProtocol {
             return
         }
 
-//        conversion.converseToBookModel(book: book)
-        bookModel.id = book.id
-        bookModel.title = book.volumeInfo.title
-        bookModel.author = book.volumeInfo.authors?.first
-        bookModel.publishedDate = book.volumeInfo.publishedDate
-        bookModel.descriptions = book.volumeInfo.description
-        bookModel.image = book.volumeInfo.imageLinks.thumbnail
-        bookModel.pages = book.volumeInfo.pageCount as? NSNumber
-        bookModel.category = book.volumeInfo.categories?.first
-        bookModel.rating = book.volumeInfo.averageRating ?? 4.0
-        bookModel.language = book.volumeInfo.language
-        bookModel.isEpub = book.accessInfo.epub.isAvailable
-        bookModel.isPdf = book.accessInfo.pdf.isAvailable
-        bookModel.link = book.selfLink
+        parser.parseToBookModel(book: book, bookModel: bookModel)
         
         saveContext()
     }
@@ -85,7 +73,7 @@ final class BookStorage: BookStorageProtocol {
         guard let bookModels = try? context.fetch(fetchRequest) else { return [] }
 
         return bookModels.map {
-            conversion.converseToBook(bookModel: $0)
+            parser.parseToBook(bookModel: $0)
         }
     }
     
@@ -108,12 +96,18 @@ final class BookStorage: BookStorageProtocol {
     
     func getBook(with id: String) -> Book? {
         guard let bookModel = getBookModel(with: id) else { return nil }
-        return conversion.converseToBook(bookModel: bookModel)
+        return parser.parseToBook(bookModel: bookModel)
     }
     
     func updateFavorite(with id: String) {
         let bookModel = getBookModel(with: id)
         bookModel?.isFavorite.toggle()
+        saveContext()
+    }
+    
+    func updateRead(with id: String) {
+        let bookModel = getBookModel(with: id)
+        bookModel?.isReaded.toggle()
         saveContext()
     }
     

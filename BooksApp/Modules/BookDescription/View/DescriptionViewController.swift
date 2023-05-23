@@ -11,15 +11,11 @@ class DescriptionViewController: UIViewController {
 
     // Dependencies
     private let output: DescriptionViewOutput
-
-    //Private properties
-    private var isFavorite: Bool
     
     // MARK: - Initialization
 
     init(presenter: DescriptionViewOutput) {
         self.output = presenter
-        self.isFavorite = output.isFavorite
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -60,12 +56,14 @@ class DescriptionViewController: UIViewController {
 
     lazy var favoriteButton: UIButton = {
         let button = UIButton()
-        let imageName = isFavorite ? "heart.fill" : "heart"
-        let config = UIImage.SymbolConfiguration(pointSize: .zero, weight: .medium, scale: .large)
+        let imageName = output.isFavorite ? "bookmark.fill" : "bookmark"
+        let config = UIImage.SymbolConfiguration(pointSize: .maximum(30, 30), weight: .bold, scale: .large)
         button.setImage(UIImage(systemName: imageName, withConfiguration: config), for: .normal)
         button.tintColor = .systemYellow
+        button.addTarget(self, action: #selector(favoriteButtonTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(readButtonTapped), for: .touchUpInside)
+        button.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        button.heightAnchor.constraint(equalToConstant: 100).isActive = true
         return button
     }()
 
@@ -73,7 +71,7 @@ class DescriptionViewController: UIViewController {
         let button = RoundButton()
         let config = UIImage.SymbolConfiguration(pointSize: .zero, weight: .bold, scale: .large)
         button.setImage(UIImage(systemName: "square.and.arrow.up", withConfiguration: config), for: .normal)
-        button.addTarget(self, action: #selector(readButtonTapped), for: .touchUpInside)
+//        button.addTarget(self, action: #selector(readButtonTapped), for: .touchUpInside)
         return button
     }()
 
@@ -81,37 +79,52 @@ class DescriptionViewController: UIViewController {
         let button = RoundButton()
         let config = UIImage.SymbolConfiguration(pointSize: .zero, weight: .bold, scale: .large)
         button.setImage(UIImage(systemName: "house", withConfiguration: config), for: .normal)
-        button.addTarget(self, action: #selector(readButtonTapped), for: .touchUpInside)
+//        button.addTarget(self, action: #selector(readButtonTapped), for: .touchUpInside)
         return button
     }()
 
     lazy var readButton: UIButton = {
         let button = UIButton()
-        button.setTitle("START READING", for: .normal)
+        let title = output.isRead ? "Remove from read" : "Add to read"
+        button.setTitle(title, for: .normal)
         button.addTarget(self, action: #selector(readButtonTapped), for: .touchUpInside)
         button.layer.cornerRadius = 25
-        button.tintColor = .white
-        button.backgroundColor = .black
+        let titleColor = output.isRead ? UIColor.label : .systemBackground
+        button.setTitleColor(titleColor, for: .normal)
+        button.backgroundColor = output.isRead ? .systemGray6 : .label
         button.translatesAutoresizingMaskIntoConstraints = false
         button.widthAnchor.constraint(equalToConstant: 250).isActive = true
         button.heightAnchor.constraint(equalToConstant: 50).isActive = true
         return button
     }()
 
-    @objc func readButtonTapped() {
-        let config = UIImage.SymbolConfiguration(pointSize: .zero, weight: .medium, scale: .large)
-        if isFavorite {
-            favoriteButton.setImage(UIImage(systemName: "heart", withConfiguration: config), for: .normal)
+    @objc func favoriteButtonTapped() {
+        let config = UIImage.SymbolConfiguration(pointSize: .maximum(30, 30), weight: .bold, scale: .large)
+        if output.isFavorite {
+            favoriteButton.setImage(UIImage(systemName: "bookmark", withConfiguration: config), for: .normal)
         } else {
-            favoriteButton.setImage(UIImage(systemName: "heart.fill", withConfiguration: config), for: .normal)
+            favoriteButton.setImage(UIImage(systemName: "bookmark.fill", withConfiguration: config), for: .normal)
         }
         favoriteButton.tintColor = .systemYellow
-        isFavorite.toggle()
         output.addToFavorite()
 
         print("current book id: \(output.book.id)")
     }
 
+    @objc func readButtonTapped() {
+        if output.isRead {
+            readButton.setTitle("Add to read", for: .normal)
+            readButton.setTitleColor(UIColor.systemBackground, for: .normal)
+            readButton.backgroundColor = .label
+        } else {
+            readButton.setTitle("Remove from read", for: .normal)
+            readButton.backgroundColor = .systemGray6
+            readButton.setTitleColor(UIColor.label, for: .normal)
+        }
+        output.addToRead()
+        print("current book id: \(output.book.id)")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -142,8 +155,8 @@ class DescriptionViewController: UIViewController {
         ])
 
         NSLayoutConstraint.activate([
-            favoriteButton.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 20),
-            favoriteButton.bottomAnchor.constraint(equalTo: imageView.topAnchor, constant: 20)
+            favoriteButton.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 30),
+            favoriteButton.topAnchor.constraint(equalTo: imageView.topAnchor, constant: -60)
         ])
 
         NSLayoutConstraint.activate([
