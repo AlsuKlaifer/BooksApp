@@ -49,6 +49,7 @@ class DescriptionViewController: UIViewController {
     lazy var authorLabel: UILabel = {
         let label = UILabel()
         label.textColor = .gray
+        label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 20, weight: .light)
         return label

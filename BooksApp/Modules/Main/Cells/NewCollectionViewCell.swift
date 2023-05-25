@@ -44,13 +44,13 @@ final class NewCollectionViewCell: UICollectionViewCell {
     }
 
     func setupView() {
-        backgroundColor = .systemGray5
-        self.layer.cornerRadius = 10
-        self.layer.shadowRadius = 7
-        self.layer.shadowColor = UIColor.gray.cgColor
-        self.layer.shadowOpacity = 1
-        self.layer.shadowOffset = CGSize(width: 0, height: 7)
-        self.layer.masksToBounds = false
+//        backgroundColor = .systemGray5
+//        self.layer.cornerRadius = 10
+//        self.layer.shadowRadius = 7
+//        self.layer.shadowColor = UIColor.gray.cgColor
+//        self.layer.shadowOpacity = 1
+//        self.layer.shadowOffset = CGSize(width: 0, height: 7)
+//        self.layer.masksToBounds = false
         addSubview(newImageView)
         addSubview(newLabel)
     }

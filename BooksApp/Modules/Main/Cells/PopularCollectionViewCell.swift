@@ -109,6 +109,14 @@ final class PopularCollectionViewCell: UICollectionViewCell {
             return
         }
     }
+    
+    func configureCellBookModel(with book: BookModel) {
+        popularLabel.text = book.title.uppercased()
+        authorLabel.text = book.author
+        popularImageView.downloadImage(from: book.image ?? "")
+        guard let stars = book.rating as? Double else { return }
+        starsView.updateView(starsCount: 5, rating: stars)
+    }
 
     func setConstraints () {
         let stackview = UIStackView(arrangedSubviews: [popularLabel, authorLabel, starsView])

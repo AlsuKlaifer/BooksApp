@@ -19,8 +19,8 @@ final class CategoryCollectionViewCell: UICollectionViewCell {
         label.backgroundColor = UIColor(red: 1, green: 184 / 255, blue: 45 / 255, alpha: 1)
         label.layer.masksToBounds = true
         label.layer.cornerRadius = 15
-        label.layer.borderWidth = 1
-        label.layer.borderColor = UIColor.black.cgColor
+//        label.layer.borderWidth = 1
+//        label.layer.borderColor = UIColor.black.cgColor
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label

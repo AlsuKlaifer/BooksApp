@@ -23,11 +23,13 @@ final class BookParser: BookParserProtocol {
         bookModel.image = book.volumeInfo.imageLinks.thumbnail
         bookModel.pages = book.volumeInfo.pageCount as? NSNumber
         bookModel.category = book.volumeInfo.categories?.first
-        bookModel.rating = book.volumeInfo.averageRating ?? 4.0
+        bookModel.rating = book.volumeInfo.averageRating as? NSNumber
         bookModel.language = book.volumeInfo.language
         bookModel.isEpub = book.accessInfo.epub.isAvailable
         bookModel.isPdf = book.accessInfo.pdf.isAvailable
         bookModel.link = book.selfLink
+        bookModel.isFavorite = false
+        bookModel.isRead = false
     }
     
     func parseToBook(bookModel: BookModel) -> Book {
@@ -43,7 +45,7 @@ final class BookParser: BookParserProtocol {
                     thumbnail: bookModel.image ?? "https://img.favpng.com/5/25/0/black-and-white-book-clip-art-png-favpng-0dJ3ic2KDk33bxzbGX3qYBUY4.jpg"),
                 pageCount: bookModel.pages as? Int,
                 categories: [bookModel.category ?? ""],
-                averageRating: bookModel.rating,
+                averageRating: bookModel.rating as? Double,
                 language: bookModel.language ?? ""
             ),
             accessInfo: AccessInfo(

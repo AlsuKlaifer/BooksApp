@@ -9,11 +9,13 @@ import Foundation
 import CoreData
 
 protocol BookStorageProtocol {
-    func create(_ book: Book)
+    func create(_ book: Book) -> BookModel
     func readBooks() -> [Book]
     func readBookModels() -> [BookModel]
     func getBookModel(with id: String) -> BookModel?
     func getBook(with id: String) -> Book?
+    func getFavoriteBooks() -> [BookModel]
+    func getReadBooks() -> [BookModel]
     func updateFavorite(with id: String)
     func updateRead(with id: String)
     func delete(id: String)
@@ -30,7 +32,7 @@ final class BookStorage: BookStorageProtocol {
     
     var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "CoreData")
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+        container.loadPersistentStores(completionHandler: { _, error in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
@@ -54,24 +56,22 @@ final class BookStorage: BookStorageProtocol {
         }
     }
     
-    func create(_ book: Book) {
+    func create(_ book: Book) -> BookModel {
         guard let bookModel = NSEntityDescription.insertNewObject(
             forEntityName: "BookModel",
             into: self.context
         ) as? BookModel else {
-            return
+            return BookModel()
         }
-
         parser.parseToBookModel(book: book, bookModel: bookModel)
-        
         saveContext()
+        return bookModel
     }
     
     func readBooks() -> [Book] {
         let fetchRequest = BookModel.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
         guard let bookModels = try? context.fetch(fetchRequest) else { return [] }
-
         return bookModels.map {
             parser.parseToBook(bookModel: $0)
         }
@@ -81,8 +81,29 @@ final class BookStorage: BookStorageProtocol {
         let fetchRequest = BookModel.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
         guard let bookModels = try? context.fetch(fetchRequest) else { return [] }
-
         return bookModels
+    }
+    
+    func getFavoriteBooks() -> [BookModel] {
+        let fetchRequest = BookModel.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
+        guard let bookModels = try? context.fetch(fetchRequest) else { return [] }
+//        let bookModels = readBookModels()
+        let favorites = bookModels.filter { $0.isFavorite == true }
+        print("FAV \(favorites.count)")
+        print()
+        return favorites
+    }
+    
+    func getReadBooks() -> [BookModel] {
+        let fetchRequest = BookModel.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
+        guard let bookModels = try? context.fetch(fetchRequest) else { return [] }
+//        let bookModels = readBookModels()
+        let read = bookModels.filter { $0.isRead == true }
+        print("READ \(read.count)")
+        print()
+        return read
     }
     
     func getBookModel(with id: String) -> BookModel? {
@@ -95,19 +116,34 @@ final class BookStorage: BookStorageProtocol {
     }
     
     func getBook(with id: String) -> Book? {
-        guard let bookModel = getBookModel(with: id) else { return nil }
+        let fetchRequest = BookModel.fetchRequest()
+        fetchRequest.predicate = NSPredicate(
+            format: "%K == %@", "id", id as CVarArg
+        )
+        guard let bookModel = try? context.fetch(fetchRequest).first else { return nil }
+//        guard let bookModel = getBookModel(with: id) else { return nil }
         return parser.parseToBook(bookModel: bookModel)
     }
     
     func updateFavorite(with id: String) {
-        let bookModel = getBookModel(with: id)
-        bookModel?.isFavorite.toggle()
+        let fetchRequest = BookModel.fetchRequest()
+        fetchRequest.predicate = NSPredicate(
+            format: "%K == %@", "id", id as CVarArg
+        )
+        guard let bookModel = try? context.fetch(fetchRequest).first else { return }
+//        let bookModel = getBookModel(with: id)
+        bookModel.isFavorite.toggle()
         saveContext()
     }
     
     func updateRead(with id: String) {
-        let bookModel = getBookModel(with: id)
-        bookModel?.isReaded.toggle()
+        let fetchRequest = BookModel.fetchRequest()
+        fetchRequest.predicate = NSPredicate(
+            format: "%K == %@", "id", id as CVarArg
+        )
+        guard let bookModel = try? context.fetch(fetchRequest).first else { return }
+//        let bookModel = getBookModel(with: id)
+        bookModel.isRead.toggle()
         saveContext()
     }
     

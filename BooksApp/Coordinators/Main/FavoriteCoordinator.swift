@@ -14,11 +14,17 @@ final class FavoriteCoordinator: Coordinator {
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
-    
+
     func start() {
-        navigationController.navigationBar.prefersLargeTitles = true
-        let viewController = FavoriteViewController()
+        let viewController = FavoriteModuleBuilder(output: self).build()
         viewController.tabBarItem = UITabBarItem(title: "Favorite", image: UIImage(systemName: "bookmark"), tag: 1)
         navigationController.viewControllers = [viewController]
+    }
+}
+
+extension FavoriteCoordinator: FavoriteModuleOutput {
+    func didSelectBook(module: FavoriteModuleInput, book: Book) {
+        let viewController = DescriptionModuleBuilder(book: book).build()
+        navigationController.pushViewController(viewController, animated: true)
     }
 }

@@ -29,8 +29,8 @@ final class BooksPresenter: BooksViewOutput {
     // MARK: - Presenter
 
     func viewDidLoad() {
-        obtainData()
         data = [ListSection.new([]), MockData.shared.category]
+        obtainData()
     }
 
     // MARK: - Private
@@ -80,7 +80,6 @@ final class BooksPresenter: BooksViewOutput {
             self.view?.reloadData()
         }
     }
-    
     
     func didSelectItem(item: ListItem) {
         switch item {
