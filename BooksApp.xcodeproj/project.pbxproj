@@ -35,7 +35,6 @@
 		153D988029D5F5FF00141BCB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153D987F29D5F5FF00141BCB /* SceneDelegate.swift */; };
 		153D988729D5F60000141BCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 153D988629D5F60000141BCB /* Assets.xcassets */; };
 		153D988A29D5F60000141BCB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 153D988829D5F60000141BCB /* LaunchScreen.storyboard */; };
-		154550622A1F5AD900A9B58E /* CustomHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154550612A1F5AD900A9B58E /* CustomHeaderCell.swift */; };
 		154550642A1F67D000A9B58E /* FavoritePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154550632A1F67D000A9B58E /* FavoritePresenter.swift */; };
 		154550662A1F680E00A9B58E /* FavoriteViewIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154550652A1F680E00A9B58E /* FavoriteViewIO.swift */; };
 		154550682A1F6A1100A9B58E /* FavoriteModuleIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154550672A1F6A1100A9B58E /* FavoriteModuleIO.swift */; };
@@ -112,7 +111,6 @@
 		153D988629D5F60000141BCB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		153D988929D5F60000141BCB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		153D988B29D5F60000141BCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		154550612A1F5AD900A9B58E /* CustomHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeaderCell.swift; sourceTree = "<group>"; };
 		154550632A1F67D000A9B58E /* FavoritePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePresenter.swift; sourceTree = "<group>"; };
 		154550652A1F680E00A9B58E /* FavoriteViewIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewIO.swift; sourceTree = "<group>"; };
 		154550672A1F6A1100A9B58E /* FavoriteModuleIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteModuleIO.swift; sourceTree = "<group>"; };
@@ -333,7 +331,6 @@
 		154550602A1F5AC500A9B58E /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				154550612A1F5AD900A9B58E /* CustomHeaderCell.swift */,
 				1545506B2A1F95F900A9B58E /* ReadCollectionViewCell.swift */,
 			);
 			path = Cells;
@@ -717,7 +714,6 @@
 				15300DBD29F5ACB10060D765 /* ChangePasswordViewController.swift in Sources */,
 				15DDDF0F29FEACA5007A16DE /* ListSection.swift in Sources */,
 				1550FF932A0E233700E0C9E7 /* RoundButton.swift in Sources */,
-				154550622A1F5AD900A9B58E /* CustomHeaderCell.swift in Sources */,
 				153780822A07DC7000BF83FE /* NetworkService.swift in Sources */,
 				154550662A1F680E00A9B58E /* FavoriteViewIO.swift in Sources */,
 				15B8E51F29FEA48F00D340AA /* CategoryCollectionViewCell.swift in Sources */,

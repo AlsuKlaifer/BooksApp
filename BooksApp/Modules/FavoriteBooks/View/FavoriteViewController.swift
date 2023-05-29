@@ -37,7 +37,6 @@ final class FavoriteViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         title = "Favorite"
-//        output.viewDidLoad()
         setupView()
         setConstraints()
     }
@@ -107,7 +106,7 @@ extension FavoriteViewController {
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .continuousGroupLeadingBoundary
         section.contentInsets = .init(top: 10, leading: 10, bottom: 20, trailing: 0)
-        section.interGroupSpacing = -50 // костыль какой то, надо исправить
+        section.interGroupSpacing = -50 
         return section
     }
 }

@@ -56,6 +56,10 @@ final class BookStorage: BookStorageProtocol {
         }
     }
     
+    func refreshContext() {
+        context.refreshAllObjects()
+    }
+    
     func create(_ book: Book) -> BookModel {
         guard let bookModel = NSEntityDescription.insertNewObject(
             forEntityName: "BookModel",
@@ -85,24 +89,18 @@ final class BookStorage: BookStorageProtocol {
     }
     
     func getFavoriteBooks() -> [BookModel] {
+        refreshContext()
         let fetchRequest = BookModel.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
         guard let bookModels = try? context.fetch(fetchRequest) else { return [] }
-//        let bookModels = readBookModels()
         let favorites = bookModels.filter { $0.isFavorite == true }
-        print("FAV \(favorites.count)")
-        print()
         return favorites
     }
     
     func getReadBooks() -> [BookModel] {
+        refreshContext()
         let fetchRequest = BookModel.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
         guard let bookModels = try? context.fetch(fetchRequest) else { return [] }
-//        let bookModels = readBookModels()
         let read = bookModels.filter { $0.isRead == true }
-        print("READ \(read.count)")
-        print()
         return read
     }
     
@@ -121,7 +119,6 @@ final class BookStorage: BookStorageProtocol {
             format: "%K == %@", "id", id as CVarArg
         )
         guard let bookModel = try? context.fetch(fetchRequest).first else { return nil }
-//        guard let bookModel = getBookModel(with: id) else { return nil }
         return parser.parseToBook(bookModel: bookModel)
     }
     
@@ -131,7 +128,6 @@ final class BookStorage: BookStorageProtocol {
             format: "%K == %@", "id", id as CVarArg
         )
         guard let bookModel = try? context.fetch(fetchRequest).first else { return }
-//        let bookModel = getBookModel(with: id)
         bookModel.isFavorite.toggle()
         saveContext()
     }
@@ -142,7 +138,6 @@ final class BookStorage: BookStorageProtocol {
             format: "%K == %@", "id", id as CVarArg
         )
         guard let bookModel = try? context.fetch(fetchRequest).first else { return }
-//        let bookModel = getBookModel(with: id)
         bookModel.isRead.toggle()
         saveContext()
     }

@@ -31,9 +31,6 @@ extension BookModel {
     @NSManaged public var publishedDate: String?
     @NSManaged public var rating: NSNumber?
     @NSManaged public var title: String
-
 }
 
-extension BookModel : Identifiable {
-
-}
+extension BookModel : Identifiable {}

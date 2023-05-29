@@ -15,7 +15,8 @@ final class MainTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBar.tintColor = .black
+        self.tabBar.backgroundColor = .systemBackground
+        self.tabBar.tintColor = .label
     
         booksCoordinator.start()
         favoriteCoordinator.start()

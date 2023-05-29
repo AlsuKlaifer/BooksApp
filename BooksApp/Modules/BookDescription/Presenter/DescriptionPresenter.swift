@@ -29,6 +29,16 @@ final class DescriptionPresenter {
 
     // MARK: - Presenter
     
+    func viewDidLoad() {
+        guard let bookModel = bookStorage.getBookModel(with: book.id) else {
+            self.isFavorite = false
+            self.isRead = false
+            return
+        }
+        self.isFavorite = bookModel.isFavorite
+        self.isRead = bookModel.isRead
+    }
+    
     func addToFavorite() {
         guard let bookModel = bookStorage.getBookModel(with: book.id) else {
             let newBook = bookStorage.create(book)
@@ -39,10 +49,6 @@ final class DescriptionPresenter {
         bookStorage.updateFavorite(with: book.id)
         isFavorite.toggle()
         delete(bookModel: bookModel)
-        
-        //For check
-        let allbooks = bookStorage.readBookModels()
-        allbooks.forEach { print("id: \($0.id), isFavorite: \($0.isFavorite), isReaded: \($0.isRead)") }
     }
     
     func addToRead() {
@@ -55,10 +61,6 @@ final class DescriptionPresenter {
         bookStorage.updateRead(with: book.id)
         isRead.toggle()
         delete(bookModel: bookModel)
-        
-        //For check
-        let allbooks = bookStorage.readBookModels()
-        allbooks.forEach { print("id: \($0.id), isFavorite: \($0.isFavorite), isReaded: \($0.isRead)") }
     }
     
     private func delete(bookModel: BookModel) {

@@ -57,9 +57,6 @@ class DescriptionViewController: UIViewController {
 
     lazy var favoriteButton: UIButton = {
         let button = UIButton()
-        let imageName = output.isFavorite ? "bookmark.fill" : "bookmark"
-        let config = UIImage.SymbolConfiguration(pointSize: .maximum(30, 30), weight: .medium, scale: .large)
-        button.setImage(UIImage(systemName: imageName, withConfiguration: config), for: .normal)
         button.tintColor = .systemYellow
         button.addTarget(self, action: #selector(favoriteButtonTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -69,8 +66,8 @@ class DescriptionViewController: UIViewController {
     }()
     
     // Info View
-    private lazy var infoView: UIView = {
-        let view = UIView()
+    private lazy var infoView: UIStackView = {
+        let view = UIStackView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.cornerRadius = 15
         view.clipsToBounds = true
@@ -127,13 +124,8 @@ class DescriptionViewController: UIViewController {
     
     lazy var readButton: UIButton = {
         let button = UIButton()
-        let title = output.isRead ? "Remove from read" : "Add to read"
-        button.setTitle(title, for: .normal)
         button.addTarget(self, action: #selector(readButtonTapped), for: .touchUpInside)
         button.layer.cornerRadius = 25
-        let titleColor = output.isRead ? UIColor.label : .systemBackground
-        button.setTitleColor(titleColor, for: .normal)
-        button.backgroundColor = output.isRead ? .systemGray6 : .label
         button.translatesAutoresizingMaskIntoConstraints = false
         button.widthAnchor.constraint(equalToConstant: 250).isActive = true
         button.heightAnchor.constraint(equalToConstant: 50).isActive = true
@@ -151,8 +143,6 @@ class DescriptionViewController: UIViewController {
         }
         favoriteButton.tintColor = .systemYellow
         output.addToFavorite()
-
-        print("current book id: \(output.book.id)")
     }
 
     @objc func readButtonTapped() {
@@ -166,14 +156,19 @@ class DescriptionViewController: UIViewController {
             readButton.setTitleColor(UIColor.label, for: .normal)
         }
         output.addToRead()
-        print("current book id: \(output.book.id)")
     }
+    
+    // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         view.backgroundColor = .systemBackground
         setConstraints()
+        reloadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        output.viewDidLoad()
         reloadData()
     }
 
@@ -224,7 +219,7 @@ class DescriptionViewController: UIViewController {
 
         infoView.addSubview(ratingStack)
         NSLayoutConstraint.activate([
-            ratingStack.centerXAnchor.constraint(equalTo: infoView.centerXAnchor, constant: 0),
+            ratingStack.centerXAnchor.constraint(equalTo: infoView.centerXAnchor, constant: -5),
             ratingStack.topAnchor.constraint(equalTo: infoView.topAnchor, constant: 20)
         ])
         
@@ -249,6 +244,18 @@ extension DescriptionViewController: DescriptionViewInput {
         titleLabel.text = book.volumeInfo.title
         authorLabel.text = book.volumeInfo.authors?[0]
         imageView.downloadImage(from: book.volumeInfo.imageLinks.thumbnail)
+        
+        // Reload read button
+        let title = output.isRead ? "Remove from read" : "Add to read"
+        readButton.setTitle(title, for: .normal)
+        let titleColor = output.isRead ? UIColor.label : .systemBackground
+        readButton.setTitleColor(titleColor, for: .normal)
+        readButton.backgroundColor = output.isRead ? .systemGray6 : .label
+        
+        // Reload favorite button
+        let imageName = output.isFavorite ? "bookmark.fill" : "bookmark"
+        let config = UIImage.SymbolConfiguration(pointSize: .maximum(30, 30), weight: .medium, scale: .large)
+        favoriteButton.setImage(UIImage(systemName: imageName, withConfiguration: config), for: .normal)
     }
 }
 

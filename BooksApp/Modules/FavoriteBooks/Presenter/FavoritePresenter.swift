@@ -38,11 +38,10 @@ final class FavoritePresenter: FavoriteViewOutput {
         
         let favorite = bookStorage.getFavoriteBooks()
         data[1] = Section.favorite(favorite)
-        self.view?.reloadData()
-        print("data is reload")
         
-        data[0].items.forEach { print("FAVORITE: id: \($0.id), isFavorite: \($0.isFavorite), isReaded: \($0.isRead)") }
-        data[1].items.forEach { print("READ: id: \($0.id), isFavorite: \($0.isFavorite), isReaded: \($0.isRead)") }
+        DispatchQueue.main.async {
+            self.view?.reloadData()
+        }
     }
     
     func didSelectItem(item: BookModel) {
