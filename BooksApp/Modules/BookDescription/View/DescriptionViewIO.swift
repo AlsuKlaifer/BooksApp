@@ -8,10 +8,16 @@
 import Foundation
 
 // view
-protocol DescriptionViewInput: AnyObject {}
+protocol DescriptionViewInput: AnyObject {
+    func reloadData()
+}
 
 // presenter
 protocol DescriptionViewOutput: AnyObject {
     var book: Book { get }
+    var isFavorite: Bool { get }
+    var isRead: Bool { get }
     func viewDidLoad()
+    func addToFavorite()
+    func addToRead()
 }

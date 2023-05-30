@@ -18,10 +18,12 @@ final class BooksPresenter: BooksViewOutput {
     var dataSourcePopular: [ListItem] = []
     var dataSourceNew: [ListItem] = []
     var data: [ListSection] = []
+    var bookStorage: BookStorageProtocol
 
     // MARK: - Initialization
 
-    init(output: BooksModuleOutput, networkService: INetworkService) {
+    init(output: BooksModuleOutput, networkService: INetworkService, bookStorage: BookStorageProtocol) {
+        self.bookStorage = bookStorage
         self.output = output
         self.networkService = networkService
     }
@@ -29,8 +31,8 @@ final class BooksPresenter: BooksViewOutput {
     // MARK: - Presenter
 
     func viewDidLoad() {
+        data = [ListSection.new([]), MockData.shared.category, ListSection.popular([])]
         obtainData()
-        data = [ListSection.new([]), MockData.shared.category]
     }
 
     // MARK: - Private
@@ -46,7 +48,7 @@ final class BooksPresenter: BooksViewOutput {
                     accessInfo: book.accessInfo))
             }
             self.dataSourcePopular += items
-            self.data.append(ListSection.popular(self.dataSourcePopular))
+            self.data[2] = ListSection.popular(self.dataSourcePopular)
             self.view?.reloadData()
         }
         
@@ -81,13 +83,39 @@ final class BooksPresenter: BooksViewOutput {
         }
     }
     
-    
     func didSelectItem(item: ListItem) {
         switch item {
         case .book(let book):
             output.didSelectBook(module: self, book: book)
         case .category(let category):
             getCategory(category: category)
+        }
+    }
+    
+    func updateFavorite(item: ListItem) {
+        switch item {
+        case .book(let book):
+            guard let bookModel = bookStorage.getBookModel(with: book.id) else {
+                let newBook = bookStorage.create(book)
+                bookStorage.updateFavorite(with: newBook.id)
+                return
+            }
+            bookStorage.updateFavorite(with: book.id)
+            if !bookModel.isFavorite && !bookModel.isRead {
+                bookStorage.delete(id: bookModel.id)
+            }
+        default:
+            return
+        }
+    }
+    
+    func getFavorite(item: ListItem) -> Bool {
+        switch item {
+        case .book(let book):
+            guard let bookModel = bookStorage.getBookModel(with: book.id) else { return false }
+            return bookModel.isFavorite
+        default:
+            return false
         }
     }
 }

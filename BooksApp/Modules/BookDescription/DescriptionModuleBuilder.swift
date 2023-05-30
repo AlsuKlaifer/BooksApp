@@ -16,7 +16,7 @@ final class DescriptionModuleBuilder {
     }
     
     func build() -> UIViewController {
-        let presenter = DescriptionPresenter(book: book)
+        let presenter = DescriptionPresenter(book: book, bookStorage: BookStorage(parser: BookParser()))
         let viewController = DescriptionViewController(presenter: presenter)
         presenter.view = viewController
         return viewController

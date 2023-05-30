@@ -26,7 +26,8 @@ final class NewCollectionViewCell: UICollectionViewCell {
         label.textAlignment = .left
         label.font = UIFont.boldSystemFont(ofSize: 20)
         label.textColor = .white
-        label.numberOfLines = 0
+        label.numberOfLines = 2
+        label.lineBreakMode = .byTruncatingTail
         label.backgroundColor = UIColor(red: 10 / 255, green: 10 / 255, blue: 10 / 255, alpha: 0.5)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -34,7 +35,6 @@ final class NewCollectionViewCell: UICollectionViewCell {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.layer.cornerRadius = 10
         setupView()
         setConstraints()
     }
@@ -44,7 +44,6 @@ final class NewCollectionViewCell: UICollectionViewCell {
     }
 
     func setupView() {
-        backgroundColor = .systemGray5
         addSubview(newImageView)
         addSubview(newLabel)
     }
