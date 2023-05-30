@@ -8,7 +8,7 @@
 import Foundation
 
 final class FavoritePresenter: FavoriteViewOutput {
-    
+
     // Dependencies
     weak var view: FavoriteViewInput?
     private let output: FavoriteModuleOutput
@@ -31,23 +31,37 @@ final class FavoritePresenter: FavoriteViewOutput {
     func viewDidLoad() {
         setBooks()
     }
-    
+
     func setBooks() {
         let read = bookStorage.getReadBooks()
         data[0] = Section.read(read)
-        
+
         let favorite = bookStorage.getFavoriteBooks()
         data[1] = Section.favorite(favorite)
-        
+
         DispatchQueue.main.async {
             self.view?.reloadData()
         }
     }
-    
+
     func didSelectItem(item: BookModel) {
         let book = bookParser.parseToBook(bookModel: item)
         output.didSelectBook(module: self, book: book)
     }
+
+    func updateFavorite(item: BookModel) {
+        bookStorage.updateFavorite(with: item.id)
+        if !item.isFavorite && !item.isRead {
+            bookStorage.delete(id: item.id)
+        }
+    }
+    
+    func deleteFromRead(item: BookModel) {
+        bookStorage.updateRead(with: item.id)
+        if !item.isFavorite && !item.isRead {
+            bookStorage.delete(id: item.id)
+        }
+    }
 }
 
-extension FavoritePresenter: FavoriteModuleInput {}
+extension FavoritePresenter: FavoriteModuleInput { }

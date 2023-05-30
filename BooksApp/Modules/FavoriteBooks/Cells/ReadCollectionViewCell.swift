@@ -11,7 +11,9 @@ final class ReadCollectionViewCell: UICollectionViewCell {
     
     static let reuseIdentifier = "ReadCollectionViewCell"
     
-    private let imageView: UIImageView = {
+    var readButtonAction: (() -> Void)?
+    
+    private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
@@ -20,17 +22,17 @@ final class ReadCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
 
-    private let deleteButton: UIButton = {
+    private lazy var deleteButton: UIButton = {
         let button = UIButton()
         let config = UIImage.SymbolConfiguration(pointSize: .zero, weight: .light, scale: .small)
         button.setImage(UIImage(systemName: "xmark", withConfiguration: config), for: .normal)
         button.tintColor = .label
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(ReadCollectionViewCell.self, action: #selector(deleteButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(deleteButtonTapped), for: .touchUpInside)
         return button
     }()
     
-    private let label: UILabel = {
+    private lazy var label: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
         label.font = UIFont.boldSystemFont(ofSize: 16)
@@ -54,7 +56,7 @@ final class ReadCollectionViewCell: UICollectionViewCell {
     }
     
     @objc func deleteButtonTapped() {
-        
+        readButtonAction?()
     }
 
     func setConstraints () {

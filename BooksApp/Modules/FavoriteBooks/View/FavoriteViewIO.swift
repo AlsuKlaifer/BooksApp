@@ -16,5 +16,7 @@ protocol FavoriteViewInput: AnyObject {
 protocol FavoriteViewOutput: AnyObject {
     var data: [Section] { get set }
     func didSelectItem(item: BookModel)
+    func updateFavorite(item: BookModel)
+    func deleteFromRead(item: BookModel)
     func viewDidLoad()
 }

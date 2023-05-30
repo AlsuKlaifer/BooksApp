@@ -17,7 +17,7 @@ final class FavoriteCoordinator: Coordinator {
 
     func start() {
         let viewController = FavoriteModuleBuilder(output: self).build()
-        viewController.tabBarItem = UITabBarItem(title: "Favorite", image: UIImage(systemName: "bookmark"), tag: 1)
+        viewController.tabBarItem = UITabBarItem(title: "My books", image: UIImage(systemName: "bookmark"), tag: 1)
         navigationController.viewControllers = [viewController]
     }
 }

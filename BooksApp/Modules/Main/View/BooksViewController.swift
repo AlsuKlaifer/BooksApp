@@ -56,6 +56,7 @@ final class BooksViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+//        output.viewDidLoad()
         super.viewWillAppear(animated)
         navigationItem.hidesSearchBarWhenScrolling = false
     }
@@ -174,6 +175,10 @@ extension BooksViewController {
                     for: indexPath) as? PopularCollectionViewCell
                     else { return UICollectionViewCell() }
                 cell.configureCell(with: item)
+                cell.favoriteButtonAction = { [weak self] in
+                    self?.output.updateFavorite(item: item)
+                }
+                cell.isFavorite = self.output.getFavorite(item: item)
                 return cell
 
             case .category:

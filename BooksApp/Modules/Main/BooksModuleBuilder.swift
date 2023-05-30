@@ -16,7 +16,11 @@ final class BooksModuleBuilder {
     }
     
     func build() -> UIViewController {
-        let presenter = BooksPresenter(output: output, networkService: NetworkService())
+        let presenter = BooksPresenter(
+            output: output,
+            networkService: NetworkService(),
+            bookStorage: BookStorage(parser: BookParser())
+        )
         let viewController = BooksViewController(presenter: presenter)
         presenter.view = viewController
         return viewController

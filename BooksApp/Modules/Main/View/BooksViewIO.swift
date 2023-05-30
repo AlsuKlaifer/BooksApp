@@ -18,5 +18,7 @@ protocol BooksViewOutput: AnyObject {
     var dataSourceNew: [ListItem] { get }
     var data: [ListSection] { get set }
     func didSelectItem(item: ListItem)
+    func updateFavorite(item: ListItem)
+    func getFavorite(item: ListItem) -> Bool
     func viewDidLoad()
 }
