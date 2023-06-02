@@ -97,7 +97,7 @@ final class PopularCollectionViewCell: UICollectionViewCell {
         case .book(let book):
             popularLabel.text = book.volumeInfo.title.uppercased()
             authorLabel.text = book.volumeInfo.authors?[0]
-            popularImageView.downloadImage(from: book.volumeInfo.imageLinks.thumbnail)
+            popularImageView.downloadImage(from: book.volumeInfo.imageLinks?.thumbnail ?? "https://i.pinimg.com/originals/8d/b1/95/8db195a0990c29a50a63ea8e7767c6e8.jpg")
             if let stars = book.volumeInfo.averageRating {
                 starsView.updateView(starsCount: 5, rating: stars)
             }

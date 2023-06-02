@@ -16,7 +16,11 @@ final class SignOutModuleBuilder {
     }
     
     func build() -> UIViewController {
-        let presenter = SignOutPresenter(loginService: AuthorizationService(), output: output)
+        let presenter = SignOutPresenter(
+            loginService: AuthorizationService(),
+            output: output,
+            firestoreManager: FirestoreManager()
+        )
         let view = SignOutViewController(output: presenter)
         presenter.view = view
         return view

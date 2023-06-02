@@ -32,6 +32,8 @@
 		1537808E2A0948F300BF83FE /* BooksPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1537808D2A0948F300BF83FE /* BooksPresenter.swift */; };
 		153780902A09498F00BF83FE /* BooksViewIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1537808F2A09498F00BF83FE /* BooksViewIO.swift */; };
 		1537C45C2A25DA2A00ECCEFB /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1537C45B2A25DA2A00ECCEFB /* SectionHeader.swift */; };
+		1537C45E2A267A2800ECCEFB /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1537C45D2A267A2800ECCEFB /* FirestoreManager.swift */; };
+		1537C4612A267DC700ECCEFB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1537C4602A267DC700ECCEFB /* User.swift */; };
 		153D987E29D5F5FF00141BCB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153D987D29D5F5FF00141BCB /* AppDelegate.swift */; };
 		153D988029D5F5FF00141BCB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153D987F29D5F5FF00141BCB /* SceneDelegate.swift */; };
 		153D988729D5F60000141BCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 153D988629D5F60000141BCB /* Assets.xcassets */; };
@@ -78,6 +80,10 @@
 		15DDDF0D29FEAC1B007A16DE /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DDDF0C29FEAC1B007A16DE /* Book.swift */; };
 		15DDDF0F29FEACA5007A16DE /* ListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DDDF0E29FEACA5007A16DE /* ListSection.swift */; };
 		15DDDF1329FEAD33007A16DE /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DDDF1229FEAD33007A16DE /* MockData.swift */; };
+		15FC0A102A291BFB005E9329 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FC0A0F2A291BFB005E9329 /* DetailViewController.swift */; };
+		15FC0A132A291C16005E9329 /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FC0A122A291C16005E9329 /* DetailPresenter.swift */; };
+		15FC0A162A291CCF005E9329 /* DetailViewIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FC0A152A291CCF005E9329 /* DetailViewIO.swift */; };
+		15FC0A182A29228F005E9329 /* DetailModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FC0A172A29228F005E9329 /* DetailModuleBuilder.swift */; };
 		67481667ADFE33E382F4DDD4 /* Pods_BooksApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE858412584FDC7CFA83286B /* Pods_BooksApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -107,6 +113,8 @@
 		1537808D2A0948F300BF83FE /* BooksPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksPresenter.swift; sourceTree = "<group>"; };
 		1537808F2A09498F00BF83FE /* BooksViewIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksViewIO.swift; sourceTree = "<group>"; };
 		1537C45B2A25DA2A00ECCEFB /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
+		1537C45D2A267A2800ECCEFB /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
+		1537C4602A267DC700ECCEFB /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		153D987A29D5F5FF00141BCB /* BooksApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BooksApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		153D987D29D5F5FF00141BCB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		153D987F29D5F5FF00141BCB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -155,6 +163,10 @@
 		15DDDF0C29FEAC1B007A16DE /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		15DDDF0E29FEACA5007A16DE /* ListSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSection.swift; sourceTree = "<group>"; };
 		15DDDF1229FEAD33007A16DE /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
+		15FC0A0F2A291BFB005E9329 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		15FC0A122A291C16005E9329 /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
+		15FC0A152A291CCF005E9329 /* DetailViewIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewIO.swift; sourceTree = "<group>"; };
+		15FC0A172A29228F005E9329 /* DetailModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModuleBuilder.swift; sourceTree = "<group>"; };
 		55D74E3D5CFE846510040B84 /* Pods-BooksApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BooksApp.debug.xcconfig"; path = "Target Support Files/Pods-BooksApp/Pods-BooksApp.debug.xcconfig"; sourceTree = "<group>"; };
 		770BE6F8A31929EB75550F40 /* Pods-BooksApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BooksApp.release.xcconfig"; path = "Target Support Files/Pods-BooksApp/Pods-BooksApp.release.xcconfig"; sourceTree = "<group>"; };
 		AE858412584FDC7CFA83286B /* Pods_BooksApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BooksApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -195,6 +207,7 @@
 		151A8C1429DA046F000F2830 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				15FC0A0E2A291BDA005E9329 /* Details */,
 				1583B7312A13F0C3007889EE /* Searching */,
 				1550FF8E2A0D07E200E0C9E7 /* BookDescription */,
 				15B8E51C29FEA43500D340AA /* Main */,
@@ -290,6 +303,15 @@
 				1583B72D2A13B820007889EE /* BooksModuleIO.swift */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		1537C45F2A267DB400ECCEFB /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				1537C45D2A267A2800ECCEFB /* FirestoreManager.swift */,
+				1537C4602A267DC700ECCEFB /* User.swift */,
+			);
+			path = Firebase;
 			sourceTree = "<group>";
 		};
 		153D987129D5F5FF00141BCB = {
@@ -549,12 +571,40 @@
 		15DDDF1129FEAD23007A16DE /* Books */ = {
 			isa = PBXGroup;
 			children = (
+				1537C45F2A267DB400ECCEFB /* Firebase */,
 				15B8B6452A1B964F0095637A /* Storage */,
 				153780802A07DC4400BF83FE /* Network */,
 				15DDDF1229FEAD33007A16DE /* MockData.swift */,
 				153780872A0925A600BF83FE /* CacheManager.swift */,
 			);
 			path = Books;
+			sourceTree = "<group>";
+		};
+		15FC0A0E2A291BDA005E9329 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				15FC0A172A29228F005E9329 /* DetailModuleBuilder.swift */,
+				15FC0A142A291C1F005E9329 /* Presenter */,
+				15FC0A112A291C00005E9329 /* View */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		15FC0A112A291C00005E9329 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				15FC0A0F2A291BFB005E9329 /* DetailViewController.swift */,
+				15FC0A152A291CCF005E9329 /* DetailViewIO.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		15FC0A142A291C1F005E9329 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				15FC0A122A291C16005E9329 /* DetailPresenter.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		52A85B96CBFC2AFA47C77F96 /* Frameworks */ = {
@@ -720,6 +770,7 @@
 				153780822A07DC7000BF83FE /* NetworkService.swift in Sources */,
 				154550662A1F680E00A9B58E /* FavoriteViewIO.swift in Sources */,
 				15B8E51F29FEA48F00D340AA /* CategoryCollectionViewCell.swift in Sources */,
+				15FC0A132A291C16005E9329 /* DetailPresenter.swift in Sources */,
 				153402632A14BCB2000943BF /* StarTypeIterator.swift in Sources */,
 				15B8B6402A1B95B60095637A /* CoreData.xcdatamodeld in Sources */,
 				151A8C1D29DA0D8C000F2830 /* LoginViewController.swift in Sources */,
@@ -748,6 +799,7 @@
 				15C2B2A42A126A7600F3EC9F /* DescriptionPresenter.swift in Sources */,
 				15B75C7229FE9D5000B886DB /* TextField.swift in Sources */,
 				15DDDF1329FEAD33007A16DE /* MockData.swift in Sources */,
+				15FC0A102A291BFB005E9329 /* DetailViewController.swift in Sources */,
 				159C10A029E34BB800ABA0C9 /* LoginModuleBuilder.swift in Sources */,
 				15DDDF0B29FEABD1007A16DE /* PopularCollectionViewCell.swift in Sources */,
 				15B8B6432A1B96270095637A /* BookModel+CoreDataClass.swift in Sources */,
@@ -757,6 +809,7 @@
 				154B605C29E82A91000FD3EC /* BooksCoordinator.swift in Sources */,
 				154B605629E7E35D000FD3EC /* FavoriteViewController.swift in Sources */,
 				15B8B6442A1B96270095637A /* BookModel+CoreDataProperties.swift in Sources */,
+				1537C4612A267DC700ECCEFB /* User.swift in Sources */,
 				151A8C1B29DA0D63000F2830 /* LoginPresenter.swift in Sources */,
 				153D987E29D5F5FF00141BCB /* AppDelegate.swift in Sources */,
 				151A8C2629DA216D000F2830 /* SignUpViewController.swift in Sources */,
@@ -769,12 +822,15 @@
 				1550FF8D2A0D017600E0C9E7 /* BooksModuleBuilder.swift in Sources */,
 				153D988029D5F5FF00141BCB /* SceneDelegate.swift in Sources */,
 				15300DBB29F59F2C0060D765 /* Button.swift in Sources */,
+				15FC0A162A291CCF005E9329 /* DetailViewIO.swift in Sources */,
 				159C10AD29E459BD00ABA0C9 /* SignOutModuleBuilder.swift in Sources */,
 				15C2B2A62A126A8500F3EC9F /* DescriptionViewIO.swift in Sources */,
 				154B605E29E82B08000FD3EC /* FavoriteCoordinator.swift in Sources */,
 				154B605A29E827AF000FD3EC /* MainTabBarController.swift in Sources */,
+				15FC0A182A29228F005E9329 /* DetailModuleBuilder.swift in Sources */,
 				15300DC729F665650060D765 /* ChangePasswordModuleBuilder.swift in Sources */,
 				153780902A09498F00BF83FE /* BooksViewIO.swift in Sources */,
+				1537C45E2A267A2800ECCEFB /* FirestoreManager.swift in Sources */,
 				159C10AE29E459C500ABA0C9 /* SignUpModuleBuilder.swift in Sources */,
 				15DDDF0929FEABC1007A16DE /* NewCollectionViewCell.swift in Sources */,
 			);

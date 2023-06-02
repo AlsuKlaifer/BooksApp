@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DescriptionViewController: UIViewController {
+final class DescriptionViewController: UIViewController {
 
     // Dependencies
     private let output: DescriptionViewOutput
@@ -125,12 +125,37 @@ class DescriptionViewController: UIViewController {
     lazy var readButton: UIButton = {
         let button = UIButton()
         button.addTarget(self, action: #selector(readButtonTapped), for: .touchUpInside)
-        button.layer.cornerRadius = 25
+        button.layer.cornerRadius = 15
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.widthAnchor.constraint(equalToConstant: 250).isActive = true
+        button.widthAnchor.constraint(equalToConstant: view.bounds.width / 2 - 20).isActive = true
         button.heightAnchor.constraint(equalToConstant: 50).isActive = true
         return button
     }()
+    
+    lazy var infoButton: UIButton = {
+        let button = UIButton()
+        button.addTarget(self, action: #selector(infoButtonTapped), for: .touchUpInside)
+        button.layer.cornerRadius = 15
+        button.setTitle("Show info", for: .normal)
+        button.setTitleColor(UIColor.systemBackground, for: .normal)
+        button.backgroundColor = .label
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.widthAnchor.constraint(equalToConstant: view.bounds.width / 2 - 20).isActive = true
+        button.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        return button
+    }()
+    
+    func createBottomView() -> UIViewController {
+        let presenter = DetailPresenter(book: output.book)
+        let viewController = DetailViewController(presenter: presenter)
+        presenter.view = viewController
+        viewController.modalPresentationStyle = .pageSheet
+//        let nav = UINavigationController(rootViewController: viewController)
+//        nav.modalPresentationStyle = .formSheet
+        return viewController
+    }
+    
+    lazy var modalView = createBottomView()
 
     // MARK: - Buttons Action
     
@@ -158,6 +183,20 @@ class DescriptionViewController: UIViewController {
         output.addToRead()
     }
     
+    @objc func infoButtonTapped() {
+        if #available(iOS 15.0, *) {
+            if let sheet = modalView.sheetPresentationController {
+                sheet.detents = [.medium(), .large()]
+                sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+                sheet.largestUndimmedDetentIdentifier = .medium
+                sheet.preferredCornerRadius = 50
+            }
+            present(modalView, animated: true, completion: nil)
+        } else {
+            present(modalView, animated: true, completion: nil)
+        }
+    }
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -170,6 +209,10 @@ class DescriptionViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         output.viewDidLoad()
         reloadData()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        modalView.dismiss(animated: true)
     }
 
     // MARK: - Constraints
@@ -229,10 +272,15 @@ class DescriptionViewController: UIViewController {
             languageStack.topAnchor.constraint(equalTo: infoView.topAnchor, constant: 20)
         ])
         
-        view.addSubview(readButton)
+        let stack = UIStackView(arrangedSubviews: [readButton, infoButton])
+        stack.axis = .horizontal
+        stack.spacing = 10
+        stack.alignment = .center
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(stack)
         NSLayoutConstraint.activate([
-            readButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
-            readButton.topAnchor.constraint(equalTo: infoView.bottomAnchor, constant: 40)
+            stack.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
+            stack.topAnchor.constraint(equalTo: infoView.bottomAnchor, constant: 40)
         ])
     }
 }
@@ -243,7 +291,7 @@ extension DescriptionViewController: DescriptionViewInput {
         let book = output.book
         titleLabel.text = book.volumeInfo.title
         authorLabel.text = book.volumeInfo.authors?[0]
-        imageView.downloadImage(from: book.volumeInfo.imageLinks.thumbnail)
+        imageView.downloadImage(from: book.volumeInfo.imageLinks?.thumbnail ?? "https://i.pinimg.com/originals/8d/b1/95/8db195a0990c29a50a63ea8e7767c6e8.jpg")
         
         // Reload read button
         let title = output.isRead ? "Remove from read" : "Add to read"

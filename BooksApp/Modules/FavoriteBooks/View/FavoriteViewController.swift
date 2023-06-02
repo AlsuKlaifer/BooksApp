@@ -171,6 +171,7 @@ extension FavoriteViewController {
             cell.favoriteButtonAction = { [weak self] in
                 self?.showAlert("Do you really want to remove this book from your favorite list?", completion: {
                     self?.output.updateFavorite(item: book)
+                    self?.output.viewDidLoad()
                 })
                 self?.output.viewDidLoad()
             }
