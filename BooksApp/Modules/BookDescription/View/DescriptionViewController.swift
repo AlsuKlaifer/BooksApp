@@ -145,16 +145,6 @@ final class DescriptionViewController: UIViewController {
         return button
     }()
     
-    func createBottomView() -> UIViewController {
-        let presenter = DetailPresenter(book: output.book)
-        let viewController = DetailViewController(presenter: presenter)
-        presenter.view = viewController
-        viewController.modalPresentationStyle = .pageSheet
-//        let nav = UINavigationController(rootViewController: viewController)
-//        nav.modalPresentationStyle = .formSheet
-        return viewController
-    }
-    
     lazy var modalView = createBottomView()
 
     // MARK: - Buttons Action
@@ -325,5 +315,11 @@ extension DescriptionViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 16, weight: .light)
         return label
+    }
+    
+    func createBottomView() -> UIViewController {
+        let viewController = DetailModuleBuilder(book: output.book).build()
+        viewController.modalPresentationStyle = .pageSheet
+        return viewController
     }
 }

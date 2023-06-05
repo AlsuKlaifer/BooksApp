@@ -8,9 +8,7 @@
 import Foundation
 
 // view
-protocol DetailViewInput: AnyObject {
-    
-}
+protocol DetailViewInput: AnyObject { }
 
 // presenter
 protocol DetailViewOutput: AnyObject {

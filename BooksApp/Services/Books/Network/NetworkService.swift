@@ -20,10 +20,8 @@ final class NetworkService: INetworkService {
     
     func getPopularBooks(completion: @escaping ([Book]) -> Void) {
         let request = AF.request(apiBase + "?q=+subject:life&orderBy=newest")
-        print(request)
         request.responseDecodable(of: APIResponse<[Book]>.self) { dataResponse in
             let response: APIResponse<[Book]>? = dataResponse.value
-            print(dataResponse)
             completion(response?.items ?? [])
         }
     }
@@ -31,7 +29,6 @@ final class NetworkService: INetworkService {
     func getNewBooks(completion: @escaping ([Book]) -> Void) {
         let params: [String: Any] = ["orderBy=": "newest"]
         let request = AF.request(apiBase + "?q=inauthor:Thomas&intitle:the", parameters: params)
-
         request.responseDecodable(of: APIResponse<[Book]>.self) { dataResponse in
             let response: APIResponse<[Book]>? = dataResponse.value
             completion(response?.items ?? [])
