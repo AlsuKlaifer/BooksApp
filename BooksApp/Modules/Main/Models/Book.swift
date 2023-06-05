@@ -19,7 +19,6 @@ struct Book: Hashable, Decodable {
 struct VolumeInfo: Hashable, Decodable {
     let title: String
     let authors: [String]?
-//    let publisher: String
     let publishedDate: String?
     let description: String?
     let imageLinks: ImageLinks?
@@ -27,7 +26,6 @@ struct VolumeInfo: Hashable, Decodable {
     let categories: [String]?
     let averageRating: Double?
     let language: String
-//    let previewLink: String
 }
 
 struct SaleInfo: Hashable, Decodable {
@@ -38,7 +36,6 @@ struct SaleInfo: Hashable, Decodable {
 }
 
 struct AccessInfo: Hashable, Decodable {
-//    let country: String
     let epub: Pdf
     let pdf: Pdf
     let webReaderLink: String

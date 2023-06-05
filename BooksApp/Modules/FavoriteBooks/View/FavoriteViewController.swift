@@ -237,16 +237,3 @@ extension FavoriteViewController: FavoriteViewInput {
         collectionView.reloadData()
     }
 }
-
-enum Section {
-    case read([BookModel])
-    case favorite([BookModel])
-
-    var items: [BookModel] {
-        switch self {
-        case .read(let items),
-        .favorite(let items):
-            return items
-        }
-    }
-}

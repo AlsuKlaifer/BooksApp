@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		15046D7829E9CE1500564385 /* AuthFlowIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15046D7729E9CE1500564385 /* AuthFlowIO.swift */; };
+		1505C2942A2DE06E00BE4AEE /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1505C2932A2DE06E00BE4AEE /* Section.swift */; };
 		151A8C1929DA0867000F2830 /* LoginViewIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151A8C1829DA0867000F2830 /* LoginViewIO.swift */; };
 		151A8C1B29DA0D63000F2830 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151A8C1A29DA0D63000F2830 /* LoginPresenter.swift */; };
 		151A8C1D29DA0D8C000F2830 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151A8C1C29DA0D8C000F2830 /* LoginViewController.swift */; };
@@ -89,6 +90,7 @@
 
 /* Begin PBXFileReference section */
 		15046D7729E9CE1500564385 /* AuthFlowIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFlowIO.swift; sourceTree = "<group>"; };
+		1505C2932A2DE06E00BE4AEE /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		151A8C1829DA0867000F2830 /* LoginViewIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewIO.swift; sourceTree = "<group>"; };
 		151A8C1A29DA0D63000F2830 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		151A8C1C29DA0D8C000F2830 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -379,6 +381,7 @@
 				15A6B6312A1FF982004D9AC9 /* View */,
 				15A6B6322A1FF99C004D9AC9 /* Presenter */,
 				154550602A1F5AC500A9B58E /* Cells */,
+				1505C2932A2DE06E00BE4AEE /* Section.swift */,
 			);
 			path = FavoriteBooks;
 			sourceTree = "<group>";
@@ -759,6 +762,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1505C2942A2DE06E00BE4AEE /* Section.swift in Sources */,
 				15046D7829E9CE1500564385 /* AuthFlowIO.swift in Sources */,
 				1583B72E2A13B820007889EE /* BooksModuleIO.swift in Sources */,
 				153780882A0925A600BF83FE /* CacheManager.swift in Sources */,

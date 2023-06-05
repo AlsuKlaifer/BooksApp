@@ -38,10 +38,12 @@ final class FirestoreManager: FirestoreManagerProtocol {
 
     func writeUser(collection: String, document: String, name: String, email: String) {
         let database = configureDB()
-        database.collection(collection).document(document).setData([
-            "name": "\(name)",
-            "email": "\(email)"
-        ]) { error in
+        database.collection(collection).document(document).setData(
+            [
+                "name": "\(name)",
+                "email": "\(email)"
+            ]
+        ) { error in
             if let error = error {
                 print(error.localizedDescription)
             }

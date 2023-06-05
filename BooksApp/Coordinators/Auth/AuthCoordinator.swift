@@ -19,7 +19,6 @@ final class AuthCoordinator: Coordinator {
         let loginViewController = LoginModuleBuilder(output: self).build()
         self.navigationController = UINavigationController(rootViewController: loginViewController)
         self.navigationController.navigationBar.prefersLargeTitles = true
-        self.navigationController.navigationBar.isTranslucent = true
     }
 }
 
