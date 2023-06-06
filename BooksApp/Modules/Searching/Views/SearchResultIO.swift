@@ -18,7 +18,4 @@ protocol SearchResultViewOutput: AnyObject {
     func didSelectItem(book: Book)
     func updateFavorite(book: Book)
     func getFavorite(book: Book) -> Bool
-    func viewDidLoad()
-    func willDisplay(type: String, orderBy: String?, filter: String?, startIndex: Int, completion: @escaping () -> Void)
-    func search(with: String, type: String, orderBy: String?, filter: String?)
 }

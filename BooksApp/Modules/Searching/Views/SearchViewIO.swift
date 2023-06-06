@@ -21,6 +21,5 @@ protocol SearchViewOutput: AnyObject {
     func viewDidLoad()
     func willDisplay(type: String, orderBy: String?, filter: String?, startIndex: Int, completion: @escaping () -> Void)
     func getBooks(type: String, orderBy: String?, filter: String?, startIndex: Int)
-    func search(with: String, type: String, orderBy: String?, filter: String?)
-    func createResultModule() -> UIViewController
+    func search(with: String, type: String, orderBy: String?, filter: String?, completion: @escaping ([Book]) -> Void)
 }

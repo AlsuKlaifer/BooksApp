@@ -1,5 +1,5 @@
 //
-//  SearchPresenter.swift
+//  SearchResultPresenter.swift
 //  BooksApp
 //
 //  Created by Alsu Faizova on 06.06.2023.
@@ -7,10 +7,10 @@
 
 import Foundation
 
-final class SearchPresenter: SearchViewOutput {
+final class SearchResultPresenter: SearchResultViewOutput {
 
     // Dependencies
-    weak var view: SearchViewInput?
+    weak var view: SearchResultViewInput?
     
     private let output: SearchModuleOutput
     private let bookStorage: BookStorageProtocol
@@ -32,15 +32,6 @@ final class SearchPresenter: SearchViewOutput {
     func viewDidLoad() {
         DispatchQueue.main.async {
             self.view?.reloadData()
-        }
-    }
-    
-    func getBooks(type: String, orderBy: String?, filter: String?, startIndex: Int) {
-        networkService.getSearchView(type: type, orderBy: orderBy, filter: filter, startIndex: startIndex) { [weak self] books in
-            self?.data = books
-            DispatchQueue.main.async { [weak self] in
-                self?.view?.reloadData()
-            }
         }
     }
     
@@ -82,4 +73,4 @@ final class SearchPresenter: SearchViewOutput {
     }
 }
 
-extension SearchPresenter: SearchModuleInput { }
+extension SearchResultPresenter: SearchModuleInput { }

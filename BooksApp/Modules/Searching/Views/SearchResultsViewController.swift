@@ -12,21 +12,8 @@ protocol SearchResultsViewControllerDelegate: AnyObject {
 }
 
 class SearchResultsViewController: UIViewController {
-    
-    var data: [Book] = []
-    // Dependencies
-//    private let output: SearchViewOutput
-//
-//    // MARK: - Initialization
-//
-//    init(presenter: SearchViewOutput) {
-//        output = presenter
-//        super.init(nibName: nil, bundle: nil)
-//    }
-//
-//    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
+
+    public var books: [Book] = []
     
     public weak var delegate: SearchResultsViewControllerDelegate?
     
@@ -42,7 +29,6 @@ class SearchResultsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        output.viewDidLoad()
         view.backgroundColor = .systemBackground
         view.addSubview(searchResultsTable)
         
@@ -59,13 +45,12 @@ class SearchResultsViewController: UIViewController {
 
 extension SearchResultsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        20
-//        return output.data.count
+        books.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchCell.reuseIdentifier, for: indexPath) as? SearchCell else { return UITableViewCell() }
-        cell.configureCell(with: data[indexPath.row])
+        cell.configureCell(with: books[indexPath.row])
 //        cell.favoriteButtonAction = { [weak self] in
 //            self?.output.updateFavorite(item: books[indexPath.row])
 //        }
@@ -78,13 +63,13 @@ extension SearchResultsViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        tableView.deselectRow(at: indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
 //        delegate?.searchResultsViewControllerDidTapItem(output.data[indexPath.row])
     }
 }
 
-//extension SearchResultsViewController: SearchViewInput {
-//    func reloadData() {
-//        searchResultsTable.reloadData()
-//    }
-//}
+extension SearchResultsViewController: SearchResultViewInput {
+    func reloadData() {
+        searchResultsTable.reloadData()
+    }
+}

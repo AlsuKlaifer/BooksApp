@@ -91,13 +91,6 @@ final class SearchCell: UITableViewCell {
         favoriteButtonAction?()
     }
     
-    override func layoutSubviews() {
-        let margins = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
-        contentView.frame = contentView.frame.inset(by: margins)
-        contentView.layer.cornerRadius = 8
-        super.layoutSubviews()
-    }
-    
     func configureCell(with book: Book) {
         popularLabel.text = book.volumeInfo.title.uppercased()
         authorLabel.text = book.volumeInfo.authors?[0]

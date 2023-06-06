@@ -66,6 +66,15 @@ final class SearchViewController: UIViewController {
         searchController.searchBar.placeholder = "Title, Author"
         return searchController
     }()
+    
+    private let searchBar: UISearchBar = {
+        let search = UISearchBar()
+        search.placeholder = "Title, Author"
+        search.backgroundImage = UIImage()
+        search.tintColor = .orange
+        search.translatesAutoresizingMaskIntoConstraints = false
+        return search
+    }()
 
     private lazy var segmentedControl: UISegmentedControl = {
         let segmentedControl = UISegmentedControl(items: self.items)
@@ -223,7 +232,12 @@ extension SearchViewController: UISearchResultsUpdating, SearchResultsViewContro
             let resultController = searchController.searchResultsController as? SearchResultsViewController else { return }
         resultController.delegate = self
 
-        output.search(with: query, type: items[type], orderBy: sort, filter: filter)
+        output.search(with: query, type: items[type], orderBy: sort, filter: filter) { books in
+            DispatchQueue.main.async {
+                resultController.books = books
+                resultController.searchResultsTable.reloadData()
+            }
+        }
     }
 }
 

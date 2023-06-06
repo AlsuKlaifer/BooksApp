@@ -40,10 +40,4 @@ extension BooksCoordinator: SearchModuleOutput {
         let viewController = DescriptionModuleBuilder(book: book).build()
         navigationController.pushViewController(viewController, animated: true)
     }
-    
-    func createResultModule(module: SearchModuleInput) -> UIViewController {
-//        let viewController = SearchModuleBuilder(output: self).buildResult()
-//        return viewController
-        return UIViewController()
-    }
 }
