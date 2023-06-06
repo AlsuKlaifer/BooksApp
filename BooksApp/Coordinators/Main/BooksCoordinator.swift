@@ -19,6 +19,7 @@ final class BooksCoordinator: Coordinator {
         let viewController = BooksModuleBuilder(output: self).build()
         viewController.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house"), tag: 0)
         navigationController.viewControllers = [viewController]
+        navigationController.navigationBar.tintColor = .label
     }
 }
 

@@ -6,6 +6,7 @@ target 'BooksApp' do
   pod 'FirebaseFirestore'
   pod 'FirebaseDatabase'
   pod 'Alamofire'
+  pod 'ProgressHUD'
 end
 
 post_install do |installer|

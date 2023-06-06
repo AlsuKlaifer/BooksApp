@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ProgressHUD
 
 enum Filter: String {
     case byPartial = "Partial"
@@ -66,15 +67,6 @@ final class SearchViewController: UIViewController {
         searchController.searchBar.placeholder = "Title, Author"
         return searchController
     }()
-    
-    private let searchBar: UISearchBar = {
-        let search = UISearchBar()
-        search.placeholder = "Title, Author"
-        search.backgroundImage = UIImage()
-        search.tintColor = .orange
-        search.translatesAutoresizingMaskIntoConstraints = false
-        return search
-    }()
 
     private lazy var segmentedControl: UISegmentedControl = {
         let segmentedControl = UISegmentedControl(items: self.items)
@@ -96,7 +88,10 @@ final class SearchViewController: UIViewController {
         searchTable.keyboardDismissMode = .onDrag
         searchController.searchResultsUpdater = self
         searchTable.tableHeaderView = segmentedControl
-        output.getBooks(type: items[type], orderBy: sort, filter: filter, startIndex: startIndex)
+        ProgressHUD.show()
+        output.getBooks(type: items[type], orderBy: sort, filter: filter, startIndex: startIndex) {
+            ProgressHUD.dismiss()
+        }
         output.viewDidLoad()
         // Setting navigation bar
         navigationItem.rightBarButtonItems = [
@@ -113,11 +108,13 @@ final class SearchViewController: UIViewController {
                 action: #selector(sortAction)
             )
         ]
+        navigationItem.titleView?.tintColor = .label
         navigationItem.searchController = searchController
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        reloadData()
         navigationItem.hidesSearchBarWhenScrolling = false
     }
 
@@ -131,10 +128,14 @@ final class SearchViewController: UIViewController {
         searchTable.frame = view.bounds
     }
 
-    @objc func segmentedValueChanged(_ sender: UISegmentedControl!) {
+    @objc func segmentedValueChanged(_ sender: UISegmentedControl) {
         type = segmentedControl.selectedSegmentIndex
         startIndex = 0
-        output.getBooks(type: items[type], orderBy: sort, filter: filter, startIndex: startIndex)
+        filter = nil
+        ProgressHUD.show()
+        output.getBooks(type: items[type], orderBy: sort, filter: filter, startIndex: startIndex) {
+            ProgressHUD.dismiss()
+        }
     }
 
     @objc func sortAction() {
@@ -160,19 +161,28 @@ final class SearchViewController: UIViewController {
     func alertSortAction(_ action: UIAlertAction) {
         sort = action.title
         startIndex = 0
-        output.getBooks(type: items[type], orderBy: sort, filter: filter, startIndex: startIndex)
+        ProgressHUD.show()
+        output.getBooks(type: items[type], orderBy: sort, filter: filter, startIndex: startIndex) {
+            ProgressHUD.dismiss()
+        }
     }
 
     func alertFilterAction(_ action: UIAlertAction) {
         startIndex = 0
         if action.style == .destructive {
             filter = nil
-            output.getBooks(type: items[type], orderBy: sort, filter: filter, startIndex: startIndex)
+            ProgressHUD.show()
+            output.getBooks(type: items[type], orderBy: sort, filter: filter, startIndex: startIndex) {
+                ProgressHUD.dismiss()
+            }
         } else {
             filter = action.title
         }
         guard let filterAction = filter else { return }
-        output.getBooks(type: items[type], orderBy: sort, filter: "&filter=\(filterAction)", startIndex: startIndex)
+        ProgressHUD.show()
+        output.getBooks(type: items[type], orderBy: sort, filter: "&filter=\(filterAction)", startIndex: startIndex) {
+            ProgressHUD.dismiss()
+        }
         filter = "&filter=\(action.title ?? "paid-ebooks")"
     }
 }
@@ -230,10 +240,12 @@ extension SearchViewController: UISearchResultsUpdating, SearchResultsViewContro
         guard let query = searchBar.text,
             !query.trimmingCharacters(in: .whitespaces).isEmpty,
             let resultController = searchController.searchResultsController as? SearchResultsViewController else { return }
+        ProgressHUD.show()
         resultController.delegate = self
 
         output.search(with: query, type: items[type], orderBy: sort, filter: filter) { books in
             DispatchQueue.main.async {
+                ProgressHUD.dismiss()
                 resultController.books = books
                 resultController.searchResultsTable.reloadData()
             }

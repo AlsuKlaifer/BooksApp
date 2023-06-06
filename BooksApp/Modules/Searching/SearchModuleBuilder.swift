@@ -25,16 +25,4 @@ final class SearchModuleBuilder {
         presenter.view = viewController
         return viewController
     }
-    
-    func buildResult() -> UIViewController {
-//        let presenter = SearchPresenter(
-//            output: output,
-//            bookStorage: BookStorage(parser: BookParser()),
-//            networkService: NetworkService()
-//        )
-//        let viewController = SearchResultsViewController(presenter: presenter)
-//        presenter.resultView = viewController
-//        return viewController
-        return UIViewController()
-    }
 }

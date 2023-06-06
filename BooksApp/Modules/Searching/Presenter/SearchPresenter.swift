@@ -35,8 +35,9 @@ final class SearchPresenter: SearchViewOutput {
         }
     }
     
-    func getBooks(type: String, orderBy: String?, filter: String?, startIndex: Int) {
+    func getBooks(type: String, orderBy: String?, filter: String?, startIndex: Int, completion: (() -> Void)?) {
         networkService.getSearchView(type: type, orderBy: orderBy, filter: filter, startIndex: startIndex) { [weak self] books in
+            completion?()
             self?.data = books
             DispatchQueue.main.async { [weak self] in
                 self?.view?.reloadData()

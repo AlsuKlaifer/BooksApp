@@ -20,6 +20,6 @@ protocol SearchViewOutput: AnyObject {
     func getFavorite(book: Book) -> Bool
     func viewDidLoad()
     func willDisplay(type: String, orderBy: String?, filter: String?, startIndex: Int, completion: @escaping () -> Void)
-    func getBooks(type: String, orderBy: String?, filter: String?, startIndex: Int)
+    func getBooks(type: String, orderBy: String?, filter: String?, startIndex: Int, completion: (() -> Void)?)
     func search(with: String, type: String, orderBy: String?, filter: String?, completion: @escaping ([Book]) -> Void)
 }

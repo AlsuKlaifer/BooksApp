@@ -15,8 +15,6 @@
 		1505C2A22A2F098100BE4AEE /* SearchViewIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1505C2A12A2F098100BE4AEE /* SearchViewIO.swift */; };
 		1505C2A42A2F0A5100BE4AEE /* SearchModuleIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1505C2A32A2F0A5100BE4AEE /* SearchModuleIO.swift */; };
 		1505C2A62A2F14C500BE4AEE /* SearchModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1505C2A52A2F14C500BE4AEE /* SearchModuleBuilder.swift */; };
-		1505C2AC2A2F476100BE4AEE /* SearchResultIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1505C2AB2A2F476100BE4AEE /* SearchResultIO.swift */; };
-		1505C2AE2A2F4F6200BE4AEE /* SearchResultPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1505C2AD2A2F4F6200BE4AEE /* SearchResultPresenter.swift */; };
 		151A8C1929DA0867000F2830 /* LoginViewIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151A8C1829DA0867000F2830 /* LoginViewIO.swift */; };
 		151A8C1B29DA0D63000F2830 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151A8C1A29DA0D63000F2830 /* LoginPresenter.swift */; };
 		151A8C1D29DA0D8C000F2830 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151A8C1C29DA0D8C000F2830 /* LoginViewController.swift */; };
@@ -99,8 +97,6 @@
 		1505C2A12A2F098100BE4AEE /* SearchViewIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewIO.swift; sourceTree = "<group>"; };
 		1505C2A32A2F0A5100BE4AEE /* SearchModuleIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModuleIO.swift; sourceTree = "<group>"; };
 		1505C2A52A2F14C500BE4AEE /* SearchModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModuleBuilder.swift; sourceTree = "<group>"; };
-		1505C2AB2A2F476100BE4AEE /* SearchResultIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultIO.swift; sourceTree = "<group>"; };
-		1505C2AD2A2F4F6200BE4AEE /* SearchResultPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultPresenter.swift; sourceTree = "<group>"; };
 		151A8C1829DA0867000F2830 /* LoginViewIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewIO.swift; sourceTree = "<group>"; };
 		151A8C1A29DA0D63000F2830 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		151A8C1C29DA0D8C000F2830 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -202,9 +198,8 @@
 			isa = PBXGroup;
 			children = (
 				1505C2952A2DEA3400BE4AEE /* SearchViewController.swift */,
-				1505C2A12A2F098100BE4AEE /* SearchViewIO.swift */,
 				1505C2972A2DEC0B00BE4AEE /* SearchResultsViewController.swift */,
-				1505C2AB2A2F476100BE4AEE /* SearchResultIO.swift */,
+				1505C2A12A2F098100BE4AEE /* SearchViewIO.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -213,7 +208,6 @@
 			isa = PBXGroup;
 			children = (
 				1505C29F2A2F097500BE4AEE /* SearchPresenter.swift */,
-				1505C2AD2A2F4F6200BE4AEE /* SearchResultPresenter.swift */,
 				1505C2A32A2F0A5100BE4AEE /* SearchModuleIO.swift */,
 			);
 			path = Presenter;
@@ -785,7 +779,6 @@
 				15D5525129E333D30073888B /* ChangePasswordModuleIO.swift in Sources */,
 				15B8B6472A1B96BB0095637A /* BookStorage.swift in Sources */,
 				1505C2A62A2F14C500BE4AEE /* SearchModuleBuilder.swift in Sources */,
-				1505C2AE2A2F4F6200BE4AEE /* SearchResultPresenter.swift in Sources */,
 				1583B7302A13C424007889EE /* DescriptionModuleBuilder.swift in Sources */,
 				151A8C2A29DB0C80000F2830 /* AppCoordinator.swift in Sources */,
 				1545506C2A1F95F900A9B58E /* ReadCollectionViewCell.swift in Sources */,
@@ -817,7 +810,6 @@
 				15B8B6442A1B96270095637A /* BookModel+CoreDataProperties.swift in Sources */,
 				151A8C1B29DA0D63000F2830 /* LoginPresenter.swift in Sources */,
 				1505C2A22A2F098100BE4AEE /* SearchViewIO.swift in Sources */,
-				1505C2AC2A2F476100BE4AEE /* SearchResultIO.swift in Sources */,
 				153D987E29D5F5FF00141BCB /* AppDelegate.swift in Sources */,
 				151A8C2629DA216D000F2830 /* SignUpViewController.swift in Sources */,
 				154B605429E7E336000FD3EC /* BooksViewController.swift in Sources */,

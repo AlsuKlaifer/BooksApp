@@ -51,10 +51,6 @@ extension SearchResultsViewController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchCell.reuseIdentifier, for: indexPath) as? SearchCell else { return UITableViewCell() }
         cell.configureCell(with: books[indexPath.row])
-//        cell.favoriteButtonAction = { [weak self] in
-//            self?.output.updateFavorite(item: books[indexPath.row])
-//        }
-//        cell.isFavorite = self.output.getFavorite(item: books[indexPath.row])
         return cell
     }
     
@@ -64,11 +60,11 @@ extension SearchResultsViewController: UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-//        delegate?.searchResultsViewControllerDidTapItem(output.data[indexPath.row])
+        delegate?.searchResultsViewControllerDidTapItem(books[indexPath.row])
     }
 }
 
-extension SearchResultsViewController: SearchResultViewInput {
+extension SearchResultsViewController: SearchViewInput {
     func reloadData() {
         searchResultsTable.reloadData()
     }
