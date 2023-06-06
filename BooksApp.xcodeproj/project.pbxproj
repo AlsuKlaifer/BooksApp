@@ -8,6 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		15046D7829E9CE1500564385 /* AuthFlowIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15046D7729E9CE1500564385 /* AuthFlowIO.swift */; };
+		1505C2962A2DEA3400BE4AEE /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1505C2952A2DEA3400BE4AEE /* SearchViewController.swift */; };
+		1505C2982A2DEC0B00BE4AEE /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1505C2972A2DEC0B00BE4AEE /* SearchResultsViewController.swift */; };
+		1505C29B2A2DF0CD00BE4AEE /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1505C29A2A2DF0CD00BE4AEE /* SearchCell.swift */; };
+		1505C2A02A2F097500BE4AEE /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1505C29F2A2F097500BE4AEE /* SearchPresenter.swift */; };
+		1505C2A22A2F098100BE4AEE /* SearchViewIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1505C2A12A2F098100BE4AEE /* SearchViewIO.swift */; };
+		1505C2A42A2F0A5100BE4AEE /* SearchModuleIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1505C2A32A2F0A5100BE4AEE /* SearchModuleIO.swift */; };
+		1505C2A62A2F14C500BE4AEE /* SearchModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1505C2A52A2F14C500BE4AEE /* SearchModuleBuilder.swift */; };
+		1505C2B32A2F803A00BE4AEE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1505C2B52A2F803A00BE4AEE /* Localizable.strings */; };
+		1505C2B82A2F81A100BE4AEE /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1505C2B72A2F81A100BE4AEE /* String+Extension.swift */; };
 		1505C2942A2DE06E00BE4AEE /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1505C2932A2DE06E00BE4AEE /* Section.swift */; };
 		151A8C1929DA0867000F2830 /* LoginViewIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151A8C1829DA0867000F2830 /* LoginViewIO.swift */; };
 		151A8C1B29DA0D63000F2830 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151A8C1A29DA0D63000F2830 /* LoginPresenter.swift */; };
@@ -90,6 +99,17 @@
 
 /* Begin PBXFileReference section */
 		15046D7729E9CE1500564385 /* AuthFlowIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFlowIO.swift; sourceTree = "<group>"; };
+		1505C2952A2DEA3400BE4AEE /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		1505C2972A2DEC0B00BE4AEE /* SearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
+		1505C29A2A2DF0CD00BE4AEE /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
+		1505C29F2A2F097500BE4AEE /* SearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
+		1505C2A12A2F098100BE4AEE /* SearchViewIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewIO.swift; sourceTree = "<group>"; };
+		1505C2A32A2F0A5100BE4AEE /* SearchModuleIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModuleIO.swift; sourceTree = "<group>"; };
+		1505C2A52A2F14C500BE4AEE /* SearchModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModuleBuilder.swift; sourceTree = "<group>"; };
+		1505C2AF2A2F7F9B00BE4AEE /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		1505C2B42A2F803A00BE4AEE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1505C2B62A2F803C00BE4AEE /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1505C2B72A2F81A100BE4AEE /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		1505C2932A2DE06E00BE4AEE /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		151A8C1829DA0867000F2830 /* LoginViewIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewIO.swift; sourceTree = "<group>"; };
 		151A8C1A29DA0D63000F2830 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
@@ -186,6 +206,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1505C2992A2DF0BC00BE4AEE /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				1505C29A2A2DF0CD00BE4AEE /* SearchCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		1505C29C2A2F094000BE4AEE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1505C2952A2DEA3400BE4AEE /* SearchViewController.swift */,
+				1505C2972A2DEC0B00BE4AEE /* SearchResultsViewController.swift */,
+				1505C2A12A2F098100BE4AEE /* SearchViewIO.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1505C29D2A2F095000BE4AEE /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				1505C29F2A2F097500BE4AEE /* SearchPresenter.swift */,
+				1505C2A32A2F0A5100BE4AEE /* SearchModuleIO.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		1505C2B02A2F7FF200BE4AEE /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				1505C2B52A2F803A00BE4AEE /* Localizable.strings */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
 		150B705429ED7D6B00117ED6 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
@@ -248,6 +303,7 @@
 				1537808A2A092AFF00BF83FE /* UIImageView+Extensions.swift */,
 				153402602A140A19000943BF /* StarRating.swift */,
 				153402622A14BCB2000943BF /* StarTypeIterator.swift */,
+				1505C2B72A2F81A100BE4AEE /* String+Extension.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -340,6 +396,7 @@
 		153D987C29D5F5FF00141BCB /* BooksApp */ = {
 			isa = PBXGroup;
 			children = (
+				1505C2B02A2F7FF200BE4AEE /* Localization */,
 				15300DB929F59EEF0060D765 /* Common */,
 				154B604B29E70C49000FD3EC /* Coordinators */,
 				159C10A129E450AB00ABA0C9 /* Services */,
@@ -408,6 +465,10 @@
 		1583B7312A13F0C3007889EE /* Searching */ = {
 			isa = PBXGroup;
 			children = (
+				1505C2A52A2F14C500BE4AEE /* SearchModuleBuilder.swift */,
+				1505C29C2A2F094000BE4AEE /* Views */,
+				1505C29D2A2F095000BE4AEE /* Presenter */,
+				1505C2992A2DF0BC00BE4AEE /* Cells */,
 			);
 			path = Searching;
 			sourceTree = "<group>";
@@ -672,6 +733,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 153D987129D5F5FF00141BCB;
 			productRefGroup = 153D987B29D5F5FF00141BCB /* Products */;
@@ -689,6 +751,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				153D988A29D5F60000141BCB /* LaunchScreen.storyboard in Resources */,
+				1505C2B32A2F803A00BE4AEE /* Localizable.strings in Resources */,
 				15D871B929D9D7D100B74A81 /* GoogleService-Info.plist in Resources */,
 				153D988729D5F60000141BCB /* Assets.xcassets in Resources */,
 			);
@@ -783,10 +846,12 @@
 				154B606029E82B32000FD3EC /* ProfileCoordinator.swift in Sources */,
 				154B604D29E70C60000FD3EC /* Coordinator.swift in Sources */,
 				151A8C2229DA1278000F2830 /* AuthorizationService.swift in Sources */,
+				1505C2982A2DEC0B00BE4AEE /* SearchResultsViewController.swift in Sources */,
 				15DDDF0D29FEAC1B007A16DE /* Book.swift in Sources */,
 				153780842A07E19800BF83FE /* APICommonModels.swift in Sources */,
 				15D5525129E333D30073888B /* ChangePasswordModuleIO.swift in Sources */,
 				15B8B6472A1B96BB0095637A /* BookStorage.swift in Sources */,
+				1505C2A62A2F14C500BE4AEE /* SearchModuleBuilder.swift in Sources */,
 				1583B7302A13C424007889EE /* DescriptionModuleBuilder.swift in Sources */,
 				151A8C2A29DB0C80000F2830 /* AppCoordinator.swift in Sources */,
 				1545506C2A1F95F900A9B58E /* ReadCollectionViewCell.swift in Sources */,
@@ -800,12 +865,16 @@
 				151A8C2829DA2633000F2830 /* SignOutViewController.swift in Sources */,
 				154550642A1F67D000A9B58E /* FavoritePresenter.swift in Sources */,
 				15300DC829F665680060D765 /* ChangePasswordPresenter.swift in Sources */,
+				1505C2962A2DEA3400BE4AEE /* SearchViewController.swift in Sources */,
+				1505C2A02A2F097500BE4AEE /* SearchPresenter.swift in Sources */,
 				15C2B2A42A126A7600F3EC9F /* DescriptionPresenter.swift in Sources */,
 				15B75C7229FE9D5000B886DB /* TextField.swift in Sources */,
+				1505C2A42A2F0A5100BE4AEE /* SearchModuleIO.swift in Sources */,
 				15DDDF1329FEAD33007A16DE /* MockData.swift in Sources */,
 				15FC0A102A291BFB005E9329 /* DetailViewController.swift in Sources */,
 				159C10A029E34BB800ABA0C9 /* LoginModuleBuilder.swift in Sources */,
 				15DDDF0B29FEABD1007A16DE /* PopularCollectionViewCell.swift in Sources */,
+				1505C29B2A2DF0CD00BE4AEE /* SearchCell.swift in Sources */,
 				15B8B6432A1B96270095637A /* BookModel+CoreDataClass.swift in Sources */,
 				151A8C2029DA1141000F2830 /* AuthorizationServiceProtocol.swift in Sources */,
 				15D5524B29E310440073888B /* SignOutPresenter.swift in Sources */,
@@ -815,10 +884,12 @@
 				15B8B6442A1B96270095637A /* BookModel+CoreDataProperties.swift in Sources */,
 				1537C4612A267DC700ECCEFB /* User.swift in Sources */,
 				151A8C1B29DA0D63000F2830 /* LoginPresenter.swift in Sources */,
+				1505C2A22A2F098100BE4AEE /* SearchViewIO.swift in Sources */,
 				153D987E29D5F5FF00141BCB /* AppDelegate.swift in Sources */,
 				151A8C2629DA216D000F2830 /* SignUpViewController.swift in Sources */,
 				154B605429E7E336000FD3EC /* BooksViewController.swift in Sources */,
 				1537C45C2A25DA2A00ECCEFB /* SectionHeader.swift in Sources */,
+				1505C2B82A2F81A100BE4AEE /* String+Extension.swift in Sources */,
 				15D5525329E3344B0073888B /* SignOutViewIO.swift in Sources */,
 				153402612A140A19000943BF /* StarRating.swift in Sources */,
 				151A8C1929DA0867000F2830 /* LoginViewIO.swift in Sources */,
@@ -843,10 +914,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		1505C2B52A2F803A00BE4AEE /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1505C2B42A2F803A00BE4AEE /* en */,
+				1505C2B62A2F803C00BE4AEE /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		153D988829D5F60000141BCB /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				153D988929D5F60000141BCB /* Base */,
+				1505C2AF2A2F7F9B00BE4AEE /* ru */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -858,6 +939,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -918,6 +1000,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -981,8 +1064,7 @@
 				INFOPLIST_FILE = BooksApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1010,8 +1092,7 @@
 				INFOPLIST_FILE = BooksApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

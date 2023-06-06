@@ -20,6 +20,7 @@ final class ProfileCoordinator: Coordinator {
         let viewController = SignOutModuleBuilder(output: self).build()
         viewController.tabBarItem = UITabBarItem.init(title: "Profile", image: UIImage(systemName: "person"), tag: 2)
         navigationController.viewControllers = [viewController]
+        navigationController.navigationBar.tintColor = .label
     }
 }
 

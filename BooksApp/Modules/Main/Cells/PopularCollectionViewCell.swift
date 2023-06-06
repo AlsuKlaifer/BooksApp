@@ -59,8 +59,7 @@ final class PopularCollectionViewCell: UICollectionViewCell {
         return stars
     }()
 
-    private lazy var favoriteButton: UIButton =
-    {
+    private lazy var favoriteButton: UIButton = {
         let button = UIButton()
         let config = UIImage.SymbolConfiguration(pointSize: .zero, weight: .medium, scale: .large)
         button.setImage(UIImage(systemName: "bookmark", withConfiguration: config), for: .normal)
@@ -121,6 +120,24 @@ final class PopularCollectionViewCell: UICollectionViewCell {
         authorLabel.text = book.author
         popularImageView.downloadImage(from: book.image ?? "")
         isFavorite = book.isFavorite
+
+        // favorite button
+        guard let bookModel = BookStorage(parser: BookParser()).getBookModel(with: book.id) else {
+            isFavorite = false
+            return
+        }
+        let imageName = bookModel.isFavorite ? "bookmark.fill" : "bookmark"
+        let config = UIImage.SymbolConfiguration(pointSize: .zero, weight: .medium, scale: .large)
+        favoriteButton.setImage(UIImage(systemName: imageName, withConfiguration: config), for: .normal)
+    }
+    
+    func configureCellBook(with book: Book) {
+        popularLabel.text = book.volumeInfo.title.uppercased()
+        authorLabel.text = book.volumeInfo.authors?[0]
+        popularImageView.downloadImage(from: book.volumeInfo.imageLinks?.thumbnail ?? "")
+        if let stars = book.volumeInfo.averageRating {
+            starsView.updateView(starsCount: 5, rating: stars)
+        }
 
         // favorite button
         guard let bookModel = BookStorage(parser: BookParser()).getBookModel(with: book.id) else {

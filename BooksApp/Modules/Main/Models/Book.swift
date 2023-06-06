@@ -11,9 +11,7 @@ struct Book: Hashable, Decodable {
     let id: String
     let selfLink: String
     let volumeInfo: VolumeInfo
-//    let saleInfo: SaleInfo
     let accessInfo: AccessInfo
-//    let searchInfo: String?
 }
 
 struct VolumeInfo: Hashable, Decodable {

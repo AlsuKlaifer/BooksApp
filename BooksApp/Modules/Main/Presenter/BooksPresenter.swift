@@ -118,6 +118,10 @@ final class BooksPresenter: BooksViewOutput {
             return false
         }
     }
+    
+    func openSearchScreen() {
+        output.moduleWantsToSearch(module: self)
+    }
 }
 
 extension BooksPresenter: BooksModuleInput {}

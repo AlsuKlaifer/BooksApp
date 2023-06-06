@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  BooksApp
+
+  Created by Alsu Faizova on 06.06.2023.
+  
+*/
+
+"login_title" = "Вход"
+"email_address" = "Адрес электронной почты"
+"password" = "Пароль"
+"login_button" = "Войти"

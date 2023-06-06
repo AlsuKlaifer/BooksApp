@@ -9,11 +9,13 @@ import UIKit
 
 final class BooksViewController: UIViewController {
 
-    private let searchController: UISearchController = {
-        let searchController = UISearchController()
-        searchController.searchBar.tintColor = .orange
-        searchController.searchBar.placeholder = "Search books"
-        return searchController
+    private lazy var searchButton: UIBarButtonItem = {
+        return UIBarButtonItem(
+            image: UIImage(systemName: "magnifyingglass"),
+            style: .plain,
+            target: self,
+            action: #selector(searchButtonTapped)
+        )
     }()
 
     private lazy var collectionView: UICollectionView = {
@@ -52,11 +54,10 @@ final class BooksViewController: UIViewController {
         setConstraints()
 
         collectionView.reloadData()
-        navigationItem.searchController = searchController
+        navigationItem.rightBarButtonItem = searchButton
     }
 
     override func viewWillAppear(_ animated: Bool) {
-//        output.viewDidLoad()
         super.viewWillAppear(animated)
         navigationItem.hidesSearchBarWhenScrolling = false
     }
@@ -77,6 +78,10 @@ final class BooksViewController: UIViewController {
         collectionView.register(
             CategoryCollectionViewCell.self,
             forCellWithReuseIdentifier: CategoryCollectionViewCell.reuseIdentifier)
+    }
+    
+    @objc func searchButtonTapped() {
+        output.openSearchScreen()
     }
 }
 
@@ -216,7 +221,7 @@ extension BooksViewController: UICollectionViewDelegate {
 extension BooksViewController {
 
     private func setConstraints() {
-
+        
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),

@@ -709,6 +709,7 @@ PODS:
     - nanopb/encode (= 2.30909.0)
   - nanopb/decode (2.30909.0)
   - nanopb/encode (2.30909.0)
+  - ProgressHUD (13.6.2)
   - PromisesObjC (2.2.0)
   - SwiftLint (0.46.5)
 
@@ -717,6 +718,7 @@ DEPENDENCIES:
   - FirebaseAuth
   - FirebaseDatabase
   - FirebaseFirestore
+  - ProgressHUD
   - SwiftLint (~> 0.46.2)
 
 SPEC REPOS:
@@ -736,6 +738,7 @@ SPEC REPOS:
     - leveldb-library
     - Libuv-gRPC
     - nanopb
+    - ProgressHUD
     - PromisesObjC
     - SwiftLint
 
@@ -755,9 +758,10 @@ SPEC CHECKSUMS:
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   Libuv-gRPC: 55e51798e14ef436ad9bc45d12d43b77b49df378
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
+  ProgressHUD: 355915c8f033e626788fa9b0d99d06e8691595ab
   PromisesObjC: 09985d6d70fbe7878040aa746d78236e6946d2ef
   SwiftLint: 2c16e8fa99dac2e440dc0c70ea74d2532048f6cf
 
-PODFILE CHECKSUM: 8d06a5a0454576d1f11eb7939501ebd4db8c1631
+PODFILE CHECKSUM: 12ae14c8149e872688b6b3778c9fae059511de01
 
 COCOAPODS: 1.12.0

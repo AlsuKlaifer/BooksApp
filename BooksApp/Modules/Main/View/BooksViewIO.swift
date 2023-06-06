@@ -21,4 +21,5 @@ protocol BooksViewOutput: AnyObject {
     func updateFavorite(item: ListItem)
     func getFavorite(item: ListItem) -> Bool
     func viewDidLoad()
+    func openSearchScreen()
 }
