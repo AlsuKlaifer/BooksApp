@@ -9,11 +9,23 @@ import UIKit
 
 final class BooksViewController: UIViewController {
 
-    private let searchController: UISearchController = {
-        let searchController = UISearchController()
-        searchController.searchBar.tintColor = .orange
-        searchController.searchBar.placeholder = "Search books"
-        return searchController
+//    private let searchController: UISearchController = {
+//        let searchController = UISearchController()
+//        searchController.searchBar.tintColor = .orange
+//        searchController.searchBar.placeholder = "Search books"
+//        return searchController
+//    }()
+    
+    private lazy var searchButton: UIButton = {
+        let button = UIButton()
+        let config = UIImage.SymbolConfiguration(pointSize: .zero, weight: .heavy, scale: .large)
+//        button.image = UIImage(systemName: "magnifyingglass", withConfiguration: config)
+        button.setImage(UIImage(systemName: "magnifyingglass", withConfiguration: config), for: .normal)
+        button.tintColor = .label
+        button.translatesAutoresizingMaskIntoConstraints = false
+//        button.target = searchButtonTapped()
+        button.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
+        return button
     }()
 
     private lazy var collectionView: UICollectionView = {
@@ -52,11 +64,10 @@ final class BooksViewController: UIViewController {
         setConstraints()
 
         collectionView.reloadData()
-        navigationItem.searchController = searchController
+//        navigationItem.searchController = searchController
     }
 
     override func viewWillAppear(_ animated: Bool) {
-//        output.viewDidLoad()
         super.viewWillAppear(animated)
         navigationItem.hidesSearchBarWhenScrolling = false
     }
@@ -77,6 +88,10 @@ final class BooksViewController: UIViewController {
         collectionView.register(
             CategoryCollectionViewCell.self,
             forCellWithReuseIdentifier: CategoryCollectionViewCell.reuseIdentifier)
+    }
+    
+    @objc func searchButtonTapped() {
+        output.openSearchScreen()
     }
 }
 
@@ -217,8 +232,14 @@ extension BooksViewController {
 
     private func setConstraints() {
 
+        view.addSubview(searchButton)
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
+            searchButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
+            searchButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
+        ])
+        
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: searchButton.bottomAnchor, constant: 10),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10)

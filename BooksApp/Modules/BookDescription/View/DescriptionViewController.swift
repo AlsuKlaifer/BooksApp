@@ -243,7 +243,7 @@ extension DescriptionViewController: DescriptionViewInput {
         let book = output.book
         titleLabel.text = book.volumeInfo.title
         authorLabel.text = book.volumeInfo.authors?[0]
-        imageView.downloadImage(from: book.volumeInfo.imageLinks.thumbnail)
+        imageView.downloadImage(from: book.volumeInfo.imageLinks?.thumbnail ?? "")
         
         // Reload read button
         let title = output.isRead ? "Remove from read" : "Add to read"

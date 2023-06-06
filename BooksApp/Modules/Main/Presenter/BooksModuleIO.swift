@@ -9,6 +9,7 @@ import UIKit
 
 protocol BooksModuleOutput {
     func didSelectBook(module: BooksModuleInput, book: Book)
+    func moduleWantsToSearch(module: BooksModuleInput)
 }
 
 protocol BooksModuleInput {}

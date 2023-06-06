@@ -20,9 +20,9 @@ struct VolumeInfo: Hashable, Decodable {
     let title: String
     let authors: [String]?
 //    let publisher: String
-    let publishedDate: String
+    let publishedDate: String?
     let description: String?
-    let imageLinks: ImageLinks
+    let imageLinks: ImageLinks?
     let pageCount: Int?
     let categories: [String]?
     let averageRating: Double?

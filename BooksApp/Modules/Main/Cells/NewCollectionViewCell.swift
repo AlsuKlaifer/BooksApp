@@ -52,7 +52,7 @@ final class NewCollectionViewCell: UICollectionViewCell {
         switch book {
         case .book(let book):
             newLabel.text = book.volumeInfo.title.uppercased()
-            newImageView.downloadImage(from: book.volumeInfo.imageLinks.thumbnail)
+            newImageView.downloadImage(from: book.volumeInfo.imageLinks?.thumbnail ?? "")
         case .category:
             return
         }
