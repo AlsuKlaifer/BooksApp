@@ -13,10 +13,16 @@ class SignOutPresenter {
 
     private let output: SignOutModuleOutput
     private let loginService: AuthorizationServiceProtocol
+    private let firestoreManager: FirestoreManagerProtocol
 
-    init(loginService: AuthorizationServiceProtocol, output: SignOutModuleOutput) {
+    init(
+        loginService: AuthorizationServiceProtocol,
+        output: SignOutModuleOutput,
+        firestoreManager: FirestoreManagerProtocol
+    ) {
         self.loginService = loginService
         self.output = output
+        self.firestoreManager = firestoreManager
     }
 }
 
@@ -37,6 +43,13 @@ extension SignOutPresenter: SignOutViewOutput {
     
     func changePassword() {
         output.moduleWantsToChangePassword(self)
+    }
+    
+    func getUser(completion: @escaping (User?) -> Void) {
+        let id = loginService.getUser()
+        firestoreManager.getUser(collection: "users", document: id) { user in
+            completion(user)
+        }
     }
 }
 

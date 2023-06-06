@@ -171,6 +171,7 @@ extension FavoriteViewController {
             cell.favoriteButtonAction = { [weak self] in
                 self?.showAlert("Do you really want to remove this book from your favorite list?", completion: {
                     self?.output.updateFavorite(item: book)
+                    self?.output.viewDidLoad()
                 })
                 self?.output.viewDidLoad()
             }
@@ -234,18 +235,5 @@ extension FavoriteViewController {
 extension FavoriteViewController: FavoriteViewInput {
     func reloadData() {
         collectionView.reloadData()
-    }
-}
-
-enum Section {
-    case read([BookModel])
-    case favorite([BookModel])
-
-    var items: [BookModel] {
-        switch self {
-        case .read(let items),
-        .favorite(let items):
-            return items
-        }
     }
 }

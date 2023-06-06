@@ -20,7 +20,7 @@ final class BookParser: BookParserProtocol {
         bookModel.author = book.volumeInfo.authors?.first
         bookModel.publishedDate = book.volumeInfo.publishedDate
         bookModel.descriptions = book.volumeInfo.description
-        bookModel.image = book.volumeInfo.imageLinks?.thumbnail ?? ""
+        bookModel.image = book.volumeInfo.imageLinks?.thumbnail ?? "https://i.pinimg.com/originals/8d/b1/95/8db195a0990c29a50a63ea8e7767c6e8.jpg"
         bookModel.pages = book.volumeInfo.pageCount as? NSNumber
         bookModel.category = book.volumeInfo.categories?.first
         bookModel.rating = book.volumeInfo.averageRating as? NSNumber

@@ -13,11 +13,11 @@ struct MockData {
     
     let category: ListSection = {
         .category([
-            ListItem.category("A"),
-            ListItem.category("The"),
-            ListItem.category("Flower"),
-            ListItem.category("Sun"),
-            ListItem.category("And")
+            ListItem.category("Popular"),
+            ListItem.category("Fantastic"),
+            ListItem.category("IT"),
+            ListItem.category("Psychology"),
+            ListItem.category("Classic")
         ])
     }()
 }
