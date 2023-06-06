@@ -29,29 +29,28 @@ class ChangePasswordViewController: UIViewController {
     }
     
     private lazy var passwordTextField1: UITextField = {
-        let textField = TextField()
-        textField.placeholder = "Current password"
+        let textField = TextField(imageName: "lock", placeholder: "Current password")
         textField.isSecureTextEntry = true
+        textField.enablePasswordToggle()
         return textField
     }()
     
     private lazy var passwordTextField2: UITextField = {
-        let textField = TextField()
-        textField.placeholder = "New password"
+        let textField = TextField(imageName: "lock", placeholder: "New password")
         textField.isSecureTextEntry = true
+        textField.enablePasswordToggle()
         return textField
     }()
     
     private lazy var passwordTextField3: UITextField = {
-        let textField = TextField()
-        textField.placeholder = "New password"
+        let textField = TextField(imageName: "lock", placeholder: "New password")
         textField.isSecureTextEntry = true
+        textField.enablePasswordToggle()
         return textField
     }()
     
     lazy var chagePasswordButton: UIButton = {
-        let button = Button()
-        button.setTitle("Save", for: .normal)
+        let button = Button(title: "Save")
         button.addTarget(self, action: #selector(chagePasswordButtonTapped), for: .touchUpInside)
         return button
     }()

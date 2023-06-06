@@ -54,7 +54,7 @@ final class PopularCollectionViewCell: UICollectionViewCell {
         return label
     }()
 
-    private let starsView: StarRatingView = {
+    private lazy var starsView: StarRatingView = {
         let stars = StarRatingView(starsCount: 0, rating: 0.0)
         return stars
     }()
@@ -97,7 +97,7 @@ final class PopularCollectionViewCell: UICollectionViewCell {
         case .book(let book):
             popularLabel.text = book.volumeInfo.title.uppercased()
             authorLabel.text = book.volumeInfo.authors?[0]
-            popularImageView.downloadImage(from: book.volumeInfo.imageLinks.thumbnail)
+            popularImageView.downloadImage(from: book.volumeInfo.imageLinks?.thumbnail ?? "https://i.pinimg.com/originals/8d/b1/95/8db195a0990c29a50a63ea8e7767c6e8.jpg")
             if let stars = book.volumeInfo.averageRating {
                 starsView.updateView(starsCount: 5, rating: stars)
             }
@@ -121,9 +121,6 @@ final class PopularCollectionViewCell: UICollectionViewCell {
         authorLabel.text = book.author
         popularImageView.downloadImage(from: book.image ?? "")
         isFavorite = book.isFavorite
-        if let stars = book.rating {
-            starsView.updateView(starsCount: 5, rating: Double(truncating: stars))
-        }
 
         // favorite button
         guard let bookModel = BookStorage(parser: BookParser()).getBookModel(with: book.id) else {
@@ -139,7 +136,7 @@ final class PopularCollectionViewCell: UICollectionViewCell {
         let stackview = UIStackView(arrangedSubviews: [popularLabel, authorLabel, starsView])
 
         stackview.axis = .vertical
-        stackview.spacing = 5
+        stackview.spacing = bounds.height / 25
         stackview.translatesAutoresizingMaskIntoConstraints = false
         addSubview(stackview)
 
@@ -147,19 +144,19 @@ final class PopularCollectionViewCell: UICollectionViewCell {
             popularImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             popularImageView.topAnchor.constraint(equalTo: topAnchor, constant: 5),
             popularImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5),
-            popularImageView.widthAnchor.constraint(equalToConstant: 80)
+            popularImageView.widthAnchor.constraint(equalToConstant: bounds.width / 5.4)
         ])
 
         addSubview(favoriteButton)
         NSLayoutConstraint.activate([
-            favoriteButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            favoriteButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -(bounds.width / 22)),
             favoriteButton.topAnchor.constraint(equalTo: topAnchor, constant: 10)
         ])
         
         NSLayoutConstraint.activate([
-            stackview.leadingAnchor.constraint(equalTo: popularImageView.trailingAnchor, constant: 30),
-            stackview.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
-            stackview.topAnchor.constraint(equalTo: topAnchor, constant: 15)
+            stackview.leadingAnchor.constraint(equalTo: popularImageView.trailingAnchor, constant: bounds.width / 14.3),
+            stackview.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -(bounds.width / 9)),
+            stackview.topAnchor.constraint(equalTo: topAnchor, constant: 10)
         ])
     }
 }

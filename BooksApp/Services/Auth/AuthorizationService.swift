@@ -39,8 +39,7 @@ class AuthorizationService: AuthorizationServiceProtocol {
     }
     
     func changePassword(password: String, newPassword: String, completion: @escaping ((Result<Void, Error>) -> Void)) {
-        let user = Auth.auth().currentUser
-        guard let user else { return }
+        guard let user = Auth.auth().currentUser else { return }
         guard let email = user.email else { return }
         let credential = EmailAuthProvider.credential(withEmail: email, password: password)
         Auth.auth().currentUser?.reauthenticate(with: credential) { _, error in
@@ -56,5 +55,10 @@ class AuthorizationService: AuthorizationServiceProtocol {
                 }
             }
         }
+    }
+    
+    func getUser() -> String {
+        guard let user = Auth.auth().currentUser else { return "" }
+        return user.uid
     }
 }

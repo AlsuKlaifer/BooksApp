@@ -13,4 +13,6 @@ protocol AuthorizationServiceProtocol {
     func signOut(completion: @escaping ((Result<Void, Error>) -> Void))
     
     func changePassword(password: String, newPassword: String, completion: @escaping ((Result<Void, Error>) -> Void))
+    
+    func getUser() -> String
 }

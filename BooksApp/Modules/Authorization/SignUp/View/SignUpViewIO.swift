@@ -14,5 +14,5 @@ protocol SignUpViewInput: AnyObject {
 
 // presenter
 protocol SignUpViewOutput: AnyObject {
-    func signUp(_ email: String, _ password: String)
+    func signUp(name: String, _ email: String, _ password: String)
 }

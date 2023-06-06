@@ -9,6 +9,8 @@ import Foundation
 
 // view
 protocol SignOutViewInput: AnyObject {
+//    var name: String { get set }
+//    var email: String { get set }
     func showAlert(_ message: String)
 }
 
@@ -16,4 +18,5 @@ protocol SignOutViewInput: AnyObject {
 protocol SignOutViewOutput: AnyObject {
     func signOut()
     func changePassword()
+    func getUser(completion: @escaping (User?) -> Void)
 }
