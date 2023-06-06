@@ -25,7 +25,6 @@ class LoginViewController: UIViewController {
         
         view.backgroundColor = .systemBackground
         setConstraints()
-        title = "login"
     }
     
     private lazy var emailTextField: UITextField = {
